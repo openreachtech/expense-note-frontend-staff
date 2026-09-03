@@ -1,7 +1,7 @@
 {
-  "name": "TODO: fulfill here ❌️",
+  "name": "expense-note-frontend-staff",
   "version": "0.0.0",
-  "description": "TODO: fulfill here",
+  "description": "The expense note screens a member of staff uses",
   "main": "index.js",
   "scripts": {
     "build": "nuxt build",
