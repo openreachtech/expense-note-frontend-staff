@@ -1,0 +1,13 @@
+/*
+ * The application's custom properties.
+ *
+ * Nothing is declared here yet, on purpose. What a colour, a size or a ratio should
+ * be is the application's decision, and the boilerplate does not make it.
+ *
+ * This file is loaded before `main.css`, so a value declared here is readable from
+ * every stylesheet and every component that follows.
+ */
+
+:root {
+  /* Declare the application's colours, sizes and ratios here. */
+}
