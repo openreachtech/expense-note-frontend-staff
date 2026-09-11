@@ -5,8 +5,17 @@ import {
 } from 'vue'
 
 import {
+  useRoute,
+  useRouter,
+} from 'vue-router'
+
+import {
   definePageMeta,
 } from '#imports'
+
+import {
+  useGraphqlClient,
+} from '@openreachtech/furo-nuxt'
 
 import {
   FuroButton,
@@ -14,6 +23,12 @@ import {
   FuroEmailField,
   FuroPasswordField,
 } from '@openreachtech/furo-vue'
+
+import AppAccessTokenClerk from '~/app/tools/storage/AppAccessTokenClerk.js'
+
+import SignInMutationGraphqlLauncher from '~/app/graphql/client/mutations/signIn/SignInMutationGraphqlLauncher.js'
+import RenewAccessTokenMutationGraphqlLauncher from '~/app/graphql/client/mutations/renewAccessToken/RenewAccessTokenMutationGraphqlLauncher.js'
+import SignedInStaffMemberQueryGraphqlLauncher from '~/app/graphql/client/queries/signedInStaffMember/SignedInStaffMemberQueryGraphqlLauncher.js'
 
 import AppRefusalMessage from '~/components/units/AppRefusalMessage.vue'
 
@@ -53,12 +68,39 @@ export default defineComponent({
       signIn: null,
     })
 
+    const route = useRoute()
+    const router = useRouter()
+
+    const signInGraphqlClient = useGraphqlClient({
+      Launcher: SignInMutationGraphqlLauncher,
+    })
+
+    const renewAccessTokenGraphqlClient = useGraphqlClient({
+      Launcher: RenewAccessTokenMutationGraphqlLauncher,
+    })
+
+    const signedInStaffMemberGraphqlClient = useGraphqlClient({
+      Launcher: SignedInStaffMemberQueryGraphqlLauncher,
+    })
+
+    const graphqlClientHash = {
+      signIn: signInGraphqlClient,
+      renewAccessToken: renewAccessTokenGraphqlClient,
+      signedInStaffMember: signedInStaffMemberGraphqlClient,
+    }
+
+    const accessTokenClerk = AppAccessTokenClerk.create()
+
     const signInPageContext = SignInPageContext.create({
       props,
       componentContext,
+      route,
+      router,
       formValueHashReactive,
       statusReactive,
       errorMessageHashReactive,
+      graphqlClientHash,
+      accessTokenClerk,
     })
 
     signInPageContext.setupComponent()
