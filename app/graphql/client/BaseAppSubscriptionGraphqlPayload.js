@@ -8,6 +8,8 @@ import {
   STORAGE_KEY,
 } from '../../constants'
 
+import MemoryStorage from '../../tools/storage/MemoryStorage.js'
+
 /**
  * Base class for all app subscription graphql payloads.
  *
@@ -55,6 +57,8 @@ export default class BaseAppSubscriptionGraphqlPayload extends BaseSubscriptionG
    * @returns {StorageClerk} Instance of StorageClerk.
    */
   static createStorageClerk () {
-    return StorageClerk.createAsLocal()
+    return StorageClerk.create({
+      storage: MemoryStorage.create(),
+    })
   }
 }

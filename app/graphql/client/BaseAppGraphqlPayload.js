@@ -8,6 +8,8 @@ import {
   STORAGE_KEY,
 } from '~/app/constants'
 
+import MemoryStorage from '~/app/tools/storage/MemoryStorage.js'
+
 /**
  * Company sponsors query graphql launcher.
  *
@@ -55,6 +57,8 @@ export default class BaseAppGraphqlPayload extends BaseGraphqlPayload {
    * @returns {StorageClerk} Instance of StorageClerk.
    */
   static createStorageClerk () {
-    return StorageClerk.createAsLocal()
+    return StorageClerk.create({
+      storage: MemoryStorage.create(),
+    })
   }
 }
