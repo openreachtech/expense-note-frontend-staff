@@ -49,6 +49,13 @@ export default defineNuxtConfig({
   // The boilerplate copies none of them in. What a reset, a palette or a z-index scale
   // should be is the application's to decide.
   css: [
+    // The component library's design tokens -- palette, z-index, semantic colour and dimension.
+    // `furo.css` is furo-vue's own single public entry, and it must come FIRST so the two files
+    // below can override it. Without it every `--color-*` the components read resolves to nothing:
+    // `--color-ring` is the only focus indicator `FuroButton` has, and `--color-destructive` is
+    // what makes a `FuroControlBlock` error message read as an error.
+    '@openreachtech/furo-vue/lib/assets/css/furo.css',
+
     '~/assets/css/variables.css',
 
     '~/assets/css/main.css',
