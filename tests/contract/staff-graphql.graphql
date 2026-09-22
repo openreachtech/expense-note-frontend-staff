@@ -10,6 +10,20 @@
 #### here is authoritative: a disagreement between this copy and the file named
 #### above is a defect in this copy, and is corrected by recopying rather than
 #### by editing either side to agree.
+####
+#### AUTHORITY FINGERPRINT: sha256 e98a3a6edf510ed8 (first 16 hex of the whole
+#### authority file, header excluded -- this header is not part of it).
+####
+#### It is here because NEITHER continuous integration can see both files. This
+#### repository's CI checks out this repository alone; the outer repository's CI
+#### gitignores the sub-repositories (`/*-frontend*/`), so it sees the authority
+#### and not this copy. No automated check can therefore compare them, and the
+#### fingerprint is what a person or the orchestrator compares instead:
+####
+####     sha256sum .hora/contracts/1.0.0/staff-graphql.graphql | cut -c1-16
+####
+#### A mismatch means the contract moved and this copy did not. Recopy, and
+#### update this line. Recorded in full as Q57.
 ################################################################################
 
 # staff-graphql — the pinned contract for 1.0.0
