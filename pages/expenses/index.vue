@@ -5,8 +5,16 @@ import {
 } from 'vue'
 
 import {
+  useRouter,
+} from 'vue-router'
+
+import {
   definePageMeta,
 } from '#imports'
+
+import {
+  useGraphqlClient,
+} from '@openreachtech/furo-nuxt'
 
 import {
   FuroAlertDialog,
@@ -21,6 +29,15 @@ import {
   FuroTable,
   FuroTextField,
 } from '@openreachtech/furo-vue'
+
+import AppAccessTokenClerk from '~/app/tools/storage/AppAccessTokenClerk.js'
+
+import ExpensesQueryGraphqlLauncher from '~/app/graphql/client/queries/expenses/ExpensesQueryGraphqlLauncher.js'
+import ExpenseCategoriesQueryGraphqlLauncher from '~/app/graphql/client/queries/expenseCategories/ExpenseCategoriesQueryGraphqlLauncher.js'
+import RecordExpenseMutationGraphqlLauncher from '~/app/graphql/client/mutations/recordExpense/RecordExpenseMutationGraphqlLauncher.js'
+import CorrectExpenseMutationGraphqlLauncher from '~/app/graphql/client/mutations/correctExpense/CorrectExpenseMutationGraphqlLauncher.js'
+import RemoveExpenseMutationGraphqlLauncher from '~/app/graphql/client/mutations/removeExpense/RemoveExpenseMutationGraphqlLauncher.js'
+import SignOutMutationGraphqlLauncher from '~/app/graphql/client/mutations/signOut/SignOutMutationGraphqlLauncher.js'
 
 import AppRefusalMessage from '~/components/units/AppRefusalMessage.vue'
 
@@ -66,10 +83,14 @@ import ExpensesPageContext from './ExpensesPageContext.js'
  * -------------------------------------------------------------------------------------------
  *
  * They are created here and handed over, the way `/sign-in` already does, so the context owns the
- * reading of them and the component owns their lifetime. They are also the seam this checkpoint
- * leaves for the next: every one of the screen's four states is reachable by the value of one of
- * these fields, and checkpoint 16 sets those values from the GraphQL clients without moving any
- * markup.
+ * reading of them and the component owns their lifetime. Every one of the screen's four states is
+ * reachable by the value of one of these fields, and checkpoint 16 filled those values in from the
+ * six GraphQL clients below without moving any markup at all.
+ *
+ * The clients, the router and the token clerk are created here for the same reason the reactive
+ * objects are: a context never calls a composable and never constructs its own collaborators. Six
+ * clients, one per operation of section 11.2's call table, are grouped into one `graphqlClientHash`
+ * keyed by the operation name.
  *
  * | State | Reached when |
  * | :-- | :-- |
@@ -137,13 +158,53 @@ export default defineComponent({
       expenseCategories: [],
     })
 
+    const router = useRouter()
+
+    const expensesGraphqlClient = useGraphqlClient({
+      Launcher: ExpensesQueryGraphqlLauncher,
+    })
+
+    const expenseCategoriesGraphqlClient = useGraphqlClient({
+      Launcher: ExpenseCategoriesQueryGraphqlLauncher,
+    })
+
+    const recordExpenseGraphqlClient = useGraphqlClient({
+      Launcher: RecordExpenseMutationGraphqlLauncher,
+    })
+
+    const correctExpenseGraphqlClient = useGraphqlClient({
+      Launcher: CorrectExpenseMutationGraphqlLauncher,
+    })
+
+    const removeExpenseGraphqlClient = useGraphqlClient({
+      Launcher: RemoveExpenseMutationGraphqlLauncher,
+    })
+
+    const signOutGraphqlClient = useGraphqlClient({
+      Launcher: SignOutMutationGraphqlLauncher,
+    })
+
+    const graphqlClientHash = {
+      expenses: expensesGraphqlClient,
+      expenseCategories: expenseCategoriesGraphqlClient,
+      recordExpense: recordExpenseGraphqlClient,
+      correctExpense: correctExpenseGraphqlClient,
+      removeExpense: removeExpenseGraphqlClient,
+      signOut: signOutGraphqlClient,
+    }
+
+    const accessTokenClerk = AppAccessTokenClerk.create()
+
     const expensesPageContext = ExpensesPageContext.create({
       props,
       componentContext,
+      router,
       formValueHashReactive,
       statusReactive,
       errorMessageHashReactive,
       responseHashReactive,
+      graphqlClientHash,
+      accessTokenClerk,
     })
 
     expensesPageContext.setupComponent()
