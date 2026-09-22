@@ -34,6 +34,15 @@ import ExpensesPageContext from './ExpensesPageContext.js'
  * gateway middleware above is global and guards every path except `/sign-in`, so a page that sets
  * no `$furo: { skipFilter: true }` is guarded by existing. No per-page middleware is declared, which
  * is also what the Furo convention requires.
+ *
+ * WHAT GOES IN THIS TEMPLATE IS ALREADY DESIGNED, in `ai/contexts/uiux-context-expense-entry.md`.
+ * Checkpoint 12 broke this screen into components and matched every part against the twenty
+ * component skills the kit equips: eight library components serve it, `AppRefusalMessage` serves
+ * the rest, and NOTHING here is a component of this application's own. That document also carries
+ * the facts read out of the installed `@openreachtech/furo-vue` that its skills get wrong -- the
+ * `row-actions` slot no skill lists, and a date picker whose `maxValue` flags a late date rather
+ * than blocking one. Read it before adding markup; it is loaded automatically by the skill that
+ * generates UI here and by the one that audits it, which is why it lives where it does.
  */
 export default defineComponent({
   name: 'ExpensesPage',

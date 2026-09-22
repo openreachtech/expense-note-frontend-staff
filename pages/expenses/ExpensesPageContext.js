@@ -13,6 +13,15 @@ const PAGE_TITLE = 'Expenses'
  * and the sign-out control arrive at the checkpoints that own them, and every one of them lands
  * on this one route rather than on a route of its own.
  *
+ * The members this class is going to need are already designed, in
+ * `ai/contexts/uiux-context-expense-entry.md`: which component each part of the screen is, which
+ * parcel getter feeds it, which of section 8's rules binds it, and the names chosen for the
+ * properties, getters and handlers -- checked against the `id-denylist` before they were written
+ * down. Two things in it decide code rather than markup, and both belong to whoever wires the data
+ * in: `correctExpense` is a full replace, so one form collects all four fields in both modes and a
+ * correction pre-fills from the row already on screen rather than from a second request; and the
+ * date picker does not prevent a future date, so the date must be checked here before it is sent.
+ *
  * @extends {BaseAppContext}
  */
 export default class ExpensesPageContext extends BaseAppContext {
