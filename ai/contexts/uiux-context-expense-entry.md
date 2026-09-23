@@ -73,12 +73,13 @@ this checkpoint that stops a library component being rebuilt by hand.
 
 `components/units/AppRefusalMessage.vue` is the only component this application has built.
 
-**It is reused, unchanged, in two places on this screen** — nothing is modified, nothing is
+**It is reused, unchanged, in three places on this screen** — nothing is modified, nothing is
 wrapped, no variant is created.
 
 | Instance | Holds |
 |---|---|
 | inside the form, below the fields | a refusal of `recordExpense` or `correctExpense` |
+| inside the form, under the category field | a failed read of `expenseCategories` (4.8, added after checkpoint 18's review) |
 | above the entries table | a refusal of `removeExpense`, and a refusal raised from a row |
 
 It fits both without alteration. It is a single always-rendered `role="alert"` region taking one
@@ -127,6 +128,7 @@ One route, `/expenses`, aliased to `/` (checkpoint 10). One `<main>`.
   FuroControlBlock(label 'Date paid')  > FuroDatePicker     <- spentOn
   FuroControlBlock(label 'Amount')     > FuroNumberField    <- amount
   FuroControlBlock(label 'Category')   > FuroSelect         <- expenseCategoryId
+  AppRefusalMessage + FuroButton                            <- 4.8, only when the categories failed
   FuroControlBlock(label 'Memo')       > FuroTextField      <- memo, NOT required
   AppRefusalMessage                                         <- one message, no branch
   FuroButton (submit)  +  FuroButton (cancel, correction mode only)
@@ -219,6 +221,16 @@ onto `PaginationInput` with no translation layer. Pass `offset` (zero-based), **
 is not validated server-side, and reaches no query. It is not displayed, not put in an attribute,
 and not used to build a label.
 
+**A re-read after a write decides its offset from the total that comes back**, not from the offset
+the screen was holding — added after checkpoint 18's review. Remove the only entry of a second page
+of twenty-one and the answer for offset twenty is zero rows against a total of twenty, which
+`FuroTable` cannot tell apart from a member of staff with nothing recorded: it renders `#empty`,
+and the paginator that would lead back is hidden at the same moment, because a single page is not
+worth navigating. Twenty entries, unreachable without a reload. The re-read therefore reads the
+answer it got and asks again for the last page the new total has. It is not a rule about removal —
+a correction cannot change the count and never reaches it — but the re-read is one method serving
+every write.
+
 **One page-size constant, and 100 is not copied into this repository.** Rule 26 caps a request at
 100 rows. The page size here is **20** (`FuroPagination`'s own default, and a sane desk-browser
 page) — comfortably under the cap, declared **once** as a constant at checkpoint 13 and read from
@@ -238,6 +250,17 @@ frontend that never asks for more than its own 20 cannot reach the cap.
 | `tone` | `'destructive'` | the confirm button takes the destructive variant |
 | `busy` | `context.isRemovingExpense` | blocks dismissal and disables both buttons while the mutation is in flight |
 | `confirmText` / `cancelText` | explicit | the defaults are `Confirm` / `Cancel`; name the action instead |
+
+**One removal at a time, and it is visible while it runs.** Two things were added after
+checkpoint 18's review, and both follow from the dialog closing before the request goes out. The
+row just removed is still in the table until the re-read replaces it, so its Remove button is still
+there to be pressed — a second press answered not-found for an entry whose removal had succeeded.
+Every row's Remove is therefore **disabled** while a removal is in flight, and `onClickRemove()` /
+`onConfirmRemoval()` check the same flag, because a parcel describes a control and enforces
+nothing. And because `busy` above can never be observed — the dialog is gone before the flag is
+raised — the **table takes its waiting state** from the moment the removal is sent until the
+re-read behind it lands. The in-flight indication is put where the change is, not back into a
+dialog whose confirm button has no accessible name in that state (5.5).
 
 `@confirm` sends `removeExpense`; `@cancel` clears the pending id. **Both are handled** — the
 component has no close button and no outside-click dismissal by design, so those two events are its
@@ -259,6 +282,28 @@ The context exposes booleans; the template branches on them (section 8 rule 12).
 | **failed** — the read failed | `FuroErrorState` in `#error`, with a retry `FuroButton` |
 | **refused** — a write was refused | `AppRefusalMessage`, one sentence from the error-code hash |
 | **forbidden** — no session | not this screen's to render. `middleware/000.gateway.global.js` is global and already redirects to `/sign-in?redirect=<path>`; the page sets no `skipFilter`, so it is guarded by existing (checkpoint 10). Do not build a second guard and do not render a "please sign in" panel |
+
+### 4.8 The fifth condition — the form's own source failing
+
+> Added after checkpoint 18's acceptance review found it missing. The four states above are the
+> **entries'** four states, and this one is not among them: it belongs to the form.
+
+`expenseCategories` can fail. When it does, the entries are fine, the table is fine, and the one
+thing that cannot be done is the thing the screen exists for — the select has nothing in it to
+choose. Reported through the form's single refusal slot, it was erased by the first press of
+"Record the expense", because a submit clears that slot before it sends; what replaced it was
+*"Choose a category."*, an instruction about a select that was empty for exactly the reason the
+erased sentence had given. The screen was then unusable until a reload, and said so nowhere.
+
+| Part | Choice | Why |
+|---|---|---|
+| where the message is held | `errorMessageHashReactive.readingExpenseCategories`, a key of its own | the form clears `submittingExpense` at the top of every submit. A separate key is what makes "a submit does not erase it" structural rather than remembered |
+| what renders it | a **third** instance of `AppRefusalMessage`, in the form, directly under the category field | still one always-rendered `role="alert"` taking one `message` string. Nothing is modified and no variant is created (rule 15) |
+| always rendered? | yes, as the other two are | the category field carries its id in `aria-describedby`, so the id must exist before there is anything to read |
+| `aria-describedby` on the field | **two** ids — the form's refusal and this one | the other three fields keep one. This is the only field-level explanation for a select with nothing in it |
+| the way out | a `FuroButton` beside the message, shown only while the condition holds, re-reading **only** `expenseCategories` | the table's "Try again" reads the entries. Offering it for a form-side failure answers a question nobody asked |
+| its label | *"Load the categories again"*, not "Try again" | both retries can be on screen at once, and two buttons reading alike would not say which failure each one answers |
+| does a submit still send? | yes | the backend stays authoritative, and blocking the submit would be a second opinion about a refusal it already gives. The message simply survives the attempt |
 
 ---
 
@@ -348,6 +393,8 @@ New identifiers this design introduces, checked against `@openreachtech/eslint-c
 | `isRecordingExpense`, `isRemovingExpense`, `isLoadingExpenses` | context getters | boolean getters read `is~` |
 | `extractMemoText`, `extractAmountText`, `extractSpentOnText` | context methods | `extract~` is the verb for pulling a value out of a property (glossary). Never `get~` |
 | `onSubmitForm`, `onClickCorrect`, `onClickRemove`, `onConfirmRemoval`, `onCancelRemoval`, `onChangePage`, `onClickSignOut`, `onClickRetry` | context methods | `on~` handlers, the form `/sign-in` established |
+| `expenseCategoriesRefusalRegionId`, `expenseCategoriesRefusalMessage`, `expenseCategoryFieldDescriptionIds`, `retryExpenseCategoriesButtonParcel`, `retryExpenseCategoriesButtonLabel`, `hasExpenseCategoriesFailed`, `onClickRetryExpenseCategories`, `surfaceExpenseCategoriesFailure`, `clearExpenseCategoriesRefusal` | 4.8's state | added after checkpoint 18's review. `has~` for the boolean, `on~` for the handler, and the region words the other two refusal regions already use |
+| `isChangingExpenses`, `isExpensesOffsetBeyondTotal`, `generateLastExpensesPageOffset` | context methods | added after checkpoint 18's review. `generate~` builds a primitive (glossary); never `getLastOffset` |
 
 Avoided: `ExpenseFormManager` (`manager` is denied), `expenseData` (`data` is denied),
 `cateOptions` (`cate` is denied), `editExpense` (the spec's verb is **correct**, and the operation

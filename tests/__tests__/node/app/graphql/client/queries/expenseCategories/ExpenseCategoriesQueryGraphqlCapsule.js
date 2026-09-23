@@ -37,7 +37,7 @@ describe('ExpenseCategoriesQueryGraphqlCapsule', () => {
                   expenseCategories: [
                     {
                       id: 71001,
-                      name: 'Travel',
+                      name: 'transport',
                       displayOrder: 1,
                     },
                   ],
@@ -49,7 +49,7 @@ describe('ExpenseCategoriesQueryGraphqlCapsule', () => {
             expenseCategories: [
               {
                 id: 71001,
-                name: 'Travel',
+                name: 'transport',
                 displayOrder: 1,
               },
             ],
@@ -127,7 +127,7 @@ describe('ExpenseCategoriesQueryGraphqlCapsule', () => {
                   expenseCategories: [
                     {
                       id: 71001,
-                      name: 'Travel',
+                      name: 'transport',
                       displayOrder: 1,
                     },
                     {
@@ -143,7 +143,7 @@ describe('ExpenseCategoriesQueryGraphqlCapsule', () => {
           expected: [
             {
               id: 71001,
-              name: 'Travel',
+              name: 'transport',
               displayOrder: 1,
             },
             {
@@ -161,7 +161,7 @@ describe('ExpenseCategoriesQueryGraphqlCapsule', () => {
                   expenseCategories: [
                     {
                       id: 71003,
-                      name: 'Supplies',
+                      name: 'supplies',
                       displayOrder: 3,
                     },
                   ],
@@ -172,7 +172,7 @@ describe('ExpenseCategoriesQueryGraphqlCapsule', () => {
           expected: [
             {
               id: 71003,
-              name: 'Supplies',
+              name: 'supplies',
               displayOrder: 3,
             },
           ],

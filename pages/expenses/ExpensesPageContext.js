@@ -36,11 +36,23 @@ const MEMO_MAXIMUM_LENGTH = 191
 const FORM_REFUSAL_REGION_ID = 'expense-form-refusal'
 const ENTRIES_REFUSAL_REGION_ID = 'expense-entries-refusal'
 
+/*
+ * The region reporting that the categories themselves could not be read.
+ *
+ * It is a region of its own rather than a second writer of the form's one refusal slot, and that
+ * is the whole of the fix: a submit clears the form's refusal before it sends, so a category
+ * failure written there was erased by the first press of "Record the expense" and replaced by
+ * "Choose a category." -- an instruction nobody could follow, because the select it names was
+ * empty for the reason the erased sentence had given.
+ */
+const EXPENSE_CATEGORIES_REFUSAL_REGION_ID = 'expense-categories-refusal'
+
 const RECORDING_SUBMIT_BUTTON_LABEL = 'Record the expense'
 const CORRECTING_SUBMIT_BUTTON_LABEL = 'Save the correction'
 const CANCEL_CORRECTION_BUTTON_LABEL = 'Cancel the correction'
 const SIGN_OUT_BUTTON_LABEL = 'Sign out'
 const RETRY_BUTTON_LABEL = 'Try again'
+const RETRY_EXPENSE_CATEGORIES_BUTTON_LABEL = 'Load the categories again'
 const CORRECT_ROW_BUTTON_LABEL = 'Correct'
 const REMOVE_ROW_BUTTON_LABEL = 'Remove'
 const ROW_ACTIONS_LABEL = 'Actions'
@@ -145,6 +157,33 @@ const SIGN_IN_PATH = '/sign-in'
  * the last answer carried -- rather than jumping to the first. The call table does not say which
  * page, and moving somebody off the page they were reading is a decision nothing in the
  * specification asks for.
+ *
+ * **It keeps that page only while the new total still has one.** A write can leave the offset on
+ * screen past the end -- remove the only entry of a second page of twenty-one and the answer for
+ * offset twenty is zero rows with a total of twenty, which the table cannot tell apart from having
+ * no entries at all: it renders the empty region, and the paginator that would lead back is gone
+ * with it, so twenty entries are unreachable without a reload. So the offset the re-read settles on
+ * is decided by the total the answer carried, not by the one the screen was holding when the write
+ * began. It is not a rule about removal -- a correction cannot change the count and never reaches
+ * it -- but the re-read is one method serving every write, and a rule that held for only one of
+ * them would be a rule the next writer does not know about.
+ *
+ * -------------------------------------------------------------------------------------------
+ * The fifth condition: the form's own source failing
+ * -------------------------------------------------------------------------------------------
+ *
+ * The four states the screen was designed around -- waiting, empty, failed, refused -- are the
+ * *entries'* four states. A failed `expenseCategories` is none of them: the entries are fine, the
+ * table is fine, and the one thing that cannot be done is the thing the screen exists for, because
+ * the select has nothing in it to choose. It is given a state of its own here rather than borrowed
+ * from the form's single refusal slot, which is what left the screen unusable: the form clears that
+ * slot at the top of every submit, so pressing "Record the expense" erased the sentence saying why
+ * the categories were missing and replaced it with "Choose a category."
+ *
+ * Its own slot (`readingExpenseCategories`), its own always-rendered region, and its own retry that
+ * re-reads only `expenseCategories`. A submit cannot reach any of the three, so the message stays
+ * on screen for as long as the condition lasts, and the way out of it costs a click rather than a
+ * reload.
  *
  * -------------------------------------------------------------------------------------------
  * The future date, and which side is authoritative about it
@@ -504,9 +543,27 @@ export default class ExpensesPageContext extends BaseAppContext {
   get expenseCategoryFieldTriggerParcel () {
     return {
       id: this.expenseCategoryFieldId,
-      'aria-describedby': this.formRefusalRegionId,
+      'aria-describedby': this.expenseCategoryFieldDescriptionIds,
       'aria-required': 'true',
     }
+  }
+
+  /**
+   * get: Regions describing the category field, as one attribute value.
+   *
+   * Two of them, where the other three fields have one: the form's refusal, and the region saying
+   * the categories themselves could not be read. The second is the only field-level explanation a
+   * member of staff gets for a select with nothing in it, so the field points at it as well as at
+   * the form's. Both ids exist whether or not their region holds text, which is what lets the
+   * association hold before there is anything to read.
+   *
+   * @returns {string} The ids, space separated.
+   */
+  get expenseCategoryFieldDescriptionIds () {
+    return [
+      this.formRefusalRegionId,
+      this.expenseCategoriesRefusalRegionId,
+    ].join(' ')
   }
 
   /**
@@ -643,6 +700,30 @@ export default class ExpensesPageContext extends BaseAppContext {
   }
 
   /**
+   * get: Id of the region saying the categories could not be read.
+   *
+   * @returns {string} Id of the region.
+   */
+  get expenseCategoriesRefusalRegionId () {
+    return EXPENSE_CATEGORIES_REFUSAL_REGION_ID
+  }
+
+  /**
+   * get: The message shown when the categories could not be read.
+   *
+   * It is read from a key of its own, and that is the point of it: the form empties
+   * `submittingExpense` at the top of every submit, so a sentence about the category source kept
+   * there lasted until the first press of the submit button and was replaced by an instruction
+   * about a select that had nothing in it.
+   *
+   * @returns {string | null} The message, or null when the last read succeeded.
+   */
+  get expenseCategoriesRefusalMessage () {
+    return this.errorMessageHashReactive.readingExpenseCategories
+      ?? null
+  }
+
+  /**
    * get: Parcel of the form's submit button.
    *
    * The loading field is the whole double-submission guard: the library suppresses the click emit
@@ -755,6 +836,39 @@ export default class ExpensesPageContext extends BaseAppContext {
   }
 
   /**
+   * get: Parcel of the button that reads the categories again.
+   *
+   * A button of its own beside the form, because the entries' retry reads the entries and nothing
+   * else: offering "Try again" for the table while the form's own source is the thing that failed
+   * is an offer that does not answer the condition it is shown for.
+   *
+   * @returns {ButtonParcel} Parcel of the button.
+   */
+  get retryExpenseCategoriesButtonParcel () {
+    const loading = this.isLoadingExpenseCategories()
+
+    return {
+      variant: 'outline',
+      type: 'button',
+      size: 'sm',
+      loading,
+    }
+  }
+
+  /**
+   * get: Label of the button that reads the categories again.
+   *
+   * It names the categories rather than saying "Try again": the screen can be showing this button
+   * and the table's own retry at the same time, and two buttons reading alike would not say which
+   * of the two failures each one answers.
+   *
+   * @returns {string} Label of the button.
+   */
+  get retryExpenseCategoriesButtonLabel () {
+    return RETRY_EXPENSE_CATEGORIES_BUTTON_LABEL
+  }
+
+  /**
    * get: Parcel of a row's correct button.
    *
    * @returns {ButtonParcel} Parcel of the button.
@@ -779,13 +893,25 @@ export default class ExpensesPageContext extends BaseAppContext {
   /**
    * get: Parcel of a row's remove button.
    *
+   * **Every row's Remove is disabled while a removal is in flight**, this one included. Until the
+   * re-read lands, the entry just removed is still in the table, so its own button is still there
+   * to be pressed a second time -- and the second request answers not-found for an entry whose
+   * removal succeeded, putting a refusal on screen about something that worked. One removal at a
+   * time is the truth of the screen, and the button is where a member of staff sees it.
+   *
+   * The disabling is the affordance and not the guard: `#onClickRemove()` and `#onConfirmRemoval()`
+   * check the same flag, because a parcel describes a control and does not enforce anything.
+   *
    * @returns {ButtonParcel} Parcel of the button.
    */
   get removeRowButtonParcel () {
+    const disabled = this.isRemovingExpense()
+
     return {
       variant: 'ghost',
       type: 'button',
       size: 'sm',
+      disabled,
     }
   }
 
@@ -880,11 +1006,17 @@ export default class ExpensesPageContext extends BaseAppContext {
    * refresh. `errorMessage` outranks everything and renders the error region. Neither set, with no
    * rows, renders the empty region.
    *
+   * **A removal in flight raises the same waiting state**, from the moment the request goes out
+   * until the re-read behind it has landed. The confirmation closes before the removal is sent --
+   * deliberately, see `#onConfirmRemoval()` -- so without this the dialog simply vanished and the
+   * row sat there untouched, with nothing anywhere saying a request was running. The entries are
+   * what a removal changes, so the entries are where it is shown.
+   *
    * @returns {TableParcel} Parcel of the table.
    */
   get expenseTableParcel () {
     const rows = this.expenseRows
-    const loading = this.isLoadingExpenses()
+    const loading = this.isChangingExpenses()
     const errorMessage = this.expensesFailureMessage
 
     return {
@@ -1466,6 +1598,21 @@ export default class ExpensesPageContext extends BaseAppContext {
   }
 
   /**
+   * Whether anything the entries table shows is being changed or fetched.
+   *
+   * Two requests reach the same waiting state, because a member of staff is told that the entries
+   * are busy and not which request is doing it: reading a page, and removing an entry -- whose own
+   * re-read is a read and raises the first flag anyway, so the two run into one another with no gap
+   * in between.
+   *
+   * @returns {boolean} true while a read or a removal is in flight.
+   */
+  isChangingExpenses () {
+    return this.isLoadingExpenses()
+      || this.isRemovingExpense()
+  }
+
+  /**
    * Whether the entries are being read.
    *
    * @returns {boolean} true while a read is in flight.
@@ -1625,6 +1772,44 @@ export default class ExpensesPageContext extends BaseAppContext {
    */
   hasMultipleExpensePages () {
     return this.expensesTotalRecords > PAGINATION.EXPENSES_LIMIT
+  }
+
+  /**
+   * Whether the categories the form offers could not be read.
+   *
+   * @returns {boolean} true while the form has no categories to offer and knows why.
+   */
+  hasExpenseCategoriesFailed () {
+    return this.expenseCategoriesRefusalMessage !== null
+  }
+
+  /**
+   * Whether the page on screen begins past the last entry there is.
+   *
+   * Asked of an answer that has already landed, so both numbers come from the same response: the
+   * offset the backend echoed and the total it counted. A total of zero is not past the end of
+   * anything -- there are genuinely no entries, which is the empty state and is true.
+   *
+   * @returns {boolean} true when the offset on screen is beyond the total.
+   */
+  isExpensesOffsetBeyondTotal () {
+    if (this.expensesTotalRecords === 0) {
+      return false
+    }
+
+    return this.expensesOffset >= this.expensesTotalRecords
+  }
+
+  /**
+   * Generate the offset of the last page the current total has.
+   *
+   * @returns {number} The offset, zero when there is at most one page.
+   */
+  generateLastExpensesPageOffset () {
+    const pageCount = Math.ceil(this.expensesTotalRecords / PAGINATION.EXPENSES_LIMIT)
+    const lastPageIndex = Math.max(pageCount - 1, 0)
+
+    return lastPageIndex * PAGINATION.EXPENSES_LIMIT
   }
 
   /**
@@ -1884,17 +2069,36 @@ export default class ExpensesPageContext extends BaseAppContext {
   }
 
   /**
-   * Read the entries again, on the page already on screen.
+   * Read the entries again, on a page the new total still has.
    *
    * Section 11.2's call table fires `expenses` after every write, and section 11.1 is why: a
    * mutation answers an identifier and nothing else, so this is the only thing that makes a
    * correction appear in place and a removal disappear.
+   *
+   * **The page it settles on is decided by the total that comes back, not by the offset the screen
+   * was holding.** A write can leave that offset past the end -- twenty-one entries, page two,
+   * remove the one entry there, and offset twenty against a total of twenty answers no rows at all.
+   * The table has no way to tell that apart from a member of staff with nothing recorded: it shows
+   * "No entries yet", and the paginator that would lead back to the twenty is hidden at the same
+   * moment, because a single page is not worth navigating. So the answer is read for what it is and
+   * the last page is asked for instead.
+   *
+   * The second read is the only one, and it cannot become a third: it asks for an offset computed
+   * from the total, which is inside the total by construction.
    *
    * @returns {Promise<void>}
    */
   async rereadExpenses () {
     await this.readExpenses({
       offset: this.expensesOffset,
+    })
+
+    if (!this.isExpensesOffsetBeyondTotal()) {
+      return
+    }
+
+    await this.readExpenses({
+      offset: this.generateLastExpensesPageOffset(),
     })
   }
 
@@ -1907,7 +2111,7 @@ export default class ExpensesPageContext extends BaseAppContext {
    * whatever caused it would quietly stop holding.
    *
    * @param {{
-   *   capsule: RecordExpenseCapsule | CorrectExpenseCapsule | ExpenseCategoriesCapsule
+   *   capsule: RecordExpenseCapsule | CorrectExpenseCapsule
    * }} params - Parameters of this method.
    * @returns {void}
    */
@@ -2002,6 +2206,12 @@ export default class ExpensesPageContext extends BaseAppContext {
    *
    * It opens the confirmation and records which entry it is holding. Nothing is sent here.
    *
+   * **A removal already in flight stops it.** The row whose removal is running is still in the
+   * table until the re-read replaces it, so its Remove button is still there to be pressed; the
+   * second removal answers not-found for an entry that was removed, and the screen shows a refusal
+   * about something that succeeded. The button is disabled for the same reason, and this is not the
+   * same check written twice: the parcel describes the control and this decides what happens.
+   *
    * @param {{
    *   row: ExpenseRow
    * }} params - Parameters of this method.
@@ -2010,6 +2220,10 @@ export default class ExpensesPageContext extends BaseAppContext {
   onClickRemove ({
     row,
   }) {
+    if (this.isRemovingExpense()) {
+      return
+    }
+
     this.clearEntriesRefusal()
 
     this.statusReactive.removingExpenseId = row.id
@@ -2025,9 +2239,18 @@ export default class ExpensesPageContext extends BaseAppContext {
    * it, and a refusal that comes back lands in the entries' own refusal region, which is where the
    * design puts it either way.
    *
+   * **Nothing is sent while a removal is already running.** `#onClickRemove()` will not open a
+   * second confirmation over one, so this is the closing half of the same guard rather than a
+   * reachable path of its own: what a dialog emits is the dialog's business, and a method that
+   * sends a request answers for the request.
+   *
    * @returns {Promise<void>}
    */
   async onConfirmRemoval () {
+    if (this.isRemovingExpense()) {
+      return
+    }
+
     this.clearEntriesRefusal()
 
     const expenseId = this.removingExpenseId
@@ -2264,16 +2487,30 @@ export default class ExpensesPageContext extends BaseAppContext {
   }
 
   /**
+   * Respond to the button that reads the categories again.
+   *
+   * The way out of the one condition on this screen that has no other way out. Until it existed, a
+   * failed category read left the form permanently unusable -- the select empty, the sentence
+   * saying why erased by the first submit, and the table's "Try again" answering a different
+   * failure -- and the only recovery was a reload nothing on the screen suggested.
+   *
+   * @returns {Promise<void>}
+   */
+  async onClickRetryExpenseCategories () {
+    this.clearExpenseCategoriesRefusal()
+
+    await this.readExpenseCategories()
+  }
+
+  /**
    * Read the categories the form offers.
    *
-   * **A refused category read is reported in the form's own message region**, which is the region
-   * every one of the form's four controls points at with `aria-describedby` and the only one the
-   * screen has for the form. The category field is one of those four, and a select that silently
-   * offers nothing would leave a member of staff unable to record anything with nothing on screen
-   * saying why. The key that region reads is named `submittingExpense` after its first writer;
-   * that name is now narrower than what it carries, and it is reported rather than renamed here,
-   * because renaming it reaches the page component, the template and the whole state machine this
-   * checkpoint was told not to restructure.
+   * **A refused category read is reported in a region of its own**, which the category field points
+   * at with `aria-describedby` alongside the form's. It is not the form's refusal region, and the
+   * difference is the whole of what makes the screen recoverable: the form empties that region at
+   * the top of every submit, so a sentence kept there was erased by the first press of the submit
+   * button and replaced by "Choose a category." -- an instruction about a select that was empty for
+   * exactly the reason the erased sentence had given.
    *
    * @returns {Promise<void>}
    */
@@ -2288,7 +2525,7 @@ export default class ExpensesPageContext extends BaseAppContext {
     const capsule = this.expenseCategoriesCapsule
 
     if (capsule.hasError()) {
-      this.surfaceFormRefusal({
+      this.surfaceExpenseCategoriesFailure({
         capsule,
       })
 
@@ -2298,6 +2535,22 @@ export default class ExpensesPageContext extends BaseAppContext {
     this.holdExpenseCategories({
       capsule,
     })
+  }
+
+  /**
+   * Put a failed category read's message on the screen.
+   *
+   * Resolved by the capsule, for the reason given on `#surfaceFormRefusal()`.
+   *
+   * @param {{
+   *   capsule: ExpenseCategoriesCapsule
+   * }} params - Parameters of this method.
+   * @returns {void}
+   */
+  surfaceExpenseCategoriesFailure ({
+    capsule,
+  }) {
+    this.errorMessageHashReactive.readingExpenseCategories = capsule.extractResolvedErrorMessage()
   }
 
   /**
@@ -2400,6 +2653,18 @@ export default class ExpensesPageContext extends BaseAppContext {
    */
   clearExpensesFailure () {
     this.errorMessageHashReactive.readingExpenses = null
+  }
+
+  /**
+   * Take the failed category read's message off the screen.
+   *
+   * Called from its own retry and from nowhere else. No submit reaches it, which is the property
+   * the fifth condition depends on.
+   *
+   * @returns {void}
+   */
+  clearExpenseCategoriesRefusal () {
+    this.errorMessageHashReactive.readingExpenseCategories = null
   }
 }
 
@@ -2510,6 +2775,7 @@ export default class ExpensesPageContext extends BaseAppContext {
  *   submittingExpense: string | null
  *   removingExpense: string | null
  *   readingExpenses: string | null
+ *   readingExpenseCategories: string | null
  * }} ErrorMessageHash
  */
 

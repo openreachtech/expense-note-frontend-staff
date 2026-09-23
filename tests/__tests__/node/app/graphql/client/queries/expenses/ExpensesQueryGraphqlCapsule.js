@@ -46,7 +46,7 @@ describe('ExpensesQueryGraphqlCapsule', () => {
                       status: 'recorded',
                       expenseCategory: {
                         id: 71001,
-                        name: 'Travel',
+                        name: 'transport',
                         displayOrder: 1,
                       },
                       createdAt: '2026-09-14T20:11:00.000Z',
@@ -73,7 +73,7 @@ describe('ExpensesQueryGraphqlCapsule', () => {
                 status: 'recorded',
                 expenseCategory: {
                   id: 71001,
-                  name: 'Travel',
+                  name: 'transport',
                   displayOrder: 1,
                 },
                 createdAt: '2026-09-14T20:11:00.000Z',
@@ -201,7 +201,7 @@ describe('ExpensesQueryGraphqlCapsule', () => {
                       status: 'recorded',
                       expenseCategory: {
                         id: 71001,
-                        name: 'Travel',
+                        name: 'transport',
                         displayOrder: 1,
                       },
                       createdAt: '2026-09-14T20:11:00.000Z',
@@ -215,7 +215,7 @@ describe('ExpensesQueryGraphqlCapsule', () => {
                       status: 'recorded',
                       expenseCategory: {
                         id: 71003,
-                        name: 'Supplies',
+                        name: 'supplies',
                         displayOrder: 3,
                       },
                       createdAt: '2026-09-13T09:02:00.000Z',
@@ -241,7 +241,7 @@ describe('ExpensesQueryGraphqlCapsule', () => {
               status: 'recorded',
               expenseCategory: {
                 id: 71001,
-                name: 'Travel',
+                name: 'transport',
                 displayOrder: 1,
               },
               createdAt: '2026-09-14T20:11:00.000Z',
@@ -255,7 +255,7 @@ describe('ExpensesQueryGraphqlCapsule', () => {
               status: 'recorded',
               expenseCategory: {
                 id: 71003,
-                name: 'Supplies',
+                name: 'supplies',
                 displayOrder: 3,
               },
               createdAt: '2026-09-13T09:02:00.000Z',

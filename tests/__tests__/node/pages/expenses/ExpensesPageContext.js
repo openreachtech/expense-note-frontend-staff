@@ -58,6 +58,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -131,6 +132,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: 'The date the money was paid cannot be later than today.',
               removingExpense: 'That entry is not available. Reload the page and try again.',
               readingExpenses: 'The entries could not be loaded. Reload the page and try again.',
+              readingExpenseCategories: 'Your session is no longer valid. Sign in again.',
             },
             responseHashReactive: {
               expenses: [],
@@ -218,6 +220,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -291,6 +294,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -385,6 +389,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -422,6 +427,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -471,6 +477,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -506,6 +513,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -555,6 +563,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -590,6 +599,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -639,6 +649,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -674,6 +685,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -723,6 +735,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -758,6 +771,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: 'The date the money was paid cannot be later than today.',
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -807,6 +821,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -842,6 +857,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -896,6 +912,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -969,6 +986,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -1056,6 +1074,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -1129,6 +1148,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -1216,6 +1236,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -1289,6 +1310,7 @@ describe('ExpensesPageContext', () => {
                 submittingExpense: null,
                 removingExpense: null,
                 readingExpenses: null,
+                readingExpenseCategories: null,
               },
               responseHashReactive: {
                 expenses: [],
@@ -1406,6 +1428,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -1442,6 +1465,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -1497,6 +1521,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -1533,6 +1558,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -1588,6 +1614,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -1624,6 +1651,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -1680,6 +1708,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -1730,6 +1759,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -1798,6 +1828,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -1848,6 +1879,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -1919,6 +1951,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -1969,6 +2002,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -2019,6 +2053,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -2089,6 +2124,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -2139,6 +2175,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -2209,6 +2246,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -2269,6 +2307,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -2349,6 +2388,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -2423,6 +2463,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -2498,6 +2539,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -2541,6 +2583,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -2584,6 +2627,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -2648,6 +2692,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -2683,6 +2728,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -2718,6 +2764,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -2772,6 +2819,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -2807,6 +2855,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -2865,6 +2914,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -2950,6 +3000,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -3060,6 +3111,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -3144,6 +3196,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -3251,6 +3304,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: 'That category is not available. Reload the page and choose again.',
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -3335,6 +3389,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: 'Something went wrong. Try again.',
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -3442,6 +3497,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -3496,6 +3552,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -3568,6 +3625,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -3617,6 +3675,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -3687,6 +3746,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: 'Something went wrong. Try again.',
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -3728,6 +3788,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -3790,6 +3851,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -3839,6 +3901,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -3910,6 +3973,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -3945,6 +4009,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -3998,6 +4063,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: 'That entry is not available. Reload the page and try again.',
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -4071,6 +4137,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -4168,6 +4235,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -4203,6 +4271,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -4259,6 +4328,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -4299,6 +4369,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -4358,6 +4429,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -4400,6 +4472,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -4442,6 +4515,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: 'The entries could not be loaded. Reload the page and try again.',
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -4484,6 +4558,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [
@@ -4575,6 +4650,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -4633,6 +4709,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -4710,6 +4787,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -4751,6 +4829,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -4816,6 +4895,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -4860,6 +4940,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -4923,6 +5004,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -4972,6 +5054,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -5041,6 +5124,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -5090,6 +5174,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -5159,6 +5244,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: 'The entries could not be loaded. Reload the page and try again.',
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -5218,6 +5304,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: 'Your session is no longer valid. Sign in again.',
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -5305,6 +5392,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -5371,6 +5459,7 @@ describe('ExpensesPageContext', () => {
             submittingExpense: null,
             removingExpense: null,
             readingExpenses: null,
+            readingExpenseCategories: null,
           },
           responseHashReactive: {
             expenses: [],
@@ -5489,6 +5578,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -5574,6 +5664,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -5659,6 +5750,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -5744,6 +5836,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -5851,6 +5944,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -5935,6 +6029,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -6040,6 +6135,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -6119,6 +6215,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -6221,6 +6318,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -6300,6 +6398,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -6400,6 +6499,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -6479,6 +6579,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -6581,6 +6682,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -6660,6 +6762,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -6760,6 +6863,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -6839,6 +6943,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -6941,6 +7046,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -7020,6 +7126,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -7120,6 +7227,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -7199,6 +7307,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -7301,6 +7410,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -7380,6 +7490,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -7480,6 +7591,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -7559,6 +7671,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -7661,6 +7774,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -7740,6 +7854,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -7840,6 +7955,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -7862,7 +7978,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000001,
-                                name: 'Travel',
+                                name: 'transport',
                                 displayOrder: 1,
                               },
                               createdAt: '2026-09-20T11:30:00.000Z',
@@ -7964,6 +8080,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -8096,6 +8213,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -8118,7 +8236,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000001,
-                                name: 'Travel',
+                                name: 'transport',
                                 displayOrder: 1,
                               },
                               createdAt: '2026-09-20T11:30:00.000Z',
@@ -8132,7 +8250,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000002,
-                                name: 'Meals',
+                                name: 'meals',
                                 displayOrder: 2,
                               },
                               createdAt: '2026-09-19T05:10:00.000Z',
@@ -8146,7 +8264,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000003,
-                                name: 'Supplies',
+                                name: 'supplies',
                                 displayOrder: 3,
                               },
                               createdAt: '2026-09-18T02:45:00.000Z',
@@ -8213,7 +8331,7 @@ describe('ExpensesPageContext', () => {
                 status: 'recorded',
                 expenseCategory: {
                   id: 10000001,
-                  name: 'Travel',
+                  name: 'transport',
                   displayOrder: 1,
                 },
                 createdAt: '2026-09-20T11:30:00.000Z',
@@ -8227,7 +8345,7 @@ describe('ExpensesPageContext', () => {
                 status: 'recorded',
                 expenseCategory: {
                   id: 10000002,
-                  name: 'Meals',
+                  name: 'meals',
                   displayOrder: 2,
                 },
                 createdAt: '2026-09-19T05:10:00.000Z',
@@ -8241,7 +8359,7 @@ describe('ExpensesPageContext', () => {
                 status: 'recorded',
                 expenseCategory: {
                   id: 10000003,
-                  name: 'Supplies',
+                  name: 'supplies',
                   displayOrder: 3,
                 },
                 createdAt: '2026-09-18T02:45:00.000Z',
@@ -8286,6 +8404,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -8308,7 +8427,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000003,
-                                name: 'Supplies',
+                                name: 'supplies',
                                 displayOrder: 3,
                               },
                               createdAt: '2026-09-18T02:45:00.000Z',
@@ -8375,7 +8494,7 @@ describe('ExpensesPageContext', () => {
                 status: 'recorded',
                 expenseCategory: {
                   id: 10000003,
-                  name: 'Supplies',
+                  name: 'supplies',
                   displayOrder: 3,
                 },
                 createdAt: '2026-09-18T02:45:00.000Z',
@@ -8442,6 +8561,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -8533,6 +8653,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -8646,6 +8767,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [
@@ -8657,7 +8779,7 @@ describe('ExpensesPageContext', () => {
                   status: 'recorded',
                   expenseCategory: {
                     id: 10000001,
-                    name: 'Travel',
+                    name: 'transport',
                     displayOrder: 1,
                   },
                   createdAt: '2026-09-20T11:30:00.000Z',
@@ -8671,7 +8793,7 @@ describe('ExpensesPageContext', () => {
                   status: 'recorded',
                   expenseCategory: {
                     id: 10000002,
-                    name: 'Meals',
+                    name: 'meals',
                     displayOrder: 2,
                   },
                   createdAt: '2026-09-19T05:10:00.000Z',
@@ -8747,7 +8869,7 @@ describe('ExpensesPageContext', () => {
               status: 'recorded',
               expenseCategory: {
                 id: 10000001,
-                name: 'Travel',
+                name: 'transport',
                 displayOrder: 1,
               },
               createdAt: '2026-09-20T11:30:00.000Z',
@@ -8761,7 +8883,7 @@ describe('ExpensesPageContext', () => {
               status: 'recorded',
               expenseCategory: {
                 id: 10000002,
-                name: 'Meals',
+                name: 'meals',
                 displayOrder: 2,
               },
               createdAt: '2026-09-19T05:10:00.000Z',
@@ -8799,6 +8921,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [
@@ -8810,7 +8933,7 @@ describe('ExpensesPageContext', () => {
                   status: 'recorded',
                   expenseCategory: {
                     id: 10000003,
-                    name: 'Supplies',
+                    name: 'supplies',
                     displayOrder: 3,
                   },
                   createdAt: '2026-09-18T02:45:00.000Z',
@@ -8886,7 +9009,7 @@ describe('ExpensesPageContext', () => {
               status: 'recorded',
               expenseCategory: {
                 id: 10000003,
-                name: 'Supplies',
+                name: 'supplies',
                 displayOrder: 3,
               },
               createdAt: '2026-09-18T02:45:00.000Z',
@@ -8946,6 +9069,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -8968,7 +9092,7 @@ describe('ExpensesPageContext', () => {
                           expenseCategories: [
                             {
                               id: 10000001,
-                              name: 'Travel',
+                              name: 'transport',
                               displayOrder: 1,
                             },
                           ],
@@ -9045,6 +9169,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -9067,7 +9192,7 @@ describe('ExpensesPageContext', () => {
                           expenseCategories: [
                             {
                               id: 10000002,
-                              name: 'Meals',
+                              name: 'meals',
                               displayOrder: 2,
                             },
                           ],
@@ -9166,6 +9291,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -9188,17 +9314,17 @@ describe('ExpensesPageContext', () => {
                           expenseCategories: [
                             {
                               id: 10000001,
-                              name: 'Travel',
+                              name: 'transport',
                               displayOrder: 1,
                             },
                             {
                               id: 10000002,
-                              name: 'Meals',
+                              name: 'meals',
                               displayOrder: 2,
                             },
                             {
                               id: 10000003,
-                              name: 'Supplies',
+                              name: 'supplies',
                               displayOrder: 3,
                             },
                           ],
@@ -9241,17 +9367,17 @@ describe('ExpensesPageContext', () => {
           expected: [
             {
               id: 10000001,
-              name: 'Travel',
+              name: 'transport',
               displayOrder: 1,
             },
             {
               id: 10000002,
-              name: 'Meals',
+              name: 'meals',
               displayOrder: 2,
             },
             {
               id: 10000003,
-              name: 'Supplies',
+              name: 'supplies',
               displayOrder: 3,
             },
           ],
@@ -9286,6 +9412,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -9308,7 +9435,7 @@ describe('ExpensesPageContext', () => {
                           expenseCategories: [
                             {
                               id: 10000003,
-                              name: 'Supplies',
+                              name: 'supplies',
                               displayOrder: 3,
                             },
                           ],
@@ -9351,7 +9478,7 @@ describe('ExpensesPageContext', () => {
           expected: [
             {
               id: 10000003,
-              name: 'Supplies',
+              name: 'supplies',
               displayOrder: 3,
             },
           ],
@@ -9375,7 +9502,7 @@ describe('ExpensesPageContext', () => {
 
 describe('ExpensesPageContext', () => {
   describe('#readExpenseCategories()', () => {
-    describe('should report a refused read in the message region the form owns', () => {
+    describe('should report a refused read in a message region of its own', () => {
       const cases = [
         {
           factoryParams: {
@@ -9407,6 +9534,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -9495,6 +9623,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -9563,7 +9692,7 @@ describe('ExpensesPageContext', () => {
 
         await context.readExpenseCategories()
 
-        expect(factoryParams.errorMessageHashReactive.submittingExpense)
+        expect(factoryParams.errorMessageHashReactive.readingExpenseCategories)
           .toBe(expected)
       })
     })
@@ -9604,6 +9733,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -9626,7 +9756,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000001,
-                                name: 'Travel',
+                                name: 'transport',
                                 displayOrder: 1,
                               },
                               createdAt: '2026-09-20T11:30:00.000Z',
@@ -9733,6 +9863,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -9755,7 +9886,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000003,
-                                name: 'Supplies',
+                                name: 'supplies',
                                 displayOrder: 3,
                               },
                               createdAt: '2026-09-18T02:45:00.000Z',
@@ -9884,6 +10015,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -9906,7 +10038,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000001,
-                                name: 'Travel',
+                                name: 'transport',
                                 displayOrder: 1,
                               },
                               createdAt: '2026-09-20T11:30:00.000Z',
@@ -10014,6 +10146,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -10036,7 +10169,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000002,
-                                name: 'Meals',
+                                name: 'meals',
                                 displayOrder: 2,
                               },
                               createdAt: '2026-09-19T05:10:00.000Z',
@@ -10175,6 +10308,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -10197,7 +10331,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000002,
-                                name: 'Meals',
+                                name: 'meals',
                                 displayOrder: 2,
                               },
                               createdAt: '2026-09-19T05:10:00.000Z',
@@ -10304,6 +10438,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -10326,7 +10461,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000002,
-                                name: 'Meals',
+                                name: 'meals',
                                 displayOrder: 2,
                               },
                               createdAt: '2026-09-19T05:10:00.000Z',
@@ -10458,6 +10593,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -10480,7 +10616,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000001,
-                                name: 'Travel',
+                                name: 'transport',
                                 displayOrder: 1,
                               },
                               createdAt: '2026-09-20T11:30:00.000Z',
@@ -10494,7 +10630,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000002,
-                                name: 'Meals',
+                                name: 'meals',
                                 displayOrder: 2,
                               },
                               createdAt: '2026-09-19T05:10:00.000Z',
@@ -10564,7 +10700,7 @@ describe('ExpensesPageContext', () => {
               amount: 1200,
               amountText: '¥1,200',
               expenseCategoryId: 10000001,
-              expenseCategoryName: 'Travel',
+              expenseCategoryName: 'transport',
               memo: 'Train fare to the client',
               memoText: 'Train fare to the client',
             },
@@ -10575,7 +10711,7 @@ describe('ExpensesPageContext', () => {
               amount: 2400,
               amountText: '¥2,400',
               expenseCategoryId: 10000002,
-              expenseCategoryName: 'Meals',
+              expenseCategoryName: 'meals',
               memo: null,
               memoText: '',
             },
@@ -10611,6 +10747,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -10633,7 +10770,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000002,
-                                name: 'Meals',
+                                name: 'meals',
                                 displayOrder: 2,
                               },
                               createdAt: '2026-09-19T05:10:00.000Z',
@@ -10647,7 +10784,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000003,
-                                name: 'Supplies',
+                                name: 'supplies',
                                 displayOrder: 3,
                               },
                               createdAt: '2026-09-18T02:45:00.000Z',
@@ -10717,7 +10854,7 @@ describe('ExpensesPageContext', () => {
               amount: 2400,
               amountText: '¥2,400',
               expenseCategoryId: 10000002,
-              expenseCategoryName: 'Meals',
+              expenseCategoryName: 'meals',
               memo: null,
               memoText: '',
             },
@@ -10728,7 +10865,7 @@ describe('ExpensesPageContext', () => {
               amount: 640,
               amountText: '¥640',
               expenseCategoryId: 10000003,
-              expenseCategoryName: 'Supplies',
+              expenseCategoryName: 'supplies',
               memo: 'Printer paper',
               memoText: 'Printer paper',
             },
@@ -10798,6 +10935,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [
@@ -10809,7 +10947,7 @@ describe('ExpensesPageContext', () => {
                   status: 'recorded',
                   expenseCategory: {
                     id: 10000001,
-                    name: 'Travel',
+                    name: 'transport',
                     displayOrder: 1,
                   },
                   createdAt: '2026-09-20T11:30:00.000Z',
@@ -10823,7 +10961,7 @@ describe('ExpensesPageContext', () => {
                   status: 'recorded',
                   expenseCategory: {
                     id: 10000002,
-                    name: 'Meals',
+                    name: 'meals',
                     displayOrder: 2,
                   },
                   createdAt: '2026-09-19T05:10:00.000Z',
@@ -10853,7 +10991,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000001,
-                                name: 'Travel',
+                                name: 'transport',
                                 displayOrder: 1,
                               },
                               createdAt: '2026-09-20T11:30:00.000Z',
@@ -10867,7 +11005,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000002,
-                                name: 'Meals',
+                                name: 'meals',
                                 displayOrder: 2,
                               },
                               createdAt: '2026-09-19T05:10:00.000Z',
@@ -10937,7 +11075,7 @@ describe('ExpensesPageContext', () => {
               amount: 1200,
               amountText: '¥1,200',
               expenseCategoryId: 10000001,
-              expenseCategoryName: 'Travel',
+              expenseCategoryName: 'transport',
               memo: 'Train fare to the client',
               memoText: 'Train fare to the client',
             },
@@ -10948,7 +11086,7 @@ describe('ExpensesPageContext', () => {
               amount: 2400,
               amountText: '¥2,400',
               expenseCategoryId: 10000002,
-              expenseCategoryName: 'Meals',
+              expenseCategoryName: 'meals',
               memo: null,
               memoText: '',
             },
@@ -10984,6 +11122,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [
@@ -10995,7 +11134,7 @@ describe('ExpensesPageContext', () => {
                   status: 'recorded',
                   expenseCategory: {
                     id: 10000002,
-                    name: 'Meals',
+                    name: 'meals',
                     displayOrder: 2,
                   },
                   createdAt: '2026-09-19T05:10:00.000Z',
@@ -11009,7 +11148,7 @@ describe('ExpensesPageContext', () => {
                   status: 'recorded',
                   expenseCategory: {
                     id: 10000003,
-                    name: 'Supplies',
+                    name: 'supplies',
                     displayOrder: 3,
                   },
                   createdAt: '2026-09-18T02:45:00.000Z',
@@ -11039,7 +11178,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000002,
-                                name: 'Meals',
+                                name: 'meals',
                                 displayOrder: 2,
                               },
                               createdAt: '2026-09-19T05:10:00.000Z',
@@ -11053,7 +11192,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000003,
-                                name: 'Supplies',
+                                name: 'supplies',
                                 displayOrder: 3,
                               },
                               createdAt: '2026-09-18T02:45:00.000Z',
@@ -11123,7 +11262,7 @@ describe('ExpensesPageContext', () => {
               amount: 2400,
               amountText: '¥2,400',
               expenseCategoryId: 10000002,
-              expenseCategoryName: 'Meals',
+              expenseCategoryName: 'meals',
               memo: null,
               memoText: '',
             },
@@ -11134,7 +11273,7 @@ describe('ExpensesPageContext', () => {
               amount: 640,
               amountText: '¥640',
               expenseCategoryId: 10000003,
-              expenseCategoryName: 'Supplies',
+              expenseCategoryName: 'supplies',
               memo: 'Printer paper',
               memoText: 'Printer paper',
             },
@@ -11194,6 +11333,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -11282,6 +11422,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -11403,6 +11544,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -11491,6 +11633,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -11611,6 +11754,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [
@@ -11622,7 +11766,7 @@ describe('ExpensesPageContext', () => {
                   status: 'recorded',
                   expenseCategory: {
                     id: 10000001,
-                    name: 'Travel',
+                    name: 'transport',
                     displayOrder: 1,
                   },
                   createdAt: '2026-09-20T11:30:00.000Z',
@@ -11652,7 +11796,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000001,
-                                name: 'Travel',
+                                name: 'transport',
                                 displayOrder: 1,
                               },
                               createdAt: '2026-09-20T11:30:00.000Z',
@@ -11759,6 +11903,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [
@@ -11770,7 +11915,7 @@ describe('ExpensesPageContext', () => {
                   status: 'recorded',
                   expenseCategory: {
                     id: 10000003,
-                    name: 'Supplies',
+                    name: 'supplies',
                     displayOrder: 3,
                   },
                   createdAt: '2026-09-18T02:45:00.000Z',
@@ -11800,7 +11945,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000003,
-                                name: 'Supplies',
+                                name: 'supplies',
                                 displayOrder: 3,
                               },
                               createdAt: '2026-09-18T02:45:00.000Z',
@@ -11941,6 +12086,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [
@@ -11952,7 +12098,7 @@ describe('ExpensesPageContext', () => {
                   status: 'recorded',
                   expenseCategory: {
                     id: 10000001,
-                    name: 'Travel',
+                    name: 'transport',
                     displayOrder: 1,
                   },
                   createdAt: '2026-09-20T11:30:00.000Z',
@@ -11966,7 +12112,7 @@ describe('ExpensesPageContext', () => {
                   status: 'recorded',
                   expenseCategory: {
                     id: 10000002,
-                    name: 'Meals',
+                    name: 'meals',
                     displayOrder: 2,
                   },
                   createdAt: '2026-09-19T05:10:00.000Z',
@@ -11980,7 +12126,7 @@ describe('ExpensesPageContext', () => {
                   status: 'recorded',
                   expenseCategory: {
                     id: 10000003,
-                    name: 'Supplies',
+                    name: 'supplies',
                     displayOrder: 3,
                   },
                   createdAt: '2026-09-18T02:45:00.000Z',
@@ -12010,7 +12156,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000001,
-                                name: 'Travel',
+                                name: 'transport',
                                 displayOrder: 1,
                               },
                               createdAt: '2026-09-20T11:30:00.000Z',
@@ -12024,7 +12170,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000003,
-                                name: 'Supplies',
+                                name: 'supplies',
                                 displayOrder: 3,
                               },
                               createdAt: '2026-09-18T02:45:00.000Z',
@@ -12094,7 +12240,7 @@ describe('ExpensesPageContext', () => {
               amount: 1200,
               amountText: '¥1,200',
               expenseCategoryId: 10000001,
-              expenseCategoryName: 'Travel',
+              expenseCategoryName: 'transport',
               memo: 'Train fare to the client',
               memoText: 'Train fare to the client',
             },
@@ -12105,7 +12251,7 @@ describe('ExpensesPageContext', () => {
               amount: 640,
               amountText: '¥640',
               expenseCategoryId: 10000003,
-              expenseCategoryName: 'Supplies',
+              expenseCategoryName: 'supplies',
               memo: 'Printer paper',
               memoText: 'Printer paper',
             },
@@ -12141,6 +12287,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [
@@ -12152,7 +12299,7 @@ describe('ExpensesPageContext', () => {
                   status: 'recorded',
                   expenseCategory: {
                     id: 10000001,
-                    name: 'Travel',
+                    name: 'transport',
                     displayOrder: 1,
                   },
                   createdAt: '2026-09-20T11:30:00.000Z',
@@ -12166,7 +12313,7 @@ describe('ExpensesPageContext', () => {
                   status: 'recorded',
                   expenseCategory: {
                     id: 10000002,
-                    name: 'Meals',
+                    name: 'meals',
                     displayOrder: 2,
                   },
                   createdAt: '2026-09-19T05:10:00.000Z',
@@ -12196,7 +12343,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000002,
-                                name: 'Meals',
+                                name: 'meals',
                                 displayOrder: 2,
                               },
                               createdAt: '2026-09-19T05:10:00.000Z',
@@ -12266,7 +12413,7 @@ describe('ExpensesPageContext', () => {
               amount: 2400,
               amountText: '¥2,400',
               expenseCategoryId: 10000002,
-              expenseCategoryName: 'Meals',
+              expenseCategoryName: 'meals',
               memo: null,
               memoText: '',
             },
@@ -12323,6 +12470,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -12434,6 +12582,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -12567,6 +12716,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -12655,6 +12805,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -12732,7 +12883,7 @@ describe('ExpensesPageContext', () => {
 
 describe('ExpensesPageContext', () => {
   describe('#onConfirmRemoval()', () => {
-    describe('should read the entries again after a removal', () => {
+    describe('should read the entries again on a page the new total still has', () => {
       const cases = [
         {
           factoryParams: {
@@ -12764,6 +12915,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [
@@ -12775,7 +12927,7 @@ describe('ExpensesPageContext', () => {
                   status: 'recorded',
                   expenseCategory: {
                     id: 10000002,
-                    name: 'Meals',
+                    name: 'meals',
                     displayOrder: 2,
                   },
                   createdAt: '2026-09-19T05:10:00.000Z',
@@ -12857,7 +13009,7 @@ describe('ExpensesPageContext', () => {
               input: {
                 pagination: {
                   limit: 20,
-                  offset: 20,
+                  offset: 0,
                 },
               },
             },
@@ -12897,6 +13049,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [
@@ -12908,7 +13061,7 @@ describe('ExpensesPageContext', () => {
                   status: 'recorded',
                   expenseCategory: {
                     id: 10000003,
-                    name: 'Supplies',
+                    name: 'supplies',
                     displayOrder: 3,
                   },
                   createdAt: '2026-09-18T02:45:00.000Z',
@@ -12990,7 +13143,7 @@ describe('ExpensesPageContext', () => {
               input: {
                 pagination: {
                   limit: 20,
-                  offset: 60,
+                  offset: 40,
                 },
               },
             },
@@ -13052,6 +13205,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -13145,6 +13299,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -13260,6 +13415,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -13350,6 +13506,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -13472,6 +13629,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -13562,6 +13720,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -13677,6 +13836,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -13699,7 +13859,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000001,
-                                name: 'Travel',
+                                name: 'transport',
                                 displayOrder: 1,
                               },
                               createdAt: '2026-09-20T11:30:00.000Z',
@@ -13727,7 +13887,7 @@ describe('ExpensesPageContext', () => {
                           expenseCategories: [
                             {
                               id: 10000001,
-                              name: 'Travel',
+                              name: 'transport',
                               displayOrder: 1,
                             },
                           ],
@@ -13812,6 +13972,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -13834,7 +13995,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000003,
-                                name: 'Supplies',
+                                name: 'supplies',
                                 displayOrder: 3,
                               },
                               createdAt: '2026-09-18T02:45:00.000Z',
@@ -13862,7 +14023,7 @@ describe('ExpensesPageContext', () => {
                           expenseCategories: [
                             {
                               id: 10000003,
-                              name: 'Supplies',
+                              name: 'supplies',
                               displayOrder: 3,
                             },
                           ],
@@ -13969,6 +14130,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -13991,7 +14153,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000001,
-                                name: 'Travel',
+                                name: 'transport',
                                 displayOrder: 1,
                               },
                               createdAt: '2026-09-20T11:30:00.000Z',
@@ -14019,12 +14181,12 @@ describe('ExpensesPageContext', () => {
                           expenseCategories: [
                             {
                               id: 10000001,
-                              name: 'Travel',
+                              name: 'transport',
                               displayOrder: 1,
                             },
                             {
                               id: 10000002,
-                              name: 'Meals',
+                              name: 'meals',
                               displayOrder: 2,
                             },
                           ],
@@ -14101,6 +14263,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -14123,7 +14286,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000002,
-                                name: 'Meals',
+                                name: 'meals',
                                 displayOrder: 2,
                               },
                               createdAt: '2026-09-19T05:10:00.000Z',
@@ -14151,7 +14314,7 @@ describe('ExpensesPageContext', () => {
                           expenseCategories: [
                             {
                               id: 10000003,
-                              name: 'Supplies',
+                              name: 'supplies',
                               displayOrder: 3,
                             },
                           ],
@@ -14250,6 +14413,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -14272,7 +14436,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000001,
-                                name: 'Travel',
+                                name: 'transport',
                                 displayOrder: 1,
                               },
                               createdAt: '2026-09-20T11:30:00.000Z',
@@ -14300,7 +14464,7 @@ describe('ExpensesPageContext', () => {
                           expenseCategories: [
                             {
                               id: 10000001,
-                              name: 'Travel',
+                              name: 'transport',
                               displayOrder: 1,
                             },
                           ],
@@ -14371,6 +14535,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -14393,7 +14558,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000002,
-                                name: 'Meals',
+                                name: 'meals',
                                 displayOrder: 2,
                               },
                               createdAt: '2026-09-19T05:10:00.000Z',
@@ -14421,7 +14586,7 @@ describe('ExpensesPageContext', () => {
                           expenseCategories: [
                             {
                               id: 10000002,
-                              name: 'Meals',
+                              name: 'meals',
                               displayOrder: 2,
                             },
                           ],
@@ -14513,6 +14678,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -14535,7 +14701,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000001,
-                                name: 'Travel',
+                                name: 'transport',
                                 displayOrder: 1,
                               },
                               createdAt: '2026-09-20T11:30:00.000Z',
@@ -14563,7 +14729,7 @@ describe('ExpensesPageContext', () => {
                           expenseCategories: [
                             {
                               id: 10000001,
-                              name: 'Travel',
+                              name: 'transport',
                               displayOrder: 1,
                             },
                           ],
@@ -14634,6 +14800,7 @@ describe('ExpensesPageContext', () => {
               submittingExpense: null,
               removingExpense: null,
               readingExpenses: null,
+              readingExpenseCategories: null,
             },
             responseHashReactive: {
               expenses: [],
@@ -14656,7 +14823,7 @@ describe('ExpensesPageContext', () => {
                               status: 'recorded',
                               expenseCategory: {
                                 id: 10000003,
-                                name: 'Supplies',
+                                name: 'supplies',
                                 displayOrder: 3,
                               },
                               createdAt: '2026-09-18T02:45:00.000Z',
@@ -14684,7 +14851,7 @@ describe('ExpensesPageContext', () => {
                           expenseCategories: [
                             {
                               id: 10000003,
-                              name: 'Supplies',
+                              name: 'supplies',
                               displayOrder: 3,
                             },
                           ],
@@ -14736,6 +14903,2269 @@ describe('ExpensesPageContext', () => {
 
         expect(actual)
           .toBe(context) // same reference
+      })
+    })
+  })
+})
+describe('ExpensesPageContext', () => {
+  describe('#onConfirmRemoval()', () => {
+    describe('should show the entries that remain when the page it was on is gone', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            router: {
+              replace: async () => '/sign-in',
+            },
+            formValueHashReactive: {
+              spentOn: null,
+              amount: null,
+              expenseCategoryId: null,
+              memo: null,
+            },
+            statusReactive: {
+              isLoadingExpenses: false,
+              isLoadingExpenseCategories: false,
+              isRecordingExpense: false,
+              isRemovingExpense: false,
+              isSigningOut: false,
+              correctingExpenseId: null,
+              removingExpenseId: 10200121,
+            },
+            errorMessageHashReactive: {
+              submittingExpense: null,
+              removingExpense: null,
+              readingExpenses: null,
+              readingExpenseCategories: null,
+            },
+            responseHashReactive: {
+              expenses: [
+                {
+                  id: 10200121,
+                  spentOn: '2026-08-31',
+                  amount: 980,
+                  memo: 'Storage box for the archive',
+                  status: 'recorded',
+                  expenseCategory: {
+                    id: 10000003,
+                    name: 'supplies',
+                    displayOrder: 3,
+                  },
+                  createdAt: '2026-08-31T04:15:00.000Z',
+                  updatedAt: '2026-08-31T04:15:00.000Z',
+                },
+              ],
+              expensesPagination: {
+                limit: 20,
+                offset: 20,
+                totalRecords: 21,
+              },
+              expenseCategories: [],
+            },
+            graphqlClientHash: {
+              expenses: {
+                capsuleRef: {
+                  value: 'removal-recovery-first-expenses-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              expenseCategories: {
+                capsuleRef: {
+                  value: 'removal-recovery-first-expenseCategories-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              recordExpense: {
+                capsuleRef: {
+                  value: 'removal-recovery-first-recordExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              correctExpense: {
+                capsuleRef: {
+                  value: 'removal-recovery-first-correctExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              removeExpense: {
+                capsuleRef: {
+                  value: RemoveExpenseMutationGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        removeExpense: {
+                          expenseId: 10200121,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              signOut: {
+                capsuleRef: {
+                  value: 'removal-recovery-first-signOut-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+            accessTokenClerk: {
+              saveToken: () => true,
+            },
+          },
+          mockFirstAnswer: ExpensesQueryGraphqlCapsule.create({
+            result: {
+              [RESPONSE_CONTENT_FIELD]: {
+                expenses: {
+                  expenses: [],
+                  pagination: {
+                    limit: 20,
+                    offset: 20,
+                    totalRecords: 20,
+                  },
+                },
+              },
+            },
+          }),
+          mockSecondAnswer: ExpensesQueryGraphqlCapsule.create({
+            result: {
+              [RESPONSE_CONTENT_FIELD]: {
+                expenses: {
+                  expenses: [
+                    {
+                      id: 10200101,
+                      spentOn: '2026-09-20',
+                      amount: 1100,
+                      memo: 'Train fare to the client',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000001,
+                        name: 'transport',
+                        displayOrder: 1,
+                      },
+                      createdAt: '2026-09-20T01:10:00.000Z',
+                      updatedAt: '2026-09-20T01:10:00.000Z',
+                    },
+                    {
+                      id: 10200102,
+                      spentOn: '2026-09-19',
+                      amount: 1137,
+                      memo: 'Lunch with the client',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000002,
+                        name: 'meals',
+                        displayOrder: 2,
+                      },
+                      createdAt: '2026-09-19T01:11:00.000Z',
+                      updatedAt: '2026-09-19T01:11:00.000Z',
+                    },
+                    {
+                      id: 10200103,
+                      spentOn: '2026-09-18',
+                      amount: 1174,
+                      memo: 'Printer paper',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000003,
+                        name: 'supplies',
+                        displayOrder: 3,
+                      },
+                      createdAt: '2026-09-18T01:12:00.000Z',
+                      updatedAt: '2026-09-18T01:12:00.000Z',
+                    },
+                    {
+                      id: 10200104,
+                      spentOn: '2026-09-17',
+                      amount: 1211,
+                      memo: 'Parking on site',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000004,
+                        name: 'other',
+                        displayOrder: 4,
+                      },
+                      createdAt: '2026-09-17T01:13:00.000Z',
+                      updatedAt: '2026-09-17T01:13:00.000Z',
+                    },
+                    {
+                      id: 10200105,
+                      spentOn: '2026-09-16',
+                      amount: 1248,
+                      memo: 'Taxi back from the client',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000001,
+                        name: 'transport',
+                        displayOrder: 1,
+                      },
+                      createdAt: '2026-09-16T01:14:00.000Z',
+                      updatedAt: '2026-09-16T01:14:00.000Z',
+                    },
+                    {
+                      id: 10200106,
+                      spentOn: '2026-09-15',
+                      amount: 1285,
+                      memo: 'Coffee for the meeting',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000002,
+                        name: 'meals',
+                        displayOrder: 2,
+                      },
+                      createdAt: '2026-09-15T01:15:00.000Z',
+                      updatedAt: '2026-09-15T01:15:00.000Z',
+                    },
+                    {
+                      id: 10200107,
+                      spentOn: '2026-09-14',
+                      amount: 1322,
+                      memo: 'Notebooks for the team',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000003,
+                        name: 'supplies',
+                        displayOrder: 3,
+                      },
+                      createdAt: '2026-09-14T01:16:00.000Z',
+                      updatedAt: '2026-09-14T01:16:00.000Z',
+                    },
+                    {
+                      id: 10200108,
+                      spentOn: '2026-09-13',
+                      amount: 1359,
+                      memo: 'Postage for the contract',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000004,
+                        name: 'other',
+                        displayOrder: 4,
+                      },
+                      createdAt: '2026-09-13T01:17:00.000Z',
+                      updatedAt: '2026-09-13T01:17:00.000Z',
+                    },
+                    {
+                      id: 10200109,
+                      spentOn: '2026-09-12',
+                      amount: 1396,
+                      memo: 'Bus fare to the depot',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000001,
+                        name: 'transport',
+                        displayOrder: 1,
+                      },
+                      createdAt: '2026-09-12T01:18:00.000Z',
+                      updatedAt: '2026-09-12T01:18:00.000Z',
+                    },
+                    {
+                      id: 10200110,
+                      spentOn: '2026-09-11',
+                      amount: 1433,
+                      memo: 'Dinner after the late shift',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000002,
+                        name: 'meals',
+                        displayOrder: 2,
+                      },
+                      createdAt: '2026-09-11T01:19:00.000Z',
+                      updatedAt: '2026-09-11T01:19:00.000Z',
+                    },
+                    {
+                      id: 10200111,
+                      spentOn: '2026-09-10',
+                      amount: 1470,
+                      memo: 'Ink cartridges',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000003,
+                        name: 'supplies',
+                        displayOrder: 3,
+                      },
+                      createdAt: '2026-09-10T01:20:00.000Z',
+                      updatedAt: '2026-09-10T01:20:00.000Z',
+                    },
+                    {
+                      id: 10200112,
+                      spentOn: '2026-09-09',
+                      amount: 1507,
+                      memo: 'Locker hire at the station',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000004,
+                        name: 'other',
+                        displayOrder: 4,
+                      },
+                      createdAt: '2026-09-09T01:21:00.000Z',
+                      updatedAt: '2026-09-09T01:21:00.000Z',
+                    },
+                    {
+                      id: 10200113,
+                      spentOn: '2026-09-08',
+                      amount: 1544,
+                      memo: 'Ferry ticket to the island',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000001,
+                        name: 'transport',
+                        displayOrder: 1,
+                      },
+                      createdAt: '2026-09-08T01:22:00.000Z',
+                      updatedAt: '2026-09-08T01:22:00.000Z',
+                    },
+                    {
+                      id: 10200114,
+                      spentOn: '2026-09-07',
+                      amount: 1581,
+                      memo: 'Breakfast before the early train',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000002,
+                        name: 'meals',
+                        displayOrder: 2,
+                      },
+                      createdAt: '2026-09-07T01:23:00.000Z',
+                      updatedAt: '2026-09-07T01:23:00.000Z',
+                    },
+                    {
+                      id: 10200115,
+                      spentOn: '2026-09-06',
+                      amount: 1618,
+                      memo: 'Envelopes and labels',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000003,
+                        name: 'supplies',
+                        displayOrder: 3,
+                      },
+                      createdAt: '2026-09-06T01:24:00.000Z',
+                      updatedAt: '2026-09-06T01:24:00.000Z',
+                    },
+                    {
+                      id: 10200116,
+                      spentOn: '2026-09-05',
+                      amount: 1655,
+                      memo: 'Bicycle hire for the day',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000004,
+                        name: 'other',
+                        displayOrder: 4,
+                      },
+                      createdAt: '2026-09-05T01:25:00.000Z',
+                      updatedAt: '2026-09-05T01:25:00.000Z',
+                    },
+                    {
+                      id: 10200117,
+                      spentOn: '2026-09-04',
+                      amount: 1692,
+                      memo: 'Sandwiches for the workshop',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000001,
+                        name: 'transport',
+                        displayOrder: 1,
+                      },
+                      createdAt: '2026-09-04T01:26:00.000Z',
+                      updatedAt: '2026-09-04T01:26:00.000Z',
+                    },
+                    {
+                      id: 10200118,
+                      spentOn: '2026-09-03',
+                      amount: 1729,
+                      memo: 'Whiteboard markers',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000002,
+                        name: 'meals',
+                        displayOrder: 2,
+                      },
+                      createdAt: '2026-09-03T01:27:00.000Z',
+                      updatedAt: '2026-09-03T01:27:00.000Z',
+                    },
+                    {
+                      id: 10200119,
+                      spentOn: '2026-09-02',
+                      amount: 1766,
+                      memo: 'Toll on the coast road',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000003,
+                        name: 'supplies',
+                        displayOrder: 3,
+                      },
+                      createdAt: '2026-09-02T01:28:00.000Z',
+                      updatedAt: '2026-09-02T01:28:00.000Z',
+                    },
+                    {
+                      id: 10200120,
+                      spentOn: '2026-09-01',
+                      amount: 1803,
+                      memo: 'Batteries for the recorder',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000004,
+                        name: 'other',
+                        displayOrder: 4,
+                      },
+                      createdAt: '2026-09-01T01:29:00.000Z',
+                      updatedAt: '2026-09-01T01:29:00.000Z',
+                    },
+                  ],
+                  pagination: {
+                    limit: 20,
+                    offset: 0,
+                    totalRecords: 20,
+                  },
+                },
+              },
+            },
+          }),
+          expected: [
+            {
+              id: 10200101,
+              spentOn: '2026-09-20',
+              spentOnText: '2026-09-20',
+              amount: 1100,
+              amountText: '¥1,100',
+              expenseCategoryId: 10000001,
+              expenseCategoryName: 'transport',
+              memo: 'Train fare to the client',
+              memoText: 'Train fare to the client',
+            },
+            {
+              id: 10200102,
+              spentOn: '2026-09-19',
+              spentOnText: '2026-09-19',
+              amount: 1137,
+              amountText: '¥1,137',
+              expenseCategoryId: 10000002,
+              expenseCategoryName: 'meals',
+              memo: 'Lunch with the client',
+              memoText: 'Lunch with the client',
+            },
+            {
+              id: 10200103,
+              spentOn: '2026-09-18',
+              spentOnText: '2026-09-18',
+              amount: 1174,
+              amountText: '¥1,174',
+              expenseCategoryId: 10000003,
+              expenseCategoryName: 'supplies',
+              memo: 'Printer paper',
+              memoText: 'Printer paper',
+            },
+            {
+              id: 10200104,
+              spentOn: '2026-09-17',
+              spentOnText: '2026-09-17',
+              amount: 1211,
+              amountText: '¥1,211',
+              expenseCategoryId: 10000004,
+              expenseCategoryName: 'other',
+              memo: 'Parking on site',
+              memoText: 'Parking on site',
+            },
+            {
+              id: 10200105,
+              spentOn: '2026-09-16',
+              spentOnText: '2026-09-16',
+              amount: 1248,
+              amountText: '¥1,248',
+              expenseCategoryId: 10000001,
+              expenseCategoryName: 'transport',
+              memo: 'Taxi back from the client',
+              memoText: 'Taxi back from the client',
+            },
+            {
+              id: 10200106,
+              spentOn: '2026-09-15',
+              spentOnText: '2026-09-15',
+              amount: 1285,
+              amountText: '¥1,285',
+              expenseCategoryId: 10000002,
+              expenseCategoryName: 'meals',
+              memo: 'Coffee for the meeting',
+              memoText: 'Coffee for the meeting',
+            },
+            {
+              id: 10200107,
+              spentOn: '2026-09-14',
+              spentOnText: '2026-09-14',
+              amount: 1322,
+              amountText: '¥1,322',
+              expenseCategoryId: 10000003,
+              expenseCategoryName: 'supplies',
+              memo: 'Notebooks for the team',
+              memoText: 'Notebooks for the team',
+            },
+            {
+              id: 10200108,
+              spentOn: '2026-09-13',
+              spentOnText: '2026-09-13',
+              amount: 1359,
+              amountText: '¥1,359',
+              expenseCategoryId: 10000004,
+              expenseCategoryName: 'other',
+              memo: 'Postage for the contract',
+              memoText: 'Postage for the contract',
+            },
+            {
+              id: 10200109,
+              spentOn: '2026-09-12',
+              spentOnText: '2026-09-12',
+              amount: 1396,
+              amountText: '¥1,396',
+              expenseCategoryId: 10000001,
+              expenseCategoryName: 'transport',
+              memo: 'Bus fare to the depot',
+              memoText: 'Bus fare to the depot',
+            },
+            {
+              id: 10200110,
+              spentOn: '2026-09-11',
+              spentOnText: '2026-09-11',
+              amount: 1433,
+              amountText: '¥1,433',
+              expenseCategoryId: 10000002,
+              expenseCategoryName: 'meals',
+              memo: 'Dinner after the late shift',
+              memoText: 'Dinner after the late shift',
+            },
+            {
+              id: 10200111,
+              spentOn: '2026-09-10',
+              spentOnText: '2026-09-10',
+              amount: 1470,
+              amountText: '¥1,470',
+              expenseCategoryId: 10000003,
+              expenseCategoryName: 'supplies',
+              memo: 'Ink cartridges',
+              memoText: 'Ink cartridges',
+            },
+            {
+              id: 10200112,
+              spentOn: '2026-09-09',
+              spentOnText: '2026-09-09',
+              amount: 1507,
+              amountText: '¥1,507',
+              expenseCategoryId: 10000004,
+              expenseCategoryName: 'other',
+              memo: 'Locker hire at the station',
+              memoText: 'Locker hire at the station',
+            },
+            {
+              id: 10200113,
+              spentOn: '2026-09-08',
+              spentOnText: '2026-09-08',
+              amount: 1544,
+              amountText: '¥1,544',
+              expenseCategoryId: 10000001,
+              expenseCategoryName: 'transport',
+              memo: 'Ferry ticket to the island',
+              memoText: 'Ferry ticket to the island',
+            },
+            {
+              id: 10200114,
+              spentOn: '2026-09-07',
+              spentOnText: '2026-09-07',
+              amount: 1581,
+              amountText: '¥1,581',
+              expenseCategoryId: 10000002,
+              expenseCategoryName: 'meals',
+              memo: 'Breakfast before the early train',
+              memoText: 'Breakfast before the early train',
+            },
+            {
+              id: 10200115,
+              spentOn: '2026-09-06',
+              spentOnText: '2026-09-06',
+              amount: 1618,
+              amountText: '¥1,618',
+              expenseCategoryId: 10000003,
+              expenseCategoryName: 'supplies',
+              memo: 'Envelopes and labels',
+              memoText: 'Envelopes and labels',
+            },
+            {
+              id: 10200116,
+              spentOn: '2026-09-05',
+              spentOnText: '2026-09-05',
+              amount: 1655,
+              amountText: '¥1,655',
+              expenseCategoryId: 10000004,
+              expenseCategoryName: 'other',
+              memo: 'Bicycle hire for the day',
+              memoText: 'Bicycle hire for the day',
+            },
+            {
+              id: 10200117,
+              spentOn: '2026-09-04',
+              spentOnText: '2026-09-04',
+              amount: 1692,
+              amountText: '¥1,692',
+              expenseCategoryId: 10000001,
+              expenseCategoryName: 'transport',
+              memo: 'Sandwiches for the workshop',
+              memoText: 'Sandwiches for the workshop',
+            },
+            {
+              id: 10200118,
+              spentOn: '2026-09-03',
+              spentOnText: '2026-09-03',
+              amount: 1729,
+              amountText: '¥1,729',
+              expenseCategoryId: 10000002,
+              expenseCategoryName: 'meals',
+              memo: 'Whiteboard markers',
+              memoText: 'Whiteboard markers',
+            },
+            {
+              id: 10200119,
+              spentOn: '2026-09-02',
+              spentOnText: '2026-09-02',
+              amount: 1766,
+              amountText: '¥1,766',
+              expenseCategoryId: 10000003,
+              expenseCategoryName: 'supplies',
+              memo: 'Toll on the coast road',
+              memoText: 'Toll on the coast road',
+            },
+            {
+              id: 10200120,
+              spentOn: '2026-09-01',
+              spentOnText: '2026-09-01',
+              amount: 1803,
+              amountText: '¥1,803',
+              expenseCategoryId: 10000004,
+              expenseCategoryName: 'other',
+              memo: 'Batteries for the recorder',
+              memoText: 'Batteries for the recorder',
+            },
+          ],
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page expenses',
+              },
+            },
+            router: {
+              replace: async () => '/sign-in',
+            },
+            formValueHashReactive: {
+              spentOn: null,
+              amount: null,
+              expenseCategoryId: null,
+              memo: null,
+            },
+            statusReactive: {
+              isLoadingExpenses: false,
+              isLoadingExpenseCategories: false,
+              isRecordingExpense: false,
+              isRemovingExpense: false,
+              isSigningOut: false,
+              correctingExpenseId: null,
+              removingExpenseId: 10200131,
+            },
+            errorMessageHashReactive: {
+              submittingExpense: null,
+              removingExpense: null,
+              readingExpenses: null,
+              readingExpenseCategories: null,
+            },
+            responseHashReactive: {
+              expenses: [
+                {
+                  id: 10200131,
+                  spentOn: '2026-07-14',
+                  amount: 3300,
+                  memo: 'Hotel on the site visit',
+                  status: 'recorded',
+                  expenseCategory: {
+                    id: 10000004,
+                    name: 'other',
+                    displayOrder: 4,
+                  },
+                  createdAt: '2026-07-14T09:20:00.000Z',
+                  updatedAt: '2026-07-14T09:20:00.000Z',
+                },
+                {
+                  id: 10200132,
+                  spentOn: '2026-07-13',
+                  amount: 450,
+                  memo: 'Metro ticket to the office',
+                  status: 'recorded',
+                  expenseCategory: {
+                    id: 10000001,
+                    name: 'transport',
+                    displayOrder: 1,
+                  },
+                  createdAt: '2026-07-13T08:05:00.000Z',
+                  updatedAt: '2026-07-13T08:05:00.000Z',
+                },
+              ],
+              expensesPagination: {
+                limit: 20,
+                offset: 0,
+                totalRecords: 2,
+              },
+              expenseCategories: [],
+            },
+            graphqlClientHash: {
+              expenses: {
+                capsuleRef: {
+                  value: 'removal-recovery-second-expenses-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              expenseCategories: {
+                capsuleRef: {
+                  value: 'removal-recovery-second-expenseCategories-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              recordExpense: {
+                capsuleRef: {
+                  value: 'removal-recovery-second-recordExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              correctExpense: {
+                capsuleRef: {
+                  value: 'removal-recovery-second-correctExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              removeExpense: {
+                capsuleRef: {
+                  value: RemoveExpenseMutationGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        removeExpense: {
+                          expenseId: 10200131,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              signOut: {
+                capsuleRef: {
+                  value: 'removal-recovery-second-signOut-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+            accessTokenClerk: {
+              saveToken: () => true,
+            },
+          },
+          mockFirstAnswer: ExpensesQueryGraphqlCapsule.create({
+            result: {
+              [RESPONSE_CONTENT_FIELD]: {
+                expenses: {
+                  expenses: [
+                    {
+                      id: 10200132,
+                      spentOn: '2026-07-13',
+                      amount: 450,
+                      memo: 'Metro ticket to the office',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000001,
+                        name: 'transport',
+                        displayOrder: 1,
+                      },
+                      createdAt: '2026-07-13T08:05:00.000Z',
+                      updatedAt: '2026-07-13T08:05:00.000Z',
+                    },
+                  ],
+                  pagination: {
+                    limit: 20,
+                    offset: 0,
+                    totalRecords: 1,
+                  },
+                },
+              },
+            },
+          }),
+          mockSecondAnswer: ExpensesQueryGraphqlCapsule.create({
+            result: {
+              [RESPONSE_CONTENT_FIELD]: {
+                expenses: {
+                  expenses: [
+                    {
+                      id: 10200133,
+                      spentOn: '2026-07-12',
+                      amount: 275,
+                      memo: 'A page nobody asked for',
+                      status: 'recorded',
+                      expenseCategory: {
+                        id: 10000002,
+                        name: 'meals',
+                        displayOrder: 2,
+                      },
+                      createdAt: '2026-07-12T07:40:00.000Z',
+                      updatedAt: '2026-07-12T07:40:00.000Z',
+                    },
+                  ],
+                  pagination: {
+                    limit: 20,
+                    offset: 0,
+                    totalRecords: 1,
+                  },
+                },
+              },
+            },
+          }),
+          expected: [
+            {
+              id: 10200132,
+              spentOn: '2026-07-13',
+              spentOnText: '2026-07-13',
+              amount: 450,
+              amountText: '¥450',
+              expenseCategoryId: 10000001,
+              expenseCategoryName: 'transport',
+              memo: 'Metro ticket to the office',
+              memoText: 'Metro ticket to the office',
+            },
+          ],
+        },
+      ]
+
+      test.each(cases)('offset: $factoryParams.responseHashReactive.expensesPagination.offset', async ({
+        factoryParams,
+        mockFirstAnswer,
+        mockSecondAnswer,
+        expected,
+      }) => {
+        const context = ExpensesPageContext.create(factoryParams)
+        const expensesGraphqlClient = factoryParams.graphqlClientHash.expenses
+
+        jest.spyOn(expensesGraphqlClient, 'invokeRequestOnEvent')
+          .mockImplementationOnce(async () => {
+            expensesGraphqlClient.capsuleRef.value = mockFirstAnswer
+          })
+          .mockImplementationOnce(async () => {
+            expensesGraphqlClient.capsuleRef.value = mockSecondAnswer
+          })
+
+        await context.onConfirmRemoval()
+
+        expect(context.expenseRows)
+          .toEqual(expected)
+      })
+    })
+  })
+})
+
+describe('ExpensesPageContext', () => {
+  describe('#onSubmitForm()', () => {
+    describe('should leave the failed category read on screen', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            router: {
+              replace: async () => '/sign-in',
+            },
+            formValueHashReactive: {
+              spentOn: '2026-01-15',
+              amount: 1500,
+              expenseCategoryId: null,
+              memo: 'Train fare to the client',
+            },
+            statusReactive: {
+              isLoadingExpenses: false,
+              isLoadingExpenseCategories: false,
+              isRecordingExpense: false,
+              isRemovingExpense: false,
+              isSigningOut: false,
+              correctingExpenseId: null,
+              removingExpenseId: null,
+            },
+            errorMessageHashReactive: {
+              submittingExpense: null,
+              removingExpense: null,
+              readingExpenses: null,
+              readingExpenseCategories: 'Something went wrong. Try again.',
+            },
+            responseHashReactive: {
+              expenses: [],
+              expensesPagination: null,
+              expenseCategories: [],
+            },
+            graphqlClientHash: {
+              expenses: {
+                capsuleRef: {
+                  value: 'categories-survive-first-expenses-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              expenseCategories: {
+                capsuleRef: {
+                  value: 'categories-survive-first-expenseCategories-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              recordExpense: {
+                capsuleRef: {
+                  value: RecordExpenseMutationGraphqlCapsule.create({
+                    result: {
+                      errors: [
+                        {
+                          message: '203.M004.003',
+                        },
+                      ],
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              correctExpense: {
+                capsuleRef: {
+                  value: 'categories-survive-first-correctExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              removeExpense: {
+                capsuleRef: {
+                  value: 'categories-survive-first-removeExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              signOut: {
+                capsuleRef: {
+                  value: 'categories-survive-first-signOut-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+            accessTokenClerk: {
+              saveToken: () => true,
+            },
+          },
+          expected: 'Something went wrong. Try again.',
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page expenses',
+              },
+            },
+            router: {
+              replace: async () => '/sign-in',
+            },
+            formValueHashReactive: {
+              spentOn: '2026-02-20',
+              amount: 780,
+              expenseCategoryId: null,
+              memo: null,
+            },
+            statusReactive: {
+              isLoadingExpenses: false,
+              isLoadingExpenseCategories: false,
+              isRecordingExpense: false,
+              isRemovingExpense: false,
+              isSigningOut: false,
+              correctingExpenseId: null,
+              removingExpenseId: null,
+            },
+            errorMessageHashReactive: {
+              submittingExpense: null,
+              removingExpense: null,
+              readingExpenses: null,
+              readingExpenseCategories: 'Your session is no longer valid. Sign in again.',
+            },
+            responseHashReactive: {
+              expenses: [],
+              expensesPagination: null,
+              expenseCategories: [],
+            },
+            graphqlClientHash: {
+              expenses: {
+                capsuleRef: {
+                  value: 'categories-survive-second-expenses-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              expenseCategories: {
+                capsuleRef: {
+                  value: 'categories-survive-second-expenseCategories-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              recordExpense: {
+                capsuleRef: {
+                  value: RecordExpenseMutationGraphqlCapsule.create({
+                    result: {
+                      errors: [
+                        {
+                          message: '203.M004.003',
+                        },
+                      ],
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              correctExpense: {
+                capsuleRef: {
+                  value: 'categories-survive-second-correctExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              removeExpense: {
+                capsuleRef: {
+                  value: 'categories-survive-second-removeExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              signOut: {
+                capsuleRef: {
+                  value: 'categories-survive-second-signOut-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+            accessTokenClerk: {
+              saveToken: () => true,
+            },
+          },
+          expected: 'Your session is no longer valid. Sign in again.',
+        },
+      ]
+
+      test.each(cases)('readingExpenseCategories: $factoryParams.errorMessageHashReactive.readingExpenseCategories', async ({
+        factoryParams,
+        expected,
+      }) => {
+        const context = ExpensesPageContext.create(factoryParams)
+
+        await context.onSubmitForm()
+
+        expect(context.expenseCategoriesRefusalMessage)
+          .toBe(expected)
+      })
+    })
+  })
+})
+
+describe('ExpensesPageContext', () => {
+  describe('#onClickRetryExpenseCategories()', () => {
+    describe('should ask the API for the categories again', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            router: {
+              replace: async () => '/sign-in',
+            },
+            formValueHashReactive: {
+              spentOn: null,
+              amount: null,
+              expenseCategoryId: null,
+              memo: null,
+            },
+            statusReactive: {
+              isLoadingExpenses: false,
+              isLoadingExpenseCategories: false,
+              isRecordingExpense: false,
+              isRemovingExpense: false,
+              isSigningOut: false,
+              correctingExpenseId: null,
+              removingExpenseId: null,
+            },
+            errorMessageHashReactive: {
+              submittingExpense: null,
+              removingExpense: null,
+              readingExpenses: null,
+              readingExpenseCategories: 'Something went wrong. Try again.',
+            },
+            responseHashReactive: {
+              expenses: [],
+              expensesPagination: null,
+              expenseCategories: [],
+            },
+            graphqlClientHash: {
+              expenses: {
+                capsuleRef: {
+                  value: 'categories-retry-first-expenses-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              expenseCategories: {
+                capsuleRef: {
+                  value: ExpenseCategoriesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        expenseCategories: {
+                          expenseCategories: [
+                            {
+                              id: 10000001,
+                              name: 'transport',
+                              displayOrder: 1,
+                            },
+                          ],
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              recordExpense: {
+                capsuleRef: {
+                  value: 'categories-retry-first-recordExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              correctExpense: {
+                capsuleRef: {
+                  value: 'categories-retry-first-correctExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              removeExpense: {
+                capsuleRef: {
+                  value: 'categories-retry-first-removeExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              signOut: {
+                capsuleRef: {
+                  value: 'categories-retry-first-signOut-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+            accessTokenClerk: {
+              saveToken: () => true,
+            },
+          },
+          expected: {
+            hooks: expect.objectContaining({
+              beforeRequest: expect.any(Function),
+              afterRequest: expect.any(Function),
+            }),
+          },
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page expenses',
+              },
+            },
+            router: {
+              replace: async () => '/sign-in',
+            },
+            formValueHashReactive: {
+              spentOn: null,
+              amount: null,
+              expenseCategoryId: null,
+              memo: null,
+            },
+            statusReactive: {
+              isLoadingExpenses: false,
+              isLoadingExpenseCategories: false,
+              isRecordingExpense: false,
+              isRemovingExpense: false,
+              isSigningOut: false,
+              correctingExpenseId: null,
+              removingExpenseId: null,
+            },
+            errorMessageHashReactive: {
+              submittingExpense: null,
+              removingExpense: null,
+              readingExpenses: null,
+              readingExpenseCategories: 'Your session is no longer valid. Sign in again.',
+            },
+            responseHashReactive: {
+              expenses: [],
+              expensesPagination: null,
+              expenseCategories: [],
+            },
+            graphqlClientHash: {
+              expenses: {
+                capsuleRef: {
+                  value: 'categories-retry-second-expenses-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              expenseCategories: {
+                capsuleRef: {
+                  value: ExpenseCategoriesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        expenseCategories: {
+                          expenseCategories: [
+                            {
+                              id: 10000004,
+                              name: 'other',
+                              displayOrder: 4,
+                            },
+                          ],
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              recordExpense: {
+                capsuleRef: {
+                  value: 'categories-retry-second-recordExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              correctExpense: {
+                capsuleRef: {
+                  value: 'categories-retry-second-correctExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              removeExpense: {
+                capsuleRef: {
+                  value: 'categories-retry-second-removeExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              signOut: {
+                capsuleRef: {
+                  value: 'categories-retry-second-signOut-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+            accessTokenClerk: {
+              saveToken: () => true,
+            },
+          },
+          expected: {
+            hooks: expect.objectContaining({
+              beforeRequest: expect.any(Function),
+              afterRequest: expect.any(Function),
+            }),
+          },
+        },
+      ]
+
+      test.each(cases)('readingExpenseCategories: $factoryParams.errorMessageHashReactive.readingExpenseCategories', async ({
+        factoryParams,
+        expected,
+      }) => {
+        const context = ExpensesPageContext.create(factoryParams)
+        const invokeSpy = jest.spyOn(factoryParams.graphqlClientHash.expenseCategories, 'invokeRequestOnEvent')
+
+        await context.onClickRetryExpenseCategories()
+
+        expect(invokeSpy)
+          .toHaveBeenCalledWith(expected)
+      })
+    })
+  })
+})
+
+describe('ExpensesPageContext', () => {
+  describe('#onClickRetryExpenseCategories()', () => {
+    describe('should offer the categories the answer carried', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            router: {
+              replace: async () => '/sign-in',
+            },
+            formValueHashReactive: {
+              spentOn: null,
+              amount: null,
+              expenseCategoryId: null,
+              memo: null,
+            },
+            statusReactive: {
+              isLoadingExpenses: false,
+              isLoadingExpenseCategories: false,
+              isRecordingExpense: false,
+              isRemovingExpense: false,
+              isSigningOut: false,
+              correctingExpenseId: null,
+              removingExpenseId: null,
+            },
+            errorMessageHashReactive: {
+              submittingExpense: null,
+              removingExpense: null,
+              readingExpenses: null,
+              readingExpenseCategories: 'Something went wrong. Try again.',
+            },
+            responseHashReactive: {
+              expenses: [],
+              expensesPagination: null,
+              expenseCategories: [],
+            },
+            graphqlClientHash: {
+              expenses: {
+                capsuleRef: {
+                  value: 'categories-recovered-first-expenses-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              expenseCategories: {
+                capsuleRef: {
+                  value: ExpenseCategoriesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        expenseCategories: {
+                          expenseCategories: [
+                            {
+                              id: 10000001,
+                              name: 'transport',
+                              displayOrder: 1,
+                            },
+                            {
+                              id: 10000002,
+                              name: 'meals',
+                              displayOrder: 2,
+                            },
+                          ],
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              recordExpense: {
+                capsuleRef: {
+                  value: 'categories-recovered-first-recordExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              correctExpense: {
+                capsuleRef: {
+                  value: 'categories-recovered-first-correctExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              removeExpense: {
+                capsuleRef: {
+                  value: 'categories-recovered-first-removeExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              signOut: {
+                capsuleRef: {
+                  value: 'categories-recovered-first-signOut-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+            accessTokenClerk: {
+              saveToken: () => true,
+            },
+          },
+          expected: [
+            {
+              label: 'transport',
+              value: 10000001,
+            },
+            {
+              label: 'meals',
+              value: 10000002,
+            },
+          ],
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page expenses',
+              },
+            },
+            router: {
+              replace: async () => '/sign-in',
+            },
+            formValueHashReactive: {
+              spentOn: null,
+              amount: null,
+              expenseCategoryId: null,
+              memo: null,
+            },
+            statusReactive: {
+              isLoadingExpenses: false,
+              isLoadingExpenseCategories: false,
+              isRecordingExpense: false,
+              isRemovingExpense: false,
+              isSigningOut: false,
+              correctingExpenseId: null,
+              removingExpenseId: null,
+            },
+            errorMessageHashReactive: {
+              submittingExpense: null,
+              removingExpense: null,
+              readingExpenses: null,
+              readingExpenseCategories: 'Your session is no longer valid. Sign in again.',
+            },
+            responseHashReactive: {
+              expenses: [],
+              expensesPagination: null,
+              expenseCategories: [],
+            },
+            graphqlClientHash: {
+              expenses: {
+                capsuleRef: {
+                  value: 'categories-recovered-second-expenses-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              expenseCategories: {
+                capsuleRef: {
+                  value: ExpenseCategoriesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        expenseCategories: {
+                          expenseCategories: [
+                            {
+                              id: 10000003,
+                              name: 'supplies',
+                              displayOrder: 3,
+                            },
+                          ],
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              recordExpense: {
+                capsuleRef: {
+                  value: 'categories-recovered-second-recordExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              correctExpense: {
+                capsuleRef: {
+                  value: 'categories-recovered-second-correctExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              removeExpense: {
+                capsuleRef: {
+                  value: 'categories-recovered-second-removeExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              signOut: {
+                capsuleRef: {
+                  value: 'categories-recovered-second-signOut-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+            accessTokenClerk: {
+              saveToken: () => true,
+            },
+          },
+          expected: [
+            {
+              label: 'supplies',
+              value: 10000003,
+            },
+          ],
+        },
+      ]
+
+      test.each(cases)('readingExpenseCategories: $factoryParams.errorMessageHashReactive.readingExpenseCategories', async ({
+        factoryParams,
+        expected,
+      }) => {
+        const context = ExpensesPageContext.create(factoryParams)
+
+        await context.onClickRetryExpenseCategories()
+
+        expect(context.expenseCategoryOptions)
+          .toEqual(expected)
+      })
+    })
+  })
+})
+
+describe('ExpensesPageContext', () => {
+  describe('#onClickRetryExpenseCategories()', () => {
+    describe('should take the failed read off the screen', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            router: {
+              replace: async () => '/sign-in',
+            },
+            formValueHashReactive: {
+              spentOn: null,
+              amount: null,
+              expenseCategoryId: null,
+              memo: null,
+            },
+            statusReactive: {
+              isLoadingExpenses: false,
+              isLoadingExpenseCategories: false,
+              isRecordingExpense: false,
+              isRemovingExpense: false,
+              isSigningOut: false,
+              correctingExpenseId: null,
+              removingExpenseId: null,
+            },
+            errorMessageHashReactive: {
+              submittingExpense: null,
+              removingExpense: null,
+              readingExpenses: null,
+              readingExpenseCategories: 'Something went wrong. Try again.',
+            },
+            responseHashReactive: {
+              expenses: [],
+              expensesPagination: null,
+              expenseCategories: [],
+            },
+            graphqlClientHash: {
+              expenses: {
+                capsuleRef: {
+                  value: 'categories-cleared-first-expenses-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              expenseCategories: {
+                capsuleRef: {
+                  value: ExpenseCategoriesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        expenseCategories: {
+                          expenseCategories: [
+                            {
+                              id: 10000002,
+                              name: 'meals',
+                              displayOrder: 2,
+                            },
+                          ],
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              recordExpense: {
+                capsuleRef: {
+                  value: 'categories-cleared-first-recordExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              correctExpense: {
+                capsuleRef: {
+                  value: 'categories-cleared-first-correctExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              removeExpense: {
+                capsuleRef: {
+                  value: 'categories-cleared-first-removeExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              signOut: {
+                capsuleRef: {
+                  value: 'categories-cleared-first-signOut-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+            accessTokenClerk: {
+              saveToken: () => true,
+            },
+          },
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page expenses',
+              },
+            },
+            router: {
+              replace: async () => '/sign-in',
+            },
+            formValueHashReactive: {
+              spentOn: null,
+              amount: null,
+              expenseCategoryId: null,
+              memo: null,
+            },
+            statusReactive: {
+              isLoadingExpenses: false,
+              isLoadingExpenseCategories: false,
+              isRecordingExpense: false,
+              isRemovingExpense: false,
+              isSigningOut: false,
+              correctingExpenseId: null,
+              removingExpenseId: null,
+            },
+            errorMessageHashReactive: {
+              submittingExpense: null,
+              removingExpense: null,
+              readingExpenses: null,
+              readingExpenseCategories: 'Your session is no longer valid. Sign in again.',
+            },
+            responseHashReactive: {
+              expenses: [],
+              expensesPagination: null,
+              expenseCategories: [],
+            },
+            graphqlClientHash: {
+              expenses: {
+                capsuleRef: {
+                  value: 'categories-cleared-second-expenses-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              expenseCategories: {
+                capsuleRef: {
+                  value: ExpenseCategoriesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        expenseCategories: {
+                          expenseCategories: [
+                            {
+                              id: 10000004,
+                              name: 'other',
+                              displayOrder: 4,
+                            },
+                          ],
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              recordExpense: {
+                capsuleRef: {
+                  value: 'categories-cleared-second-recordExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              correctExpense: {
+                capsuleRef: {
+                  value: 'categories-cleared-second-correctExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              removeExpense: {
+                capsuleRef: {
+                  value: 'categories-cleared-second-removeExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              signOut: {
+                capsuleRef: {
+                  value: 'categories-cleared-second-signOut-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+            accessTokenClerk: {
+              saveToken: () => true,
+            },
+          },
+        },
+      ]
+
+      test.each(cases)('readingExpenseCategories: $factoryParams.errorMessageHashReactive.readingExpenseCategories', async ({
+        factoryParams,
+      }) => {
+        const context = ExpensesPageContext.create(factoryParams)
+
+        await context.onClickRetryExpenseCategories()
+
+        expect(context.expenseCategoriesRefusalMessage)
+          .toBeNull()
+      })
+    })
+  })
+})
+
+describe('ExpensesPageContext', () => {
+  describe('#onClickRemove()', () => {
+    describe('should open no second confirmation while a removal is in flight', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            formValueHashReactive: {
+              spentOn: null,
+              amount: null,
+              expenseCategoryId: null,
+              memo: null,
+            },
+            statusReactive: {
+              isLoadingExpenses: false,
+              isLoadingExpenseCategories: false,
+              isRecordingExpense: false,
+              isRemovingExpense: true,
+              isSigningOut: false,
+              correctingExpenseId: null,
+              removingExpenseId: null,
+            },
+            errorMessageHashReactive: {
+              submittingExpense: null,
+              removingExpense: null,
+              readingExpenses: null,
+              readingExpenseCategories: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              expensesPagination: null,
+              expenseCategories: [],
+            },
+          },
+          params: {
+            row: {
+              id: 10200141,
+              spentOn: '2026-06-11',
+              spentOnText: '2026-06-11',
+              amount: 1250,
+              amountText: '¥1,250',
+              expenseCategoryId: 10000001,
+              expenseCategoryName: 'transport',
+              memo: 'Train fare to the depot',
+              memoText: 'Train fare to the depot',
+            },
+          },
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page expenses',
+              },
+            },
+            formValueHashReactive: {
+              spentOn: null,
+              amount: null,
+              expenseCategoryId: null,
+              memo: null,
+            },
+            statusReactive: {
+              isLoadingExpenses: false,
+              isLoadingExpenseCategories: false,
+              isRecordingExpense: false,
+              isRemovingExpense: true,
+              isSigningOut: false,
+              correctingExpenseId: null,
+              removingExpenseId: null,
+            },
+            errorMessageHashReactive: {
+              submittingExpense: null,
+              removingExpense: null,
+              readingExpenses: null,
+              readingExpenseCategories: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              expensesPagination: null,
+              expenseCategories: [],
+            },
+          },
+          params: {
+            row: {
+              id: 10200142,
+              spentOn: '2026-06-10',
+              spentOnText: '2026-06-10',
+              amount: 640,
+              amountText: '¥640',
+              expenseCategoryId: 10000003,
+              expenseCategoryName: 'supplies',
+              memo: 'Printer paper',
+              memoText: 'Printer paper',
+            },
+          },
+        },
+      ]
+
+      test.each(cases)('row.id: $params.row.id', ({
+        factoryParams,
+        params,
+      }) => {
+        const context = ExpensesPageContext.create(factoryParams)
+
+        context.onClickRemove(params)
+
+        expect(context.removingExpenseId)
+          .toBeNull()
+      })
+    })
+  })
+})
+
+describe('ExpensesPageContext', () => {
+  describe('#onConfirmRemoval()', () => {
+    describe('should send nothing while a removal is already in flight', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            router: {
+              replace: async () => '/sign-in',
+            },
+            formValueHashReactive: {
+              spentOn: null,
+              amount: null,
+              expenseCategoryId: null,
+              memo: null,
+            },
+            statusReactive: {
+              isLoadingExpenses: false,
+              isLoadingExpenseCategories: false,
+              isRecordingExpense: false,
+              isRemovingExpense: true,
+              isSigningOut: false,
+              correctingExpenseId: null,
+              removingExpenseId: 10200151,
+            },
+            errorMessageHashReactive: {
+              submittingExpense: null,
+              removingExpense: null,
+              readingExpenses: null,
+              readingExpenseCategories: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              expensesPagination: null,
+              expenseCategories: [],
+            },
+            graphqlClientHash: {
+              expenses: {
+                capsuleRef: {
+                  value: 'double-removal-first-expenses-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              expenseCategories: {
+                capsuleRef: {
+                  value: 'double-removal-first-expenseCategories-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              recordExpense: {
+                capsuleRef: {
+                  value: 'double-removal-first-recordExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              correctExpense: {
+                capsuleRef: {
+                  value: 'double-removal-first-correctExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              removeExpense: {
+                capsuleRef: {
+                  value: 'double-removal-first-removeExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              signOut: {
+                capsuleRef: {
+                  value: 'double-removal-first-signOut-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+            accessTokenClerk: {
+              saveToken: () => true,
+            },
+          },
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page expenses',
+              },
+            },
+            router: {
+              replace: async () => '/sign-in',
+            },
+            formValueHashReactive: {
+              spentOn: null,
+              amount: null,
+              expenseCategoryId: null,
+              memo: null,
+            },
+            statusReactive: {
+              isLoadingExpenses: false,
+              isLoadingExpenseCategories: false,
+              isRecordingExpense: false,
+              isRemovingExpense: true,
+              isSigningOut: false,
+              correctingExpenseId: null,
+              removingExpenseId: 10200152,
+            },
+            errorMessageHashReactive: {
+              submittingExpense: null,
+              removingExpense: null,
+              readingExpenses: null,
+              readingExpenseCategories: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              expensesPagination: null,
+              expenseCategories: [],
+            },
+            graphqlClientHash: {
+              expenses: {
+                capsuleRef: {
+                  value: 'double-removal-second-expenses-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              expenseCategories: {
+                capsuleRef: {
+                  value: 'double-removal-second-expenseCategories-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              recordExpense: {
+                capsuleRef: {
+                  value: 'double-removal-second-recordExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              correctExpense: {
+                capsuleRef: {
+                  value: 'double-removal-second-correctExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              removeExpense: {
+                capsuleRef: {
+                  value: 'double-removal-second-removeExpense-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+              signOut: {
+                capsuleRef: {
+                  value: 'double-removal-second-signOut-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+            accessTokenClerk: {
+              saveToken: () => true,
+            },
+          },
+        },
+      ]
+
+      test.each(cases)('removingExpenseId: $factoryParams.statusReactive.removingExpenseId', async ({
+        factoryParams,
+      }) => {
+        const context = ExpensesPageContext.create(factoryParams)
+        const invokeSpy = jest.spyOn(factoryParams.graphqlClientHash.removeExpense, 'invokeRequestOnEvent')
+
+        await context.onConfirmRemoval()
+
+        expect(invokeSpy)
+          .not
+          .toHaveBeenCalled()
+      })
+    })
+  })
+})
+
+describe('ExpensesPageContext', () => {
+  describe('#get:removeRowButtonParcel', () => {
+    const cases = [
+      {
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page',
+            },
+          },
+          formValueHashReactive: {
+            spentOn: null,
+            amount: null,
+            expenseCategoryId: null,
+            memo: null,
+          },
+          statusReactive: {
+            isLoadingExpenses: false,
+            isLoadingExpenseCategories: false,
+            isRecordingExpense: false,
+            isRemovingExpense: true,
+            isSigningOut: false,
+            correctingExpenseId: null,
+            removingExpenseId: null,
+          },
+          errorMessageHashReactive: {
+            submittingExpense: null,
+            removingExpense: null,
+            readingExpenses: null,
+            readingExpenseCategories: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            expensesPagination: null,
+            expenseCategories: [],
+          },
+        },
+        expected: {
+          variant: 'ghost',
+          type: 'button',
+          size: 'sm',
+          disabled: true,
+        },
+      },
+      {
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page expenses',
+            },
+          },
+          formValueHashReactive: {
+            spentOn: null,
+            amount: null,
+            expenseCategoryId: null,
+            memo: null,
+          },
+          statusReactive: {
+            isLoadingExpenses: false,
+            isLoadingExpenseCategories: false,
+            isRecordingExpense: false,
+            isRemovingExpense: false,
+            isSigningOut: false,
+            correctingExpenseId: null,
+            removingExpenseId: null,
+          },
+          errorMessageHashReactive: {
+            submittingExpense: null,
+            removingExpense: null,
+            readingExpenses: null,
+            readingExpenseCategories: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            expensesPagination: null,
+            expenseCategories: [],
+          },
+        },
+        expected: {
+          variant: 'ghost',
+          type: 'button',
+          size: 'sm',
+          disabled: false,
+        },
+      },
+    ]
+
+    test.each(cases)('isRemovingExpense: $factoryParams.statusReactive.isRemovingExpense', ({
+      factoryParams,
+      expected,
+    }) => {
+      const context = ExpensesPageContext.create(factoryParams)
+
+      const actual = context.removeRowButtonParcel
+
+      expect(actual)
+        .toEqual(expected)
+    })
+  })
+})
+
+describe('ExpensesPageContext', () => {
+  describe('#get:expenseTableParcel', () => {
+    describe('should keep the table waiting while a removal is in flight', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            formValueHashReactive: {
+              spentOn: null,
+              amount: null,
+              expenseCategoryId: null,
+              memo: null,
+            },
+            statusReactive: {
+              isLoadingExpenses: false,
+              isLoadingExpenseCategories: false,
+              isRecordingExpense: false,
+              isRemovingExpense: true,
+              isSigningOut: false,
+              correctingExpenseId: null,
+              removingExpenseId: null,
+            },
+            errorMessageHashReactive: {
+              submittingExpense: null,
+              removingExpense: null,
+              readingExpenses: null,
+              readingExpenseCategories: null,
+            },
+            responseHashReactive: {
+              expenses: [
+                {
+                  id: 10200161,
+                  spentOn: '2026-05-08',
+                  amount: 2150,
+                  memo: 'Coach ticket to the branch',
+                  status: 'recorded',
+                  expenseCategory: {
+                    id: 10000001,
+                    name: 'transport',
+                    displayOrder: 1,
+                  },
+                  createdAt: '2026-05-08T03:25:00.000Z',
+                  updatedAt: '2026-05-08T03:25:00.000Z',
+                },
+              ],
+              expensesPagination: {
+                limit: 20,
+                offset: 0,
+                totalRecords: 1,
+              },
+              expenseCategories: [],
+            },
+          },
+          expected: expect.objectContaining({
+            loading: true,
+            errorMessage: null,
+          }),
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page expenses',
+              },
+            },
+            formValueHashReactive: {
+              spentOn: null,
+              amount: null,
+              expenseCategoryId: null,
+              memo: null,
+            },
+            statusReactive: {
+              isLoadingExpenses: false,
+              isLoadingExpenseCategories: false,
+              isRecordingExpense: false,
+              isRemovingExpense: false,
+              isSigningOut: false,
+              correctingExpenseId: null,
+              removingExpenseId: null,
+            },
+            errorMessageHashReactive: {
+              submittingExpense: null,
+              removingExpense: null,
+              readingExpenses: null,
+              readingExpenseCategories: null,
+            },
+            responseHashReactive: {
+              expenses: [
+                {
+                  id: 10200162,
+                  spentOn: '2026-05-07',
+                  amount: 330,
+                  memo: 'Stamps for the notice',
+                  status: 'recorded',
+                  expenseCategory: {
+                    id: 10000003,
+                    name: 'supplies',
+                    displayOrder: 3,
+                  },
+                  createdAt: '2026-05-07T06:45:00.000Z',
+                  updatedAt: '2026-05-07T06:45:00.000Z',
+                },
+              ],
+              expensesPagination: {
+                limit: 20,
+                offset: 0,
+                totalRecords: 1,
+              },
+              expenseCategories: [],
+            },
+          },
+          expected: expect.objectContaining({
+            loading: false,
+            errorMessage: null,
+          }),
+        },
+      ]
+
+      test.each(cases)('isRemovingExpense: $factoryParams.statusReactive.isRemovingExpense', ({
+        factoryParams,
+        expected,
+      }) => {
+        const context = ExpensesPageContext.create(factoryParams)
+
+        const actual = context.expenseTableParcel
+
+        expect(actual)
+          .toEqual(expected)
       })
     })
   })

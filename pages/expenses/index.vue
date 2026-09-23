@@ -98,6 +98,13 @@ import ExpensesPageContext from './ExpensesPageContext.js'
  * | loading | `statusReactive.isLoadingExpenses` -- and per-button, the four other flags |
  * | empty | the read answered, `expenses` is empty, nothing is loading and nothing failed |
  * | failed | `errorMessageHashReactive.readingExpenses` holds a sentence |
+ *
+ * Those four are the ENTRIES' four states. The form has a fifth condition of its own, which they
+ * do not cover: `errorMessageHashReactive.readingExpenseCategories` holds a sentence, meaning the
+ * categories could not be read and the select has nothing to offer. It keeps a key of its own
+ * rather than borrowing `submittingExpense`, because the form empties that one at the top of every
+ * submit -- so a category failure kept there survived exactly until somebody pressed the button
+ * the message was telling them they could not use.
  */
 export default defineComponent({
   name: 'ExpensesPage',
@@ -150,6 +157,7 @@ export default defineComponent({
       submittingExpense: null,
       removingExpense: null,
       readingExpenses: null,
+      readingExpenseCategories: null,
     })
 
     const responseHashReactive = reactive({
@@ -284,6 +292,24 @@ export default defineComponent({
             })"
           />
         </FuroControlBlock>
+
+        <div class="unavailable">
+          <AppRefusalMessage
+            :id="context.expenseCategoriesRefusalRegionId"
+            class="refusal"
+            :message="context.expenseCategoriesRefusalMessage"
+          />
+
+          <FuroButton
+            v-if="context.hasExpenseCategoriesFailed()"
+            class="retry"
+            :parcel="context.retryExpenseCategoriesButtonParcel"
+            :aria-label="context.retryExpenseCategoriesButtonLabel"
+            @click="context.onClickRetryExpenseCategories()"
+          >
+            {{ context.retryExpenseCategoriesButtonLabel }}
+          </FuroButton>
+        </div>
 
         <FuroControlBlock
           class="block memo"
@@ -584,6 +610,27 @@ export default defineComponent({
   grid-column-start: 1;
   grid-column-end: -1;
 
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+/* The one condition the entries' four states do not cover: the categories themselves could not be
+   read, so the select above has nothing to offer. It sits directly under that field, holds a
+   message region of its own -- rendered whether or not it has text, so the field's
+   aria-describedby points at something that exists -- and carries the only way out of the
+   condition that is not a reload. */
+.unit-form > .unavailable {
+  grid-column-start: 1;
+  grid-column-end: -1;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--size-space-small);
+  row-gap: var(--size-space-small);
+}
+
+.unit-form > .unavailable > :deep(.refusal) {
   margin-block-start: 0;
   margin-block-end: 0;
 }
