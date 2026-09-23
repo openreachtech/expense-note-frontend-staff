@@ -323,29 +323,6 @@
   >     pre-filled from the entry's current values and must resend all four. This was flagged at
   >     checkpoint 2 as the thing a screen gets wrong once and a member of staff discovers by
   >     losing a memo.
-  > 21. **The month is screen state, never a route segment.** §12.2 requires the previous month
-  >     to be read **without leaving the screen**, and its own call table says `monthlyExpenses` is
-  >     called *"on opening, and on moving to another month"* — a **re-read, not a re-route**.
-  >     Moving month must not push a route, and must not reload the page.
-  >
-  > 22. **Never disable or refuse a future month.** The instinct is to grey them out, and it is
-  >     wrong here. §11 refuses an expense **dated** after today — a rule about *writing a row* —
-  >     and §12 says nothing of the kind about *reading a month*. A future month is answered
-  >     truthfully as empty with a total of zero, which is §12's own third acceptance criterion,
-  >     and the backend deliberately validates no upper bound on the year. **Refusing one would
-  >     also break this screen's own month navigation.** Q56's date-field lesson does **not**
-  >     transfer here: that was about §11's refusal, and this screen has none.
-  >
-  > 23. **Never sort the entries.** §6's `entry order` row states one clause for both screens —
-  >     newest `spentOn` first, and where two share a date, the more recently recorded first — and
-  >     the backend already returns them that way, from a constant both resolvers share. **There is
-  >     no client-side sort anywhere in this application today**, and that is what makes the two
-  >     lists agree. A sort added here would be re-deciding something §6 settled (Q61).
-  >
-  > 24. **An empty month says the month is empty; it is not an empty table.** §12's acceptance
-  >     criterion names this specifically, and the total still shows — **zero, rendered, not
-  >     hidden.** The frontend convention has an empty-state component for exactly this.
-  >
   > 20. **Pre-fill from the list, not from a second request.** The entries list already carries
   >     every value a correction needs. There is no read-one operation and none is declared. Do not
   >     add a fetch to open an entry.
@@ -370,8 +347,35 @@
   >     sent and is not validated server-side, because no operation in 1.0.0 lets a caller choose a
   >     sort. It reaches no query. Treat it as untrusted text (Q53).
   > 26. **Never ask for more than 100 rows in a page.** `PAGINATION.MAXIMUM_LIMIT` is 100 and a
-  >     larger `limit` is refused as invalid input (Q50). The number is chosen and not yet
-  >     user-confirmed, so read it rather than hard-coding a second copy.
+  >     larger `limit` is refused as invalid input. **Decided by the user and carried by spec §7's
+  >     `Page size` row**, which is now its authority — an earlier version of this rule called it
+  >     "chosen and not yet user-confirmed", and that stopped being true when Q50 was answered.
+  >     Read §7 rather than hard-coding a second copy. **It does not reach `monthlyExpenses`**,
+  >     which §12.1 declares unpaginated (Q60).
+  >
+  > 27. **The month is screen state, never a route segment.** §12.2 requires the previous month
+  >     to be read **without leaving the screen**, and its own call table says `monthlyExpenses` is
+  >     called *"on opening, and on moving to another month"* — a **re-read, not a re-route**.
+  >     Moving month must not push a route, and must not reload the page.
+  >
+  > 28. **Never disable or refuse a future month.** The instinct is to grey them out, and it is
+  >     wrong here. §11 refuses an expense **dated** after today — a rule about *writing a row* —
+  >     and §12 says nothing of the kind about *reading a month*. A future month is answered
+  >     truthfully as empty with a total of zero, which is §12's own third acceptance criterion,
+  >     and the backend deliberately validates no upper bound on the year. **Refusing one would
+  >     also break this screen's own month navigation.** Q56's date-field lesson does **not**
+  >     transfer here: that was about §11's refusal, and this screen has none.
+  >
+  > 29. **Never sort the entries.** §6's `entry order` row states one clause for both screens —
+  >     newest `spentOn` first, and where two share a date, the more recently recorded first — and
+  >     the backend already returns them that way, from a constant both resolvers share. **There is
+  >     no client-side sort anywhere in this application today**, and that is what makes the two
+  >     lists agree. A sort added here would be re-deciding something §6 settled (Q61).
+  >
+  > 30. **An empty month says the month is empty; it is not an empty table.** §12's acceptance
+  >     criterion names this specifically, and the total still shows — **zero, rendered, not
+  >     hidden.** The frontend convention has an empty-state component for exactly this.
+  >
 
 ## 9. Constraints & non-functional needs
 
