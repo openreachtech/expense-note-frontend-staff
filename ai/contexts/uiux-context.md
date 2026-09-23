@@ -102,11 +102,33 @@
   > |---|---|---|
   > | `/sign-in` | `#sign-in` | **built.** The only route reachable without a session |
   > | `/expenses` (aliased to `/`) | `#expense-entry` | **built at checkpoint 10.** Guarded |
-  > | — | `#monthly-summary` (§12.2) | **does not exist.** Do not link to it, do not stub it |
+  > | `/monthly-expenses` | `#monthly-summary` (§12.2) | **built at checkpoint 10.** Guarded. **Link to it from `/expenses`** (below) |
   >
   > The alias is why `/` resolves at all: `SignInPageContext`'s `DEFAULT_DESTINATION_PATH` is `/`,
   > so a sign-in with no `?redirect=` lands there. The boilerplate's empty `pages/index.vue` was
   > deleted when the alias was added — two records claiming `/` would resolve arbitrarily.
+  >
+  > **How a member of staff reaches the second screen — decided at `#monthly-summary`'s checkpoint
+  > 11, because until then nothing did.**
+  >
+  > `/monthly-expenses` has no alias and nothing linked to it, so `find-unreachable-screens`
+  > reported it as a **true** positive — unlike `/expenses`, whose report is a known false positive
+  > caused by the page-level alias the script cannot see. A screen a signed-in person can only reach
+  > by typing its address does not give §12's use cases a path, and **both of them begin with
+  > somebody already signed in and working.**
+  >
+  > **The decision: the two signed-in screens link to each other, one link each, in the page's own
+  > header.**
+  >
+  > **Not navigation chrome in `layouts/default.vue`**, and the reason is that the layout is shared
+  > with `/sign-in`. Chrome there would put links to guarded screens in front of somebody who has no
+  > session — every one of them bouncing straight back — on the one screen §10.2 says is reachable
+  > without a session. Two links in two page headers is the smaller and more honest change for an
+  > application with two signed-in screens.
+  >
+  > **The link on `/expenses` is a change to a screen `#expense-entry` already shipped.** That is
+  > planned growth rather than a retake: the screen was complete for its own feature, and what has
+  > changed is that there is now somewhere to go.
 
 ## 4. Platforms & devices
 
@@ -301,6 +323,29 @@
   >     pre-filled from the entry's current values and must resend all four. This was flagged at
   >     checkpoint 2 as the thing a screen gets wrong once and a member of staff discovers by
   >     losing a memo.
+  > 21. **The month is screen state, never a route segment.** §12.2 requires the previous month
+  >     to be read **without leaving the screen**, and its own call table says `monthlyExpenses` is
+  >     called *"on opening, and on moving to another month"* — a **re-read, not a re-route**.
+  >     Moving month must not push a route, and must not reload the page.
+  >
+  > 22. **Never disable or refuse a future month.** The instinct is to grey them out, and it is
+  >     wrong here. §11 refuses an expense **dated** after today — a rule about *writing a row* —
+  >     and §12 says nothing of the kind about *reading a month*. A future month is answered
+  >     truthfully as empty with a total of zero, which is §12's own third acceptance criterion,
+  >     and the backend deliberately validates no upper bound on the year. **Refusing one would
+  >     also break this screen's own month navigation.** Q56's date-field lesson does **not**
+  >     transfer here: that was about §11's refusal, and this screen has none.
+  >
+  > 23. **Never sort the entries.** §6's `entry order` row states one clause for both screens —
+  >     newest `spentOn` first, and where two share a date, the more recently recorded first — and
+  >     the backend already returns them that way, from a constant both resolvers share. **There is
+  >     no client-side sort anywhere in this application today**, and that is what makes the two
+  >     lists agree. A sort added here would be re-deciding something §6 settled (Q61).
+  >
+  > 24. **An empty month says the month is empty; it is not an empty table.** §12's acceptance
+  >     criterion names this specifically, and the total still shows — **zero, rendered, not
+  >     hidden.** The frontend convention has an empty-state component for exactly this.
+  >
   > 20. **Pre-fill from the list, not from a second request.** The entries list already carries
   >     every value a correction needs. There is no read-one operation and none is declared. Do not
   >     add a fetch to open an entry.
