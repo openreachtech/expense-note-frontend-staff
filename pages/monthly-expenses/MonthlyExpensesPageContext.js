@@ -8,6 +8,18 @@ const PAGE_TITLE = 'Monthly expenses'
  * The screen specification section 12.2 describes: one month of one member of staff's own
  * entries, read together with that month's total, opening on the current month.
  *
+ * **What this class has to grow into is already designed**, in
+ * `ai/contexts/uiux-context-monthly-summary.md` -- checkpoint 12's component breakdown, the month
+ * control and the reasoning behind it, the four states and who renders each, the identifiers this
+ * class will carry, and the facts read out of the installed `@openreachtech/furo-vue` that its own
+ * skills get wrong. The pointer lives here because checkpoint 16 works from this file and is not
+ * run by a skill that reads `ai/contexts/`.
+ *
+ * Two of that document's decisions are this class's rather than the template's, and are easy to
+ * lose: the opening month is derived in `Asia/Tokyo` and not from the browser's own calendar
+ * fields (spec section 6), and a response whose month is no longer the selected one is discarded
+ * rather than rendered.
+ *
  * **This class is deliberately a skeleton.** The checkpoint that created it opens the route
  * and pairs it with a context; the month control, the table of entries, the total, the empty
  * month and the `monthlyExpenses` client are each a later checkpoint's, and writing any of

@@ -29,10 +29,22 @@ import MonthlyExpensesPageContext from './MonthlyExpensesPageContext.js'
  * where `SignInPageContext`'s `DEFAULT_DESTINATION_PATH` lands a member of staff who signed in with
  * no `?redirect=`; two records claiming `/` would resolve arbitrarily.
  *
- * NOTHING LINKS HERE YET. Which screen offers a way to this one, and how, is a UI/UX decision that
- * is taken separately from opening the route -- so this page adds no navigation of its own and the
- * entry screen is left untouched. Until that decision lands, the route resolves from the address
- * bar and from a `?redirect=` the gateway wrote, and from nowhere else.
+ * NOTHING LINKED HERE WHEN THIS ROUTE WAS OPENED, and which screen offers a way to it was a UI/UX
+ * decision taken separately -- so this page added no navigation of its own and the entry screen was
+ * left untouched. THAT DECISION HAS SINCE LANDED, at checkpoint 11: the two signed-in screens link
+ * to each other, one link each, in the page's own header, and not as chrome in the shared layout.
+ * The link itself is checkpoint 15's to write, on both screens. Until then the route still resolves
+ * only from the address bar and from a `?redirect=` the gateway wrote.
+ *
+ * WHAT GOES IN THIS TEMPLATE IS ALREADY DESIGNED, in `ai/contexts/uiux-context-monthly-summary.md`.
+ * Checkpoint 12 broke this screen into components and matched every part against the twenty
+ * component skills the kit equips: five library components serve it and NOTHING here is a component
+ * of this application's own. That document also carries the facts read out of the installed
+ * `@openreachtech/furo-vue` that its skills get wrong -- chiefly that an `id` on a `FuroSelect`
+ * reaches no DOM element, so a label association has to go through `:trigger-parcel` -- plus the
+ * month control's design and why a date picker is the wrong surface for it. Read it before adding
+ * markup; it is loaded automatically by the skill that generates UI here and by the one that audits
+ * it, which is why it lives where it does.
  *
  * The screen itself is not built here: the month control, the table, the total, the empty month and
  * the `monthlyExpenses` client are each a later checkpoint's, and the paired context carries the
