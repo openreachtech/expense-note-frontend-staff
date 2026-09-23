@@ -93,8 +93,20 @@
 - **Q: Are there hard deadlines or phases that affect what to build now vs. later?**
   > **[spec §13 / `.hora/tasks/1.0.0/_plan.md`]** No dates. Strict ordering instead: features are
   > built one at a time, `#sign-in` → `#expense-entry` → `#monthly-summary`, each carrying
-  > `depends:` on the one before. **A screen belonging to a later feature does not exist yet and
-  > must not be linked to or stubbed.**
+  > `depends:` on the one before. **A screen belonging to a feature that has not been built yet does
+  > not exist and must not be linked to or stubbed.**
+  >
+  > **Which screens exist right now** — this list is the authority, and it changes as features land:
+  >
+  > | route | feature | state |
+  > |---|---|---|
+  > | `/sign-in` | `#sign-in` | **built.** The only route reachable without a session |
+  > | `/expenses` (aliased to `/`) | `#expense-entry` | **built at checkpoint 10.** Guarded |
+  > | — | `#monthly-summary` (§12.2) | **does not exist.** Do not link to it, do not stub it |
+  >
+  > The alias is why `/` resolves at all: `SignInPageContext`'s `DEFAULT_DESTINATION_PATH` is `/`,
+  > so a sign-in with no `?redirect=` lands there. The boilerplate's empty `pages/index.vue` was
+  > deleted when the alias was added — two records claiming `/` would resolve arbitrarily.
 
 ## 4. Platforms & devices
 
@@ -279,6 +291,42 @@
   > 17. **Never link to a screen that does not exist** — no sign-up, no password reset, no account
   >     settings. See §3.
   > 18. **Never log a name, an email address or a memo** (§7).
+  >
+  > **`#expense-entry`'s own rules** — each one is an acceptance criterion or a trap that has
+  > already been recorded, not a preference:
+  >
+  > 19. **A correction sends every field, always.** `correctExpense` is a **full replace**, not a
+  >     patch: `spentOn`, `amount` and `expenseCategoryId` are non-null and `memo` is nullable, so
+  >     **a correction that omits the memo clears it.** The form opened for a correction must be
+  >     pre-filled from the entry's current values and must resend all four. This was flagged at
+  >     checkpoint 2 as the thing a screen gets wrong once and a member of staff discovers by
+  >     losing a memo.
+  > 20. **Pre-fill from the list, not from a second request.** The entries list already carries
+  >     every value a correction needs. There is no read-one operation and none is declared. Do not
+  >     add a fetch to open an entry.
+  > 21. **A not-found must look identical in all three cases** — an entry somebody else owns, an
+  >     entry already removed, and an id that never existed. §7 and §11 both require the answer to
+  >     say nothing about whether the row exists, and the backend answers one code for all three.
+  >     **Do not write a message that distinguishes them**, and do not add "this entry was already
+  >     deleted" as a kindness — that sentence is the disclosure the rule exists to prevent.
+  > 22. **A removal is confirmed before it is sent.** §11.2's call table says `removeExpense` fires
+  >     *on confirming a removal*, so the confirmation is specified rather than optional. The delete
+  >     is permanent: §7 removes an entry outright rather than archiving it, so there is nothing to
+  >     undo and no trash to restore from.
+  > 23. **Entries read newest `spentOn` first — the day the money was paid, not the day it was
+  >     typed.** A consequence worth designing for rather than hiding: **an expense paid last week
+  >     and recorded today appears below this week's, not at the top.** A member of staff who
+  >     back-dates an entry and then looks for it at the top will not find it there. That cost was
+  >     accepted knowingly at checkpoint 1.
+  > 24. **The memo is genuinely optional.** An entry recorded without one reads back as `null` and
+  >     must render as empty — never as the text "null", never as an error, and the field must not
+  >     be marked required.
+  > 25. **Never render `pagination.sort` as markup.** It is echoed back from whatever the caller
+  >     sent and is not validated server-side, because no operation in 1.0.0 lets a caller choose a
+  >     sort. It reaches no query. Treat it as untrusted text (Q53).
+  > 26. **Never ask for more than 100 rows in a page.** `PAGINATION.MAXIMUM_LIMIT` is 100 and a
+  >     larger `limit` is refused as invalid input (Q50). The number is chosen and not yet
+  >     user-confirmed, so read it rather than hard-coding a second copy.
 
 ## 9. Constraints & non-functional needs
 
