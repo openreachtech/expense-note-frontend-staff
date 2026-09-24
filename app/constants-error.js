@@ -116,6 +116,13 @@ export const ERROR_CODE_HASH = /** @type {const} */ ({
    * carry is the `102.X000.001` above.
    */
   StaffMemberNotFound204Q002001: '204.Q002.001',
+
+  // Invalid input — read a month (203.Q004)
+  InvalidYear203Q004001: '203.Q004.001',
+  InvalidMonth203Q004002: '203.Q004.002',
+
+  // Database and state — read a month (204.Q004)
+  StaffMemberNotFound204Q004001: '204.Q004.001',
 })
 
 /**
@@ -216,6 +223,41 @@ export const ERROR_MESSAGE_HASH = /** @type {const} */ ({
 
   // Database and state — read the entries (204.Q002)
   [ERROR_CODE_HASH.StaffMemberNotFound204Q002001]: 'Your session is no longer valid. Sign in again.',
+
+  /*
+   * Invalid input — read a month (203.Q004)
+   *
+   * Neither of these can be reached through the month control on `/monthly-expenses`: it clamps the
+   * year and offers exactly twelve months (`ai/contexts/uiux-context-monthly-summary.md` section
+   * 4.2), so a member of staff cannot name a year or a month the backend refuses. They are mapped
+   * anyway, because an unmapped code is answered with `UNKNOWN_ERROR_MESSAGE`, which tells a reader
+   * nothing they can act on, and because a code outlives the control that made it unreachable.
+   *
+   * The sentence therefore says what is true when one of them does arrive — the month this screen
+   * asked for was not one this application could be answered for — and never that the reader typed
+   * something wrong, which on this screen they cannot have done. A reload rather than a retry is
+   * the advice because a retry resends the same refused month, while a reload derives the current
+   * one afresh (section 6 of the same document).
+   *
+   * The two are kept apart and repeat one sentence, as `203.Q002.001`-`003` already do. The backend
+   * separates them because a caller that is not this interface has two different things to correct;
+   * a member of staff reading this screen has the same one thing to do either way.
+   */
+  [ERROR_CODE_HASH.InvalidYear203Q004001]: 'The month could not be loaded. Reload the page and try again.',
+  [ERROR_CODE_HASH.InvalidMonth203Q004002]: 'The month could not be loaded. Reload the page and try again.',
+
+  /*
+   * Database and state — read a month (204.Q004)
+   *
+   * The session guard, and only that: the backend raises it when the request carried no resolved
+   * member of staff, before it looks at the month and before it reads a row — which is section 12's
+   * last acceptance criterion. It is not a "not found" about a row somebody else owns, because
+   * `monthlyExpenses` never selects one, so section 8 rule 21's deliberately uninformative sentence
+   * is the wrong one here: it would send somebody whose session had lapsed to reload a page that is
+   * about to refuse them again. The sentence is the one the five other session guards carry, and it
+   * still names nobody.
+   */
+  [ERROR_CODE_HASH.StaffMemberNotFound204Q004001]: 'Your session is no longer valid. Sign in again.',
 })
 
 /**
