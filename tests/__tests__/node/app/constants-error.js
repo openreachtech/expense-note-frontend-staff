@@ -279,6 +279,24 @@ describe('error dictionaries', () => {
             },
             expected: '204.Q002.001',
           },
+          {
+            params: {
+              identifier: 'InvalidYear203Q004001',
+            },
+            expected: '203.Q004.001',
+          },
+          {
+            params: {
+              identifier: 'InvalidMonth203Q004002',
+            },
+            expected: '203.Q004.002',
+          },
+          {
+            params: {
+              identifier: 'StaffMemberNotFound204Q004001',
+            },
+            expected: '204.Q004.001',
+          },
         ]
 
         test.each(cases)('identifier: $params.identifier', ({
@@ -567,6 +585,24 @@ describe('error dictionaries', () => {
           {
             params: {
               code: '204.Q002.001',
+            },
+            expected: 'Your session is no longer valid. Sign in again.',
+          },
+          {
+            params: {
+              code: '203.Q004.001',
+            },
+            expected: 'The month could not be loaded. Reload the page and try again.',
+          },
+          {
+            params: {
+              code: '203.Q004.002',
+            },
+            expected: 'The month could not be loaded. Reload the page and try again.',
+          },
+          {
+            params: {
+              code: '204.Q004.001',
             },
             expected: 'Your session is no longer valid. Sign in again.',
           },

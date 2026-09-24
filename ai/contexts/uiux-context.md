@@ -102,11 +102,33 @@
   > |---|---|---|
   > | `/sign-in` | `#sign-in` | **built.** The only route reachable without a session |
   > | `/expenses` (aliased to `/`) | `#expense-entry` | **built at checkpoint 10.** Guarded |
-  > | — | `#monthly-summary` (§12.2) | **does not exist.** Do not link to it, do not stub it |
+  > | `/monthly-expenses` | `#monthly-summary` (§12.2) | **built at checkpoint 10.** Guarded. **Link to it from `/expenses`** (below) |
   >
   > The alias is why `/` resolves at all: `SignInPageContext`'s `DEFAULT_DESTINATION_PATH` is `/`,
   > so a sign-in with no `?redirect=` lands there. The boilerplate's empty `pages/index.vue` was
   > deleted when the alias was added — two records claiming `/` would resolve arbitrarily.
+  >
+  > **How a member of staff reaches the second screen — decided at `#monthly-summary`'s checkpoint
+  > 11, because until then nothing did.**
+  >
+  > `/monthly-expenses` has no alias and nothing linked to it, so `find-unreachable-screens`
+  > reported it as a **true** positive — unlike `/expenses`, whose report is a known false positive
+  > caused by the page-level alias the script cannot see. A screen a signed-in person can only reach
+  > by typing its address does not give §12's use cases a path, and **both of them begin with
+  > somebody already signed in and working.**
+  >
+  > **The decision: the two signed-in screens link to each other, one link each, in the page's own
+  > header.**
+  >
+  > **Not navigation chrome in `layouts/default.vue`**, and the reason is that the layout is shared
+  > with `/sign-in`. Chrome there would put links to guarded screens in front of somebody who has no
+  > session — every one of them bouncing straight back — on the one screen §10.2 says is reachable
+  > without a session. Two links in two page headers is the smaller and more honest change for an
+  > application with two signed-in screens.
+  >
+  > **The link on `/expenses` is a change to a screen `#expense-entry` already shipped.** That is
+  > planned growth rather than a retake: the screen was complete for its own feature, and what has
+  > changed is that there is now somewhere to go.
 
 ## 4. Platforms & devices
 
@@ -325,8 +347,35 @@
   >     sent and is not validated server-side, because no operation in 1.0.0 lets a caller choose a
   >     sort. It reaches no query. Treat it as untrusted text (Q53).
   > 26. **Never ask for more than 100 rows in a page.** `PAGINATION.MAXIMUM_LIMIT` is 100 and a
-  >     larger `limit` is refused as invalid input (Q50). The number is chosen and not yet
-  >     user-confirmed, so read it rather than hard-coding a second copy.
+  >     larger `limit` is refused as invalid input. **Decided by the user and carried by spec §7's
+  >     `Page size` row**, which is now its authority — an earlier version of this rule called it
+  >     "chosen and not yet user-confirmed", and that stopped being true when Q50 was answered.
+  >     Read §7 rather than hard-coding a second copy. **It does not reach `monthlyExpenses`**,
+  >     which §12.1 declares unpaginated (Q60).
+  >
+  > 27. **The month is screen state, never a route segment.** §12.2 requires the previous month
+  >     to be read **without leaving the screen**, and its own call table says `monthlyExpenses` is
+  >     called *"on opening, and on moving to another month"* — a **re-read, not a re-route**.
+  >     Moving month must not push a route, and must not reload the page.
+  >
+  > 28. **Never disable or refuse a future month.** The instinct is to grey them out, and it is
+  >     wrong here. §11 refuses an expense **dated** after today — a rule about *writing a row* —
+  >     and §12 says nothing of the kind about *reading a month*. A future month is answered
+  >     truthfully as empty with a total of zero, which is §12's own third acceptance criterion,
+  >     and the backend deliberately validates no upper bound on the year. **Refusing one would
+  >     also break this screen's own month navigation.** Q56's date-field lesson does **not**
+  >     transfer here: that was about §11's refusal, and this screen has none.
+  >
+  > 29. **Never sort the entries.** §6's `entry order` row states one clause for both screens —
+  >     newest `spentOn` first, and where two share a date, the more recently recorded first — and
+  >     the backend already returns them that way, from a constant both resolvers share. **There is
+  >     no client-side sort anywhere in this application today**, and that is what makes the two
+  >     lists agree. A sort added here would be re-deciding something §6 settled (Q61).
+  >
+  > 30. **An empty month says the month is empty; it is not an empty table.** §12's acceptance
+  >     criterion names this specifically, and the total still shows — **zero, rendered, not
+  >     hidden.** The frontend convention has an empty-state component for exactly this.
+  >
 
 ## 9. Constraints & non-functional needs
 

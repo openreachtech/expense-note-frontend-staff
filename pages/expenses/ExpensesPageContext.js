@@ -9,7 +9,21 @@ import {
 
 import BaseAppContext from '~/app/vue/contexts/BaseAppContext.js'
 
+import YenAmountFormatter from '~/app/modules/YenAmountFormatter.js'
+
 const PAGE_TITLE = 'Expenses'
+
+/*
+ * The one link out of this screen, and the screen it points at.
+ *
+ * Checkpoint 11 decided that the two signed-in screens link to each other, one link each, in the
+ * page's own header rather than as chrome in `layouts/default.vue` -- that layout is shared with
+ * `/sign-in`, where a link to a guarded screen would bounce straight back. The link is planned
+ * growth of a screen that was already complete for its own feature: what changed is that there is
+ * now somewhere to go.
+ */
+const MONTHLY_EXPENSES_LINK_PATH = '/monthly-expenses'
+const MONTHLY_EXPENSES_LINK_LABEL = 'Monthly expenses'
 
 const RECORDING_FORM_HEADING = 'Record an expense'
 const CORRECTING_FORM_HEADING = 'Correct this entry'
@@ -85,16 +99,6 @@ const SPENT_ON_COLUMN_LABEL = 'Date paid'
 const AMOUNT_COLUMN_LABEL = 'Amount'
 const EXPENSE_CATEGORY_COLUMN_LABEL = 'Category'
 const MEMO_COLUMN_LABEL = 'Memo'
-
-/*
- * The amount is yen, which has no minor unit, so the formatter emits no decimal places of its own.
- * English is the interface language (`ai/contexts/uiux-context.md` section 7) and the currency is
- * the contract's, so neither half of this is a decision made here.
- */
-const AMOUNT_FORMATTER = new Intl.NumberFormat('en-US', {
-  currency: 'JPY',
-  style: 'currency',
-})
 
 /*
  * The offset the screen opens on: the first page of entries.
@@ -322,6 +326,28 @@ export default class ExpensesPageContext extends BaseAppContext {
    */
   get pageTitle () {
     return PAGE_TITLE
+  }
+
+  /**
+   * get: Path of the link to the monthly summary screen.
+   *
+   * @returns {string} The path.
+   */
+  get monthlyExpensesLinkPath () {
+    return MONTHLY_EXPENSES_LINK_PATH
+  }
+
+  /**
+   * get: Label of the link to the monthly summary screen.
+   *
+   * A plain anchor rather than a `FuroButton` dressed as one: a navigation target is an `<a>`, and
+   * hiding that costs the keyboard, the context menu and the accessibility tree's own reading of
+   * what the control does. The words are the link's accessible name, so it needs no `aria-label`.
+   *
+   * @returns {string} The label.
+   */
+  get monthlyExpensesLinkLabel () {
+    return MONTHLY_EXPENSES_LINK_LABEL
   }
 
   /**
@@ -1517,7 +1543,26 @@ export default class ExpensesPageContext extends BaseAppContext {
   extractAmountText ({
     expense,
   }) {
-    return AMOUNT_FORMATTER.format(expense.amount)
+    const yenAmountFormatter = this.createYenAmountFormatter()
+
+    return yenAmountFormatter.formatYenAmount({
+      amount: expense.amount,
+    })
+  }
+
+  /**
+   * Create the formatter that writes a yen amount.
+   *
+   * The configuration used to be a module constant of this file, which was correct while this was
+   * the only screen showing an amount. `/monthly-expenses` shows the same entries in the same four
+   * columns and a total besides, and `ai/contexts/uiux-context-monthly-summary.md` section 4.4
+   * requires the two amount columns to match field for field -- which two independently configured
+   * formatters cannot be relied on to do. There is one configuration now, and both screens read it.
+   *
+   * @returns {YenAmountFormatter} The formatter.
+   */
+  createYenAmountFormatter () {
+    return YenAmountFormatter.create()
   }
 
   /**

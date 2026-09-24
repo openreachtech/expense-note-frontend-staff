@@ -7,6 +7,8 @@ import CorrectExpenseMutationGraphqlCapsule from '~/app/graphql/client/mutations
 import RemoveExpenseMutationGraphqlCapsule from '~/app/graphql/client/mutations/removeExpense/RemoveExpenseMutationGraphqlCapsule.js'
 import SignOutMutationGraphqlCapsule from '~/app/graphql/client/mutations/signOut/SignOutMutationGraphqlCapsule.js'
 
+import YenAmountFormatter from '~/app/modules/YenAmountFormatter.js'
+
 import ExpensesPageContext from '~/pages/expenses/ExpensesPageContext.js'
 
 /*
@@ -17167,6 +17169,294 @@ describe('ExpensesPageContext', () => {
         expect(actual)
           .toEqual(expected)
       })
+    })
+  })
+})
+
+describe('ExpensesPageContext', () => {
+  /*
+   * The one link out of this screen, and the reciprocal of the one `/monthly-expenses` carries.
+   * Checkpoint 11 put a link in each signed-in screen's own header rather than in the shared
+   * layout, which `/sign-in` also uses. Section 8 rule 17 requires the target to exist, and
+   * `/monthly-expenses` does.
+   */
+  describe('#get:monthlyExpensesLinkPath', () => {
+    const cases = [
+      {
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page',
+            },
+          },
+          formValueHashReactive: {
+            spentOn: null,
+            amount: null,
+            expenseCategoryId: null,
+            memo: null,
+          },
+          statusReactive: {
+            isLoadingExpenses: false,
+            isLoadingExpenseCategories: false,
+            isRecordingExpense: false,
+            isRemovingExpense: false,
+            isSigningOut: false,
+            correctingExpenseId: null,
+            removingExpenseId: null,
+          },
+          errorMessageHashReactive: {
+            submittingExpense: null,
+            removingExpense: null,
+            readingExpenses: null,
+            readingExpenseCategories: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            expensesPagination: null,
+            expenseCategories: [],
+          },
+        },
+        expected: '/monthly-expenses',
+      },
+      {
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page expenses',
+            },
+          },
+          formValueHashReactive: {
+            spentOn: '2026-05-07',
+            amount: 330,
+            expenseCategoryId: 10000003,
+            memo: 'Stamps for the notice',
+          },
+          statusReactive: {
+            isLoadingExpenses: true,
+            isLoadingExpenseCategories: false,
+            isRecordingExpense: false,
+            isRemovingExpense: false,
+            isSigningOut: false,
+            correctingExpenseId: null,
+            removingExpenseId: null,
+          },
+          errorMessageHashReactive: {
+            submittingExpense: null,
+            removingExpense: null,
+            readingExpenses: null,
+            readingExpenseCategories: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            expensesPagination: null,
+            expenseCategories: [],
+          },
+        },
+        expected: '/monthly-expenses',
+      },
+    ]
+
+    test.each(cases)('attrs.class: $factoryParams.componentContext.attrs.class', ({
+      factoryParams,
+      expected,
+    }) => {
+      const context = ExpensesPageContext.create(factoryParams)
+
+      const actual = context.monthlyExpensesLinkPath
+
+      expect(actual)
+        .toBe(expected)
+    })
+  })
+})
+
+describe('ExpensesPageContext', () => {
+  describe('#get:monthlyExpensesLinkLabel', () => {
+    const cases = [
+      {
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page',
+            },
+          },
+          formValueHashReactive: {
+            spentOn: null,
+            amount: null,
+            expenseCategoryId: null,
+            memo: null,
+          },
+          statusReactive: {
+            isLoadingExpenses: false,
+            isLoadingExpenseCategories: false,
+            isRecordingExpense: false,
+            isRemovingExpense: false,
+            isSigningOut: false,
+            correctingExpenseId: null,
+            removingExpenseId: null,
+          },
+          errorMessageHashReactive: {
+            submittingExpense: null,
+            removingExpense: null,
+            readingExpenses: null,
+            readingExpenseCategories: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            expensesPagination: null,
+            expenseCategories: [],
+          },
+        },
+        expected: 'Monthly expenses',
+      },
+      {
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page expenses',
+            },
+          },
+          formValueHashReactive: {
+            spentOn: '2026-05-07',
+            amount: 330,
+            expenseCategoryId: 10000003,
+            memo: 'Stamps for the notice',
+          },
+          statusReactive: {
+            isLoadingExpenses: true,
+            isLoadingExpenseCategories: false,
+            isRecordingExpense: false,
+            isRemovingExpense: false,
+            isSigningOut: false,
+            correctingExpenseId: null,
+            removingExpenseId: null,
+          },
+          errorMessageHashReactive: {
+            submittingExpense: null,
+            removingExpense: null,
+            readingExpenses: null,
+            readingExpenseCategories: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            expensesPagination: null,
+            expenseCategories: [],
+          },
+        },
+        expected: 'Monthly expenses',
+      },
+    ]
+
+    test.each(cases)('attrs.class: $factoryParams.componentContext.attrs.class', ({
+      factoryParams,
+      expected,
+    }) => {
+      const context = ExpensesPageContext.create(factoryParams)
+
+      const actual = context.monthlyExpensesLinkLabel
+
+      expect(actual)
+        .toBe(expected)
+    })
+  })
+})
+
+describe('ExpensesPageContext', () => {
+  /*
+   * The amount format used to be a module constant of this page's own context, which was right
+   * while this was the only screen showing an amount. `/monthly-expenses` is the second, and its
+   * design requires the two amount columns to match field for field -- which two independently
+   * configured formatters cannot be relied on to do. Both screens read one module now.
+   */
+  describe('#createYenAmountFormatter()', () => {
+    const cases = [
+      {
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page',
+            },
+          },
+          formValueHashReactive: {
+            spentOn: null,
+            amount: null,
+            expenseCategoryId: null,
+            memo: null,
+          },
+          statusReactive: {
+            isLoadingExpenses: false,
+            isLoadingExpenseCategories: false,
+            isRecordingExpense: false,
+            isRemovingExpense: false,
+            isSigningOut: false,
+            correctingExpenseId: null,
+            removingExpenseId: null,
+          },
+          errorMessageHashReactive: {
+            submittingExpense: null,
+            removingExpense: null,
+            readingExpenses: null,
+            readingExpenseCategories: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            expensesPagination: null,
+            expenseCategories: [],
+          },
+        },
+      },
+      {
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page expenses',
+            },
+          },
+          formValueHashReactive: {
+            spentOn: '2026-05-07',
+            amount: 330,
+            expenseCategoryId: 10000003,
+            memo: 'Stamps for the notice',
+          },
+          statusReactive: {
+            isLoadingExpenses: false,
+            isLoadingExpenseCategories: false,
+            isRecordingExpense: false,
+            isRemovingExpense: false,
+            isSigningOut: false,
+            correctingExpenseId: null,
+            removingExpenseId: null,
+          },
+          errorMessageHashReactive: {
+            submittingExpense: null,
+            removingExpense: null,
+            readingExpenses: null,
+            readingExpenseCategories: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            expensesPagination: null,
+            expenseCategories: [],
+          },
+        },
+      },
+    ]
+
+    test.each(cases)('attrs.class: $factoryParams.componentContext.attrs.class', ({
+      factoryParams,
+    }) => {
+      const context = ExpensesPageContext.create(factoryParams)
+
+      const actual = context.createYenAmountFormatter()
+
+      expect(actual)
+        .toBeInstanceOf(YenAmountFormatter)
     })
   })
 })
