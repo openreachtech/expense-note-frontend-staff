@@ -1,8 +1,22 @@
+import {
+  nextTick,
+  reactive,
+} from 'vue'
+
 import BaseAppContext from '~/app/vue/contexts/BaseAppContext.js'
+
+import MonthlyExpensesQueryGraphqlCapsule from '~/app/graphql/client/queries/monthlyExpenses/MonthlyExpensesQueryGraphqlCapsule.js'
 
 import YenAmountFormatter from '~/app/modules/YenAmountFormatter.js'
 
 import MonthlyExpensesPageContext from '~/pages/monthly-expenses/MonthlyExpensesPageContext.js'
+
+/*
+ * The key furo reads a response's content from. It is written as a constant because the name furo
+ * chose for it is one `@openreachtech/eslint-config` denies as an identifier, and the envelope is
+ * furo's to name, not this repository's.
+ */
+const RESPONSE_CONTENT_FIELD = 'data'
 
 describe('MonthlyExpensesPageContext', () => {
   describe('super class', () => {
@@ -41,6 +55,14 @@ describe('MonthlyExpensesPageContext', () => {
               expenses: [],
               totalAmount: null,
             },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: 'monthly-expenses-capsule-001',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
           },
         },
         {
@@ -64,6 +86,14 @@ describe('MonthlyExpensesPageContext', () => {
             responseHashReactive: {
               expenses: [],
               totalAmount: 0,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: 'monthly-expenses-capsule-002',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
             },
           },
         },
@@ -103,6 +133,14 @@ describe('MonthlyExpensesPageContext', () => {
               expenses: [],
               totalAmount: null,
             },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: 'monthly-expenses-capsule-003',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
           },
         },
         {
@@ -126,6 +164,14 @@ describe('MonthlyExpensesPageContext', () => {
             responseHashReactive: {
               expenses: [],
               totalAmount: 0,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: 'monthly-expenses-capsule-004',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
             },
           },
         },
@@ -172,6 +218,14 @@ describe('MonthlyExpensesPageContext', () => {
                 expenses: [],
                 totalAmount: null,
               },
+              graphqlClientHash: {
+                monthlyExpenses: {
+                  capsuleRef: {
+                    value: 'monthly-expenses-capsule-005',
+                  },
+                  invokeRequestOnEvent: async () => {},
+                },
+              },
             },
           },
           {
@@ -195,6 +249,14 @@ describe('MonthlyExpensesPageContext', () => {
               responseHashReactive: {
                 expenses: [],
                 totalAmount: 0,
+              },
+              graphqlClientHash: {
+                monthlyExpenses: {
+                  capsuleRef: {
+                    value: 'monthly-expenses-capsule-006',
+                  },
+                  invokeRequestOnEvent: async () => {},
+                },
               },
             },
           },
@@ -234,6 +296,14 @@ describe('MonthlyExpensesPageContext', () => {
                 expenses: [],
                 totalAmount: null,
               },
+              graphqlClientHash: {
+                monthlyExpenses: {
+                  capsuleRef: {
+                    value: 'monthly-expenses-capsule-007',
+                  },
+                  invokeRequestOnEvent: async () => {},
+                },
+              },
             },
           },
           {
@@ -257,6 +327,14 @@ describe('MonthlyExpensesPageContext', () => {
               responseHashReactive: {
                 expenses: [],
                 totalAmount: 0,
+              },
+              graphqlClientHash: {
+                monthlyExpenses: {
+                  capsuleRef: {
+                    value: 'monthly-expenses-capsule-008',
+                  },
+                  invokeRequestOnEvent: async () => {},
+                },
               },
             },
           },
@@ -296,6 +374,14 @@ describe('MonthlyExpensesPageContext', () => {
                 expenses: [],
                 totalAmount: null,
               },
+              graphqlClientHash: {
+                monthlyExpenses: {
+                  capsuleRef: {
+                    value: 'monthly-expenses-capsule-009',
+                  },
+                  invokeRequestOnEvent: async () => {},
+                },
+              },
             },
           },
           {
@@ -319,6 +405,14 @@ describe('MonthlyExpensesPageContext', () => {
               responseHashReactive: {
                 expenses: [],
                 totalAmount: 0,
+              },
+              graphqlClientHash: {
+                monthlyExpenses: {
+                  capsuleRef: {
+                    value: 'monthly-expenses-capsule-010',
+                  },
+                  invokeRequestOnEvent: async () => {},
+                },
               },
             },
           },
@@ -358,6 +452,14 @@ describe('MonthlyExpensesPageContext', () => {
                 expenses: [],
                 totalAmount: null,
               },
+              graphqlClientHash: {
+                monthlyExpenses: {
+                  capsuleRef: {
+                    value: 'monthly-expenses-capsule-011',
+                  },
+                  invokeRequestOnEvent: async () => {},
+                },
+              },
             },
           },
           {
@@ -381,6 +483,14 @@ describe('MonthlyExpensesPageContext', () => {
               responseHashReactive: {
                 expenses: [],
                 totalAmount: 0,
+              },
+              graphqlClientHash: {
+                monthlyExpenses: {
+                  capsuleRef: {
+                    value: 'monthly-expenses-capsule-012',
+                  },
+                  invokeRequestOnEvent: async () => {},
+                },
               },
             },
           },
@@ -420,6 +530,14 @@ describe('MonthlyExpensesPageContext', () => {
                 expenses: [],
                 totalAmount: null,
               },
+              graphqlClientHash: {
+                monthlyExpenses: {
+                  capsuleRef: {
+                    value: 'monthly-expenses-capsule-013',
+                  },
+                  invokeRequestOnEvent: async () => {},
+                },
+              },
             },
           },
           {
@@ -443,6 +561,14 @@ describe('MonthlyExpensesPageContext', () => {
               responseHashReactive: {
                 expenses: [],
                 totalAmount: 0,
+              },
+              graphqlClientHash: {
+                monthlyExpenses: {
+                  capsuleRef: {
+                    value: 'monthly-expenses-capsule-014',
+                  },
+                  invokeRequestOnEvent: async () => {},
+                },
               },
             },
           },
@@ -482,6 +608,14 @@ describe('MonthlyExpensesPageContext', () => {
                 expenses: [],
                 totalAmount: null,
               },
+              graphqlClientHash: {
+                monthlyExpenses: {
+                  capsuleRef: {
+                    value: 'monthly-expenses-capsule-015',
+                  },
+                  invokeRequestOnEvent: async () => {},
+                },
+              },
             },
           },
           {
@@ -506,6 +640,14 @@ describe('MonthlyExpensesPageContext', () => {
                 expenses: [],
                 totalAmount: 0,
               },
+              graphqlClientHash: {
+                monthlyExpenses: {
+                  capsuleRef: {
+                    value: 'monthly-expenses-capsule-016',
+                  },
+                  invokeRequestOnEvent: async () => {},
+                },
+              },
             },
           },
         ]
@@ -517,6 +659,84 @@ describe('MonthlyExpensesPageContext', () => {
 
           expect(actual)
             .toHaveProperty('responseHashReactive', params.responseHashReactive)
+        })
+      })
+
+      describe('#graphqlClientHash', () => {
+        const cases = [
+          {
+            params: {
+              props: {},
+              componentContext: {
+                attrs: {
+                  class: 'unit-page',
+                },
+              },
+              monthValueHashReactive: {
+                year: 2026,
+                month: 9,
+              },
+              statusReactive: {
+                isLoadingMonthlyExpenses: false,
+              },
+              errorMessageHashReactive: {
+                readingMonthlyExpenses: null,
+              },
+              responseHashReactive: {
+                expenses: [],
+                totalAmount: null,
+              },
+              graphqlClientHash: {
+                monthlyExpenses: {
+                  capsuleRef: {
+                    value: 'kept-graphql-client-hash-first-capsule',
+                  },
+                  invokeRequestOnEvent: async () => {},
+                },
+              },
+            },
+          },
+          {
+            params: {
+              props: {},
+              componentContext: {
+                attrs: {
+                  class: 'unit-page monthly-expenses',
+                },
+              },
+              monthValueHashReactive: {
+                year: 2025,
+                month: 1,
+              },
+              statusReactive: {
+                isLoadingMonthlyExpenses: true,
+              },
+              errorMessageHashReactive: {
+                readingMonthlyExpenses: 'This month could not be read.',
+              },
+              responseHashReactive: {
+                expenses: [],
+                totalAmount: 0,
+              },
+              graphqlClientHash: {
+                monthlyExpenses: {
+                  capsuleRef: {
+                    value: 'kept-graphql-client-hash-second-capsule',
+                  },
+                  invokeRequestOnEvent: async () => {},
+                },
+              },
+            },
+          },
+        ]
+
+        test.each(cases)('capsuleRef.value: $params.graphqlClientHash.monthlyExpenses.capsuleRef.value', ({
+          params,
+        }) => {
+          const actual = new MonthlyExpensesPageContext(params)
+
+          expect(actual)
+            .toHaveProperty('graphqlClientHash', params.graphqlClientHash)
         })
       })
     })
@@ -761,6 +981,38 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: MonthlyExpensesQueryGraphqlCapsule.create({
+                  result: {
+                    [RESPONSE_CONTENT_FIELD]: {
+                      monthlyExpenses: {
+                        expenses: [
+                          {
+                            id: 10200011,
+                            spentOn: '2026-09-20',
+                            amount: 1200,
+                            memo: 'Train fare to the client',
+                            status: 'recorded',
+                            expenseCategory: {
+                              id: 10000001,
+                              name: 'transport',
+                              displayOrder: 1,
+                            },
+                            createdAt: '2026-09-20T11:30:00.000Z',
+                            updatedAt: '2026-09-20T11:30:00.000Z',
+                          },
+                        ],
+                        totalAmount: 1200,
+                      },
+                    },
+                  },
+                }),
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
       },
       {
@@ -784,6 +1036,23 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: MonthlyExpensesQueryGraphqlCapsule.create({
+                  result: {
+                    [RESPONSE_CONTENT_FIELD]: {
+                      monthlyExpenses: {
+                        expenses: [],
+                        totalAmount: 0,
+                      },
+                    },
+                  },
+                }),
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
       },
@@ -827,6 +1096,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-019',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: 'Monthly expenses',
       },
@@ -851,6 +1128,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-020',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: 'Monthly expenses',
@@ -901,6 +1186,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-021',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: '/expenses',
       },
@@ -925,6 +1218,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-022',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: '/expenses',
@@ -970,6 +1271,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-023',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: 'Expenses',
       },
@@ -994,6 +1303,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-024',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: 'Expenses',
@@ -1039,6 +1356,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-025',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: 2026,
       },
@@ -1063,6 +1388,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-026',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: 1999,
@@ -1108,6 +1441,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-027',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: 9,
       },
@@ -1132,6 +1473,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-028',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: 1,
@@ -1181,6 +1530,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-029',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: [
@@ -1252,6 +1609,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-030',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: [
           {
@@ -1322,6 +1687,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-031',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: [
           {
@@ -1379,6 +1752,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-032',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: [
@@ -1461,6 +1842,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-033',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: [
           {
@@ -1534,6 +1923,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-034',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: [
@@ -1628,6 +2025,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-035',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           label: 'Year',
@@ -1655,6 +2060,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-036',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: {
@@ -1703,6 +2116,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-037',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           label: 'Month',
@@ -1730,6 +2151,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-038',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: {
@@ -1783,6 +2212,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-039',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           id: 'monthly-expenses-year',
@@ -1809,6 +2246,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-040',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: {
@@ -1856,6 +2301,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-041',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           id: 'monthly-expenses-month',
@@ -1882,6 +2335,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-042',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: {
@@ -1928,6 +2389,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-043',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: {
@@ -1997,6 +2466,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-044',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: {
@@ -2070,6 +2547,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-045',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           value: 9,
@@ -2110,6 +2595,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-046',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: {
@@ -2176,6 +2669,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-047',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           variant: 'outline',
@@ -2203,6 +2704,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-048',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: {
@@ -2251,6 +2760,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-049',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           variant: 'outline',
@@ -2278,6 +2795,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-050',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: {
@@ -2326,6 +2851,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-051',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: 'Previous',
       },
@@ -2350,6 +2883,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-052',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: 'Previous',
@@ -2399,6 +2940,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-053',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: 'Previous month',
       },
@@ -2423,6 +2972,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-054',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: 'Previous month',
@@ -2468,6 +3025,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-055',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: 'Next',
       },
@@ -2492,6 +3057,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-056',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: 'Next',
@@ -2537,6 +3110,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-057',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: 'Next month',
       },
@@ -2561,6 +3142,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-058',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: 'Next month',
@@ -2606,6 +3195,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-059',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           variant: 'default',
@@ -2634,6 +3231,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-060',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: {
@@ -2683,6 +3288,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-061',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: 'Try again',
       },
@@ -2707,6 +3320,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-062',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: 'Try again',
@@ -2752,6 +3373,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: 0,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-063',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: 'Total',
       },
@@ -2776,6 +3405,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: 1200,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-064',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: 'Total',
@@ -2825,6 +3462,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-065',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: [
           {
@@ -2871,6 +3516,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-066',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: [
@@ -2963,6 +3616,14 @@ describe('MonthlyExpensesPageContext', () => {
             ],
             totalAmount: 13145,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-067',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: [
           {
@@ -3017,6 +3678,14 @@ describe('MonthlyExpensesPageContext', () => {
               },
             ],
             totalAmount: 1000000,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-068',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: [
@@ -3085,6 +3754,14 @@ describe('MonthlyExpensesPageContext', () => {
             ],
             totalAmount: 12345,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-069',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           columns: expect.any(Array),
@@ -3127,6 +3804,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-070',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           columns: expect.any(Array),
@@ -3159,6 +3844,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-071',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: {
@@ -3216,6 +3909,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: 0,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-072',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           title: 'No expenses in September 2026',
@@ -3243,6 +3944,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: 0,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-073',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: {
@@ -3291,6 +4000,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-074',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           title: 'This month could not be read.',
@@ -3318,6 +4035,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-075',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: {
@@ -3366,6 +4091,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-076',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: 'September 2026',
       },
@@ -3391,6 +4124,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-077',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: 'January 1999',
       },
@@ -3415,6 +4156,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-078',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: 'December 2100',
@@ -3495,6 +4244,14 @@ describe('MonthlyExpensesPageContext', () => {
           expenses: [],
           totalAmount: null,
         },
+        graphqlClientHash: {
+          monthlyExpenses: {
+            capsuleRef: {
+              value: 'monthly-expenses-capsule-079',
+            },
+            invokeRequestOnEvent: async () => {},
+          },
+        },
       })
 
       const actual = context.extractMonthName(params)
@@ -3530,6 +4287,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: 0,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-080',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: 'No expenses in September 2026',
       },
@@ -3554,6 +4319,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: 0,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-081',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: 'No expenses in April 2027',
@@ -3607,6 +4380,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: 0,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-082',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: '¥0',
       },
@@ -3632,6 +4413,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: 1234567,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-083',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: '¥1,234,567',
@@ -3659,6 +4448,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-084',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: '—',
       },
@@ -3684,6 +4481,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-085',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: '—',
@@ -3729,6 +4534,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-086',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
       },
       {
@@ -3752,6 +4565,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-087',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
       },
@@ -3829,6 +4650,14 @@ describe('MonthlyExpensesPageContext', () => {
         responseHashReactive: {
           expenses: [],
           totalAmount: null,
+        },
+        graphqlClientHash: {
+          monthlyExpenses: {
+            capsuleRef: {
+              value: 'monthly-expenses-capsule-088',
+            },
+            invokeRequestOnEvent: async () => {},
+          },
         },
       })
 
@@ -3915,6 +4744,14 @@ describe('MonthlyExpensesPageContext', () => {
           expenses: [],
           totalAmount: null,
         },
+        graphqlClientHash: {
+          monthlyExpenses: {
+            capsuleRef: {
+              value: 'monthly-expenses-capsule-089',
+            },
+            invokeRequestOnEvent: async () => {},
+          },
+        },
       })
 
       const actual = context.extractAmountText(params)
@@ -3984,6 +4821,14 @@ describe('MonthlyExpensesPageContext', () => {
         responseHashReactive: {
           expenses: [],
           totalAmount: null,
+        },
+        graphqlClientHash: {
+          monthlyExpenses: {
+            capsuleRef: {
+              value: 'monthly-expenses-capsule-090',
+            },
+            invokeRequestOnEvent: async () => {},
+          },
         },
       })
 
@@ -4074,6 +4919,14 @@ describe('MonthlyExpensesPageContext', () => {
           expenses: [],
           totalAmount: null,
         },
+        graphqlClientHash: {
+          monthlyExpenses: {
+            capsuleRef: {
+              value: 'monthly-expenses-capsule-091',
+            },
+            invokeRequestOnEvent: async () => {},
+          },
+        },
       })
 
       const actual = context.extractMemoText(params)
@@ -4150,6 +5003,14 @@ describe('MonthlyExpensesPageContext', () => {
           expenses: [],
           totalAmount: null,
         },
+        graphqlClientHash: {
+          monthlyExpenses: {
+            capsuleRef: {
+              value: 'monthly-expenses-capsule-092',
+            },
+            invokeRequestOnEvent: async () => {},
+          },
+        },
       })
 
       const actual = context.isSpentOnColumn(params)
@@ -4192,6 +5053,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: 0,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-093',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: true,
       },
@@ -4229,6 +5098,14 @@ describe('MonthlyExpensesPageContext', () => {
             ],
             totalAmount: 12345,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-094',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: false,
       },
@@ -4254,6 +5131,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: 0,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-095',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: false,
@@ -4281,6 +5166,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: 0,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-096',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: false,
       },
@@ -4306,6 +5199,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-097',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: false,
@@ -4352,6 +5253,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: 0,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-098',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: true,
       },
@@ -4378,6 +5287,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: 800,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-099',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: true,
       },
@@ -4403,6 +5320,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-100',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: false,
@@ -4448,6 +5373,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-101',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: true,
       },
@@ -4472,6 +5405,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-102',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: false,
@@ -4517,6 +5458,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-103',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: true,
       },
@@ -4541,6 +5490,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-104',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: false,
@@ -4587,6 +5544,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-105',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         params: {
           monthOffset: -1,
@@ -4618,6 +5583,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-106',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         params: {
@@ -4651,6 +5624,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-107',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         params: {
           monthOffset: 1,
@@ -4683,6 +5664,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-108',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         params: {
           monthOffset: -1,
@@ -4714,6 +5703,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-109',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         params: {
@@ -4816,6 +5813,14 @@ describe('MonthlyExpensesPageContext', () => {
           expenses: [],
           totalAmount: null,
         },
+        graphqlClientHash: {
+          monthlyExpenses: {
+            capsuleRef: {
+              value: 'monthly-expenses-capsule-110',
+            },
+            invokeRequestOnEvent: async () => {},
+          },
+        },
       })
 
       const actual = context.isWithinCalendar(params)
@@ -4855,6 +5860,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-111',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         params: {
           monthValueHash: {
@@ -4889,6 +5902,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-112',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         params: {
           monthValueHash: {
@@ -4922,6 +5943,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-113',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         params: {
@@ -4978,6 +6007,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-114',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           year: 2026,
@@ -5007,6 +6044,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-115',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           year: 2025,
@@ -5035,6 +6080,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-116',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: {
@@ -5084,6 +6137,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-117',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           year: 2026,
@@ -5113,6 +6174,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-118',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           year: 2027,
@@ -5141,6 +6210,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-119',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         expected: {
@@ -5189,6 +6266,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-120',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         params: {
           payload: {
@@ -5221,6 +6306,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-121',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         params: {
@@ -5275,6 +6368,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-122',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         params: {
           payload: {
@@ -5307,6 +6408,14 @@ describe('MonthlyExpensesPageContext', () => {
           responseHashReactive: {
             expenses: [],
             totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-123',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
           },
         },
         params: {
@@ -5361,6 +6470,23 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: MonthlyExpensesQueryGraphqlCapsule.create({
+                  result: {
+                    [RESPONSE_CONTENT_FIELD]: {
+                      monthlyExpenses: {
+                        expenses: [],
+                        totalAmount: 0,
+                      },
+                    },
+                  },
+                }),
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           readingMonthlyExpenses: null,
@@ -5388,6 +6514,23 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: MonthlyExpensesQueryGraphqlCapsule.create({
+                  result: {
+                    [RESPONSE_CONTENT_FIELD]: {
+                      monthlyExpenses: {
+                        expenses: [],
+                        totalAmount: 0,
+                      },
+                    },
+                  },
+                }),
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           readingMonthlyExpenses: null,
@@ -5395,13 +6538,13 @@ describe('MonthlyExpensesPageContext', () => {
       },
     ]
 
-    test.each(cases)('readingMonthlyExpenses: $factoryParams.errorMessageHashReactive.readingMonthlyExpenses', ({
+    test.each(cases)('readingMonthlyExpenses: $factoryParams.errorMessageHashReactive.readingMonthlyExpenses', async ({
       factoryParams,
       expected,
     }) => {
       const context = MonthlyExpensesPageContext.create(factoryParams)
 
-      context.onClickRetry()
+      await context.onClickRetry()
 
       expect(factoryParams.errorMessageHashReactive)
         .toEqual(expected)
@@ -5434,6 +6577,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-126',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           readingMonthlyExpenses: null,
@@ -5461,6 +6612,14 @@ describe('MonthlyExpensesPageContext', () => {
             expenses: [],
             totalAmount: null,
           },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'monthly-expenses-capsule-127',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
         },
         expected: {
           readingMonthlyExpenses: null,
@@ -5478,6 +6637,2811 @@ describe('MonthlyExpensesPageContext', () => {
 
       expect(factoryParams.errorMessageHashReactive)
         .toEqual(expected)
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  describe('#get:monthlyExpensesCapsule', () => {
+    describe('should answer the capsule the injected client is holding', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 9,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: 'capsule-getter-first-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: 'capsule-getter-first-capsule',
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page monthly-expenses',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2025,
+              month: 1,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: true,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: 'capsule-getter-second-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: 'capsule-getter-second-capsule',
+        },
+      ]
+
+      test.each(cases)('capsuleRef.value: $factoryParams.graphqlClientHash.monthlyExpenses.capsuleRef.value', ({
+        factoryParams,
+        expected,
+      }) => {
+        const context = MonthlyExpensesPageContext.create(factoryParams)
+
+        const actual = context.monthlyExpensesCapsule
+
+        expect(actual)
+          .toBe(expected)
+      })
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  describe('#get:monthlyExpensesLauncherHooks', () => {
+    describe('should answer the two hooks the launcher calls', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 9,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: 'hooks-shape-first-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            beforeRequest: expect.any(Function),
+            afterRequest: expect.any(Function),
+          },
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page monthly-expenses',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2025,
+              month: 1,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: true,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: 'hooks-shape-second-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            beforeRequest: expect.any(Function),
+            afterRequest: expect.any(Function),
+          },
+        },
+      ]
+
+      test.each(cases)('capsuleRef.value: $factoryParams.graphqlClientHash.monthlyExpenses.capsuleRef.value', ({
+        factoryParams,
+        expected,
+      }) => {
+        const context = MonthlyExpensesPageContext.create(factoryParams)
+
+        const actual = context.monthlyExpensesLauncherHooks
+
+        expect(actual)
+          .toEqual(expected)
+      })
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  /*
+   * The waiting state is the request's own, and this is where that is checked: the flag is raised
+   * by the hook the launcher calls on its way out and lowered by the one it calls on the way back,
+   * rather than by this class around the call. `beforeRequest` answering false is what lets the
+   * request proceed at all -- true aborts it.
+   */
+  describe('#get:monthlyExpensesLauncherHooks', () => {
+    describe('should raise the waiting flag before the request, and let it proceed', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 9,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: 'hooks-before-first-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            isLoadingMonthlyExpenses: true,
+          },
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page monthly-expenses',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2025,
+              month: 1,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: true,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: 'hooks-before-second-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            isLoadingMonthlyExpenses: true,
+          },
+        },
+      ]
+
+      test.each(cases)('capsuleRef.value: $factoryParams.graphqlClientHash.monthlyExpenses.capsuleRef.value', async ({
+        factoryParams,
+        expected,
+      }) => {
+        const context = MonthlyExpensesPageContext.create(factoryParams)
+        const hooks = context.monthlyExpensesLauncherHooks
+
+        const actual = await hooks.beforeRequest()
+
+        expect(actual)
+          .toBeFalsy()
+        expect(factoryParams.statusReactive)
+          .toEqual(expected)
+      })
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  describe('#get:monthlyExpensesLauncherHooks', () => {
+    describe('should lower the waiting flag after the request', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 9,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: true,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: 'hooks-after-first-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            isLoadingMonthlyExpenses: false,
+          },
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page monthly-expenses',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2025,
+              month: 1,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: 'hooks-after-second-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            isLoadingMonthlyExpenses: false,
+          },
+        },
+      ]
+
+      test.each(cases)('capsuleRef.value: $factoryParams.graphqlClientHash.monthlyExpenses.capsuleRef.value', async ({
+        factoryParams,
+        expected,
+      }) => {
+        const context = MonthlyExpensesPageContext.create(factoryParams)
+        const hooks = context.monthlyExpensesLauncherHooks
+
+        await hooks.afterRequest()
+
+        expect(factoryParams.statusReactive)
+          .toEqual(expected)
+      })
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  describe('#startLoadingMonthlyExpenses()', () => {
+    const cases = [
+      {
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page',
+            },
+          },
+          monthValueHashReactive: {
+            year: 2026,
+            month: 9,
+          },
+          statusReactive: {
+            isLoadingMonthlyExpenses: false,
+          },
+          errorMessageHashReactive: {
+            readingMonthlyExpenses: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'start-loading-first-capsule',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
+        },
+        expected: {
+          isLoadingMonthlyExpenses: true,
+        },
+      },
+      {
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page monthly-expenses',
+            },
+          },
+          monthValueHashReactive: {
+            year: 2025,
+            month: 1,
+          },
+          statusReactive: {
+            isLoadingMonthlyExpenses: true,
+          },
+          errorMessageHashReactive: {
+            readingMonthlyExpenses: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'start-loading-second-capsule',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
+        },
+        expected: {
+          isLoadingMonthlyExpenses: true,
+        },
+      },
+    ]
+
+    test.each(cases)('isLoadingMonthlyExpenses: $factoryParams.statusReactive.isLoadingMonthlyExpenses', ({
+      factoryParams,
+      expected,
+    }) => {
+      const context = MonthlyExpensesPageContext.create(factoryParams)
+
+      context.startLoadingMonthlyExpenses()
+
+      expect(factoryParams.statusReactive)
+        .toEqual(expected)
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  describe('#finishLoadingMonthlyExpenses()', () => {
+    const cases = [
+      {
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page',
+            },
+          },
+          monthValueHashReactive: {
+            year: 2026,
+            month: 9,
+          },
+          statusReactive: {
+            isLoadingMonthlyExpenses: true,
+          },
+          errorMessageHashReactive: {
+            readingMonthlyExpenses: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'finish-loading-first-capsule',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
+        },
+        expected: {
+          isLoadingMonthlyExpenses: false,
+        },
+      },
+      {
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page monthly-expenses',
+            },
+          },
+          monthValueHashReactive: {
+            year: 2025,
+            month: 1,
+          },
+          statusReactive: {
+            isLoadingMonthlyExpenses: false,
+          },
+          errorMessageHashReactive: {
+            readingMonthlyExpenses: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'finish-loading-second-capsule',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
+        },
+        expected: {
+          isLoadingMonthlyExpenses: false,
+        },
+      },
+    ]
+
+    test.each(cases)('isLoadingMonthlyExpenses: $factoryParams.statusReactive.isLoadingMonthlyExpenses', ({
+      factoryParams,
+      expected,
+    }) => {
+      const context = MonthlyExpensesPageContext.create(factoryParams)
+
+      context.finishLoadingMonthlyExpenses()
+
+      expect(factoryParams.statusReactive)
+        .toEqual(expected)
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  describe('#buildChosenMonth()', () => {
+    const cases = [
+      {
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page',
+            },
+          },
+          monthValueHashReactive: {
+            year: 2026,
+            month: 9,
+          },
+          statusReactive: {
+            isLoadingMonthlyExpenses: false,
+          },
+          errorMessageHashReactive: {
+            readingMonthlyExpenses: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'build-chosen-month-first-capsule',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
+        },
+        expected: {
+          year: 2026,
+          month: 9,
+        },
+      },
+      {
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page monthly-expenses',
+            },
+          },
+          monthValueHashReactive: {
+            year: 1999,
+            month: 12,
+          },
+          statusReactive: {
+            isLoadingMonthlyExpenses: false,
+          },
+          errorMessageHashReactive: {
+            readingMonthlyExpenses: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'build-chosen-month-second-capsule',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
+        },
+        expected: {
+          year: 1999,
+          month: 12,
+        },
+      },
+    ]
+
+    test.each(cases)('year: $factoryParams.monthValueHashReactive.year', ({
+      factoryParams,
+      expected,
+    }) => {
+      const context = MonthlyExpensesPageContext.create(factoryParams)
+
+      const actual = context.buildChosenMonth()
+
+      expect(actual)
+        .toEqual(expected)
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  /*
+   * Section 12's second acceptance criterion -- the first and the last day of the month are in, the
+   * days either side of them are out -- has no frontend surface beyond this: the screen names a
+   * month and never a date range, so the boundary is the backend's to draw and there is nothing
+   * here that could draw it differently. What is checked is that the variables carry the pair and
+   * nothing else.
+   */
+  describe('#buildMonthlyExpensesVariables()', () => {
+    const cases = [
+      {
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page',
+            },
+          },
+          monthValueHashReactive: {
+            year: 2026,
+            month: 9,
+          },
+          statusReactive: {
+            isLoadingMonthlyExpenses: false,
+          },
+          errorMessageHashReactive: {
+            readingMonthlyExpenses: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'build-variables-first-capsule',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
+        },
+        params: {
+          monthValueHash: {
+            year: 2026,
+            month: 9,
+          },
+        },
+        expected: {
+          input: {
+            year: 2026,
+            month: 9,
+          },
+        },
+      },
+      {
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page monthly-expenses',
+            },
+          },
+          monthValueHashReactive: {
+            year: 2026,
+            month: 9,
+          },
+          statusReactive: {
+            isLoadingMonthlyExpenses: false,
+          },
+          errorMessageHashReactive: {
+            readingMonthlyExpenses: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'build-variables-second-capsule',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
+        },
+        params: {
+          monthValueHash: {
+            year: 2025,
+            month: 2,
+          },
+        },
+        expected: {
+          input: {
+            year: 2025,
+            month: 2,
+          },
+        },
+      },
+    ]
+
+    test.each(cases)('monthValueHash.month: $params.monthValueHash.month', ({
+      factoryParams,
+      params,
+      expected,
+    }) => {
+      const context = MonthlyExpensesPageContext.create(factoryParams)
+
+      const actual = context.buildMonthlyExpensesVariables(params)
+
+      expect(actual)
+        .toEqual(expected)
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  describe('#clearMonthlyExpenses()', () => {
+    describe('should take the previous month off the screen, total included', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 9,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [
+                {
+                  id: 10200011,
+                  spentOn: '2026-09-20',
+                  amount: 1200,
+                  memo: 'Train fare to the client',
+                  status: 'recorded',
+                  expenseCategory: {
+                    id: 10000001,
+                    name: 'transport',
+                    displayOrder: 1,
+                  },
+                  createdAt: '2026-09-20T11:30:00.000Z',
+                  updatedAt: '2026-09-20T11:30:00.000Z',
+                },
+              ],
+              totalAmount: 1200,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: 'clear-monthly-expenses-first-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            expenses: [],
+            totalAmount: null,
+          },
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page monthly-expenses',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2025,
+              month: 1,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: 0,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: 'clear-monthly-expenses-second-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            expenses: [],
+            totalAmount: null,
+          },
+        },
+      ]
+
+      test.each(cases)('totalAmount: $factoryParams.responseHashReactive.totalAmount', ({
+        factoryParams,
+        expected,
+      }) => {
+        const context = MonthlyExpensesPageContext.create(factoryParams)
+
+        context.clearMonthlyExpenses()
+
+        expect(factoryParams.responseHashReactive)
+          .toEqual(expected)
+      })
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  /*
+   * The stale-response guard of `ai/contexts/uiux-context-monthly-summary.md` section 4.2, at its
+   * own seam. The month control is never disabled while a read is in flight, so three quick presses
+   * of "Previous" put three requests in flight; this is what decides which of their answers is
+   * allowed on screen.
+   */
+  describe('#isStaleResponse()', () => {
+    const cases = [
+      {
+        label: 'the month still chosen',
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page',
+            },
+          },
+          monthValueHashReactive: {
+            year: 2026,
+            month: 9,
+          },
+          statusReactive: {
+            isLoadingMonthlyExpenses: false,
+          },
+          errorMessageHashReactive: {
+            readingMonthlyExpenses: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'is-stale-same-capsule',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
+        },
+        params: {
+          monthValueHash: {
+            year: 2026,
+            month: 9,
+          },
+        },
+        expected: false,
+      },
+      {
+        label: 'another month of the same year',
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page',
+            },
+          },
+          monthValueHashReactive: {
+            year: 2026,
+            month: 6,
+          },
+          statusReactive: {
+            isLoadingMonthlyExpenses: false,
+          },
+          errorMessageHashReactive: {
+            readingMonthlyExpenses: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'is-stale-other-month-capsule',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
+        },
+        params: {
+          monthValueHash: {
+            year: 2026,
+            month: 9,
+          },
+        },
+        expected: true,
+      },
+      {
+        label: 'the same month of another year',
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page',
+            },
+          },
+          monthValueHashReactive: {
+            year: 2024,
+            month: 9,
+          },
+          statusReactive: {
+            isLoadingMonthlyExpenses: false,
+          },
+          errorMessageHashReactive: {
+            readingMonthlyExpenses: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'is-stale-other-year-capsule',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
+        },
+        params: {
+          monthValueHash: {
+            year: 2026,
+            month: 9,
+          },
+        },
+        expected: true,
+      },
+    ]
+
+    test.each(cases)('label: $label', ({
+      factoryParams,
+      params,
+      expected,
+    }) => {
+      const context = MonthlyExpensesPageContext.create(factoryParams)
+
+      const actual = context.isStaleResponse(params)
+
+      expect(actual)
+        .toBe(expected)
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  /*
+   * Section 12's first acceptance criterion, on the side the frontend owns: the total the screen
+   * shows is the one the answer carried, and never a figure this class computes from the rows it
+   * happens to be holding. A frontend sum would be a second opinion, and the two could disagree.
+   *
+   * Section 12's fourth criterion is here too: an entry recorded, corrected or removed on the other
+   * screen reaches this one by the next read landing, and what that costs here is that the previous
+   * answer is replaced outright rather than merged into.
+   */
+  describe('#holdMonthlyExpenses()', () => {
+    describe('should hold the entries and the total the answer carried', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 9,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: 'hold-monthly-expenses-first-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          params: {
+            capsule: MonthlyExpensesQueryGraphqlCapsule.create({
+              result: {
+                [RESPONSE_CONTENT_FIELD]: {
+                  monthlyExpenses: {
+                    expenses: [
+                      {
+                        id: 10200011,
+                        spentOn: '2026-09-20',
+                        amount: 1200,
+                        memo: 'Train fare to the client',
+                        status: 'recorded',
+                        expenseCategory: {
+                          id: 10000001,
+                          name: 'transport',
+                          displayOrder: 1,
+                        },
+                        createdAt: '2026-09-20T11:30:00.000Z',
+                        updatedAt: '2026-09-20T11:30:00.000Z',
+                      },
+                      {
+                        id: 10200012,
+                        spentOn: '2026-09-04',
+                        amount: 3400,
+                        memo: 'Lunch with the supplier',
+                        status: 'recorded',
+                        expenseCategory: {
+                          id: 10000002,
+                          name: 'meals',
+                          displayOrder: 2,
+                        },
+                        createdAt: '2026-09-04T09:15:00.000Z',
+                        updatedAt: '2026-09-04T09:15:00.000Z',
+                      },
+                    ],
+                    totalAmount: 4600,
+                  },
+                },
+              },
+            }),
+          },
+          expected: {
+            expenses: [
+              {
+                id: 10200011,
+                spentOn: '2026-09-20',
+                amount: 1200,
+                memo: 'Train fare to the client',
+                status: 'recorded',
+                expenseCategory: {
+                  id: 10000001,
+                  name: 'transport',
+                  displayOrder: 1,
+                },
+                createdAt: '2026-09-20T11:30:00.000Z',
+                updatedAt: '2026-09-20T11:30:00.000Z',
+              },
+              {
+                id: 10200012,
+                spentOn: '2026-09-04',
+                amount: 3400,
+                memo: 'Lunch with the supplier',
+                status: 'recorded',
+                expenseCategory: {
+                  id: 10000002,
+                  name: 'meals',
+                  displayOrder: 2,
+                },
+                createdAt: '2026-09-04T09:15:00.000Z',
+                updatedAt: '2026-09-04T09:15:00.000Z',
+              },
+            ],
+            totalAmount: 4600,
+          },
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page monthly-expenses',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 10,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [
+                {
+                  id: 10200011,
+                  spentOn: '2026-09-20',
+                  amount: 1200,
+                  memo: 'Train fare to the client',
+                  status: 'recorded',
+                  expenseCategory: {
+                    id: 10000001,
+                    name: 'transport',
+                    displayOrder: 1,
+                  },
+                  createdAt: '2026-09-20T11:30:00.000Z',
+                  updatedAt: '2026-09-20T11:30:00.000Z',
+                },
+              ],
+              totalAmount: 1200,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: 'hold-monthly-expenses-second-capsule',
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          params: {
+            capsule: MonthlyExpensesQueryGraphqlCapsule.create({
+              result: {
+                [RESPONSE_CONTENT_FIELD]: {
+                  monthlyExpenses: {
+                    expenses: [
+                      {
+                        id: 10200013,
+                        spentOn: '2026-10-02',
+                        amount: 780,
+                        memo: null,
+                        status: 'recorded',
+                        expenseCategory: {
+                          id: 10000003,
+                          name: 'supplies',
+                          displayOrder: 3,
+                        },
+                        createdAt: '2026-10-02T02:05:00.000Z',
+                        updatedAt: '2026-10-02T02:05:00.000Z',
+                      },
+                    ],
+                    totalAmount: 780,
+                  },
+                },
+              },
+            }),
+          },
+          expected: {
+            expenses: [
+              {
+                id: 10200013,
+                spentOn: '2026-10-02',
+                amount: 780,
+                memo: null,
+                status: 'recorded',
+                expenseCategory: {
+                  id: 10000003,
+                  name: 'supplies',
+                  displayOrder: 3,
+                },
+                createdAt: '2026-10-02T02:05:00.000Z',
+                updatedAt: '2026-10-02T02:05:00.000Z',
+              },
+            ],
+            totalAmount: 780,
+          },
+        },
+      ]
+
+      test.each(cases)('month: $factoryParams.monthValueHashReactive.month', ({
+        factoryParams,
+        params,
+        expected,
+      }) => {
+        const context = MonthlyExpensesPageContext.create(factoryParams)
+
+        context.holdMonthlyExpenses(params)
+
+        expect(factoryParams.responseHashReactive)
+          .toEqual(expected)
+      })
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  /*
+   * Section 12's sixth acceptance criterion, on the side the frontend owns. The backend refuses a
+   * read with no session before it looks at the month and before it reads a row; what has to be
+   * true here is that a member of staff is told in the sentence checkpoint 13 mapped, and never in
+   * the dotted code the response actually carried.
+   *
+   * The two input refusals are mapped as well, and the reason they are is that a code with no
+   * sentence would reach the screen as itself.
+   */
+  describe('#surfaceMonthlyExpensesFailure()', () => {
+    const cases = [
+      {
+        label: 'refused for want of a session',
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page',
+            },
+          },
+          monthValueHashReactive: {
+            year: 2026,
+            month: 9,
+          },
+          statusReactive: {
+            isLoadingMonthlyExpenses: false,
+          },
+          errorMessageHashReactive: {
+            readingMonthlyExpenses: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'surface-failure-session-capsule',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
+        },
+        params: {
+          capsule: MonthlyExpensesQueryGraphqlCapsule.create({
+            result: {
+              errors: [
+                {
+                  message: '204.Q004.001',
+                },
+              ],
+            },
+          }),
+        },
+        expected: {
+          readingMonthlyExpenses: 'Your session is no longer valid. Sign in again.',
+        },
+      },
+      {
+        label: 'refused for an unreadable year',
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page',
+            },
+          },
+          monthValueHashReactive: {
+            year: 2026,
+            month: 9,
+          },
+          statusReactive: {
+            isLoadingMonthlyExpenses: false,
+          },
+          errorMessageHashReactive: {
+            readingMonthlyExpenses: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'surface-failure-year-capsule',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
+        },
+        params: {
+          capsule: MonthlyExpensesQueryGraphqlCapsule.create({
+            result: {
+              errors: [
+                {
+                  message: '203.Q004.001',
+                },
+              ],
+            },
+          }),
+        },
+        expected: {
+          readingMonthlyExpenses: 'The month could not be loaded. Reload the page and try again.',
+        },
+      },
+      {
+        label: 'failed on the way there, with no code of the backend at all',
+        factoryParams: {
+          props: {},
+          componentContext: {
+            attrs: {
+              class: 'unit-page',
+            },
+          },
+          monthValueHashReactive: {
+            year: 2026,
+            month: 9,
+          },
+          statusReactive: {
+            isLoadingMonthlyExpenses: false,
+          },
+          errorMessageHashReactive: {
+            readingMonthlyExpenses: null,
+          },
+          responseHashReactive: {
+            expenses: [],
+            totalAmount: null,
+          },
+          graphqlClientHash: {
+            monthlyExpenses: {
+              capsuleRef: {
+                value: 'surface-failure-network-capsule',
+              },
+              invokeRequestOnEvent: async () => {},
+            },
+          },
+        },
+        params: {
+          capsule: MonthlyExpensesQueryGraphqlCapsule.create({
+            result: {
+              errors: [
+                {
+                  message: '192.X000.001',
+                },
+              ],
+            },
+          }),
+        },
+        expected: {
+          readingMonthlyExpenses: 'Something went wrong. Try again.',
+        },
+      },
+    ]
+
+    test.each(cases)('label: $label', ({
+      factoryParams,
+      params,
+      expected,
+    }) => {
+      const context = MonthlyExpensesPageContext.create(factoryParams)
+
+      context.surfaceMonthlyExpensesFailure(params)
+
+      expect(factoryParams.errorMessageHashReactive)
+        .toEqual(expected)
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  describe('#readMonthlyExpenses()', () => {
+    describe('should ask the API for the month the screen is showing, with its own hooks', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 9,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [],
+                          totalAmount: 0,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            variables: {
+              input: {
+                year: 2026,
+                month: 9,
+              },
+            },
+            hooks: expect.objectContaining({
+              beforeRequest: expect.any(Function),
+              afterRequest: expect.any(Function),
+            }),
+          },
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page monthly-expenses',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2025,
+              month: 2,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [],
+                          totalAmount: 0,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            variables: {
+              input: {
+                year: 2025,
+                month: 2,
+              },
+            },
+            hooks: expect.objectContaining({
+              beforeRequest: expect.any(Function),
+              afterRequest: expect.any(Function),
+            }),
+          },
+        },
+      ]
+
+      test.each(cases)('month: $factoryParams.monthValueHashReactive.month', async ({
+        factoryParams,
+        expected,
+      }) => {
+        const context = MonthlyExpensesPageContext.create(factoryParams)
+        const invokeSpy = jest.spyOn(factoryParams.graphqlClientHash.monthlyExpenses, 'invokeRequestOnEvent')
+
+        await context.readMonthlyExpenses()
+
+        expect(invokeSpy)
+          .toHaveBeenCalledWith(expected)
+      })
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  /*
+   * `ai/contexts/uiux-context-monthly-summary.md` section 4.4 -- the rows and the total go before
+   * the request goes out, and not once its answer lands. What is asserted is the state at the
+   * moment the request is made, which is why the stubbed invocation is the thing that reads it:
+   * after the read has finished the answer is already back and there would be nothing left to see.
+   */
+  describe('#readMonthlyExpenses()', () => {
+    describe('should take the previous month off the screen before the request goes out', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 10,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [
+                {
+                  id: 10200011,
+                  spentOn: '2026-09-20',
+                  amount: 1200,
+                  memo: 'Train fare to the client',
+                  status: 'recorded',
+                  expenseCategory: {
+                    id: 10000001,
+                    name: 'transport',
+                    displayOrder: 1,
+                  },
+                  createdAt: '2026-09-20T11:30:00.000Z',
+                  updatedAt: '2026-09-20T11:30:00.000Z',
+                },
+              ],
+              totalAmount: 1200,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [],
+                          totalAmount: 0,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            expenses: [],
+            totalAmount: null,
+          },
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page monthly-expenses',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2025,
+              month: 3,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [
+                {
+                  id: 10200013,
+                  spentOn: '2025-02-11',
+                  amount: 780,
+                  memo: null,
+                  status: 'recorded',
+                  expenseCategory: {
+                    id: 10000003,
+                    name: 'supplies',
+                    displayOrder: 3,
+                  },
+                  createdAt: '2025-02-11T02:05:00.000Z',
+                  updatedAt: '2025-02-11T02:05:00.000Z',
+                },
+              ],
+              totalAmount: 780,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [],
+                          totalAmount: 0,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            expenses: [],
+            totalAmount: null,
+          },
+        },
+      ]
+
+      test.each(cases)('month: $factoryParams.monthValueHashReactive.month', async ({
+        factoryParams,
+        expected,
+      }) => {
+        const context = MonthlyExpensesPageContext.create(factoryParams)
+        const { responseHashReactive } = factoryParams
+        const screenAtRequest = {}
+
+        jest.spyOn(factoryParams.graphqlClientHash.monthlyExpenses, 'invokeRequestOnEvent')
+          .mockImplementation(async () => {
+            screenAtRequest.expenses = responseHashReactive.expenses
+            screenAtRequest.totalAmount = responseHashReactive.totalAmount
+          })
+
+        await context.readMonthlyExpenses()
+
+        expect(screenAtRequest)
+          .toEqual(expected)
+      })
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  /*
+   * Section 12's first, third and fourth acceptance criteria meet here, because all three are about
+   * what a landed answer puts on screen. The total is the answer's own figure; a month holding
+   * nothing lands a real zero rather than the placeholder, which is what tells an empty month apart
+   * from an unread one; and the entries a previous read left are replaced outright, which is how a
+   * recording, a correction or a removal made on the other screen shows up on the next read.
+   */
+  describe('#readMonthlyExpenses()', () => {
+    describe('should hold the answer the read landed', () => {
+      const cases = [
+        {
+          label: 'a month holding two entries',
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 9,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [
+                            {
+                              id: 10200011,
+                              spentOn: '2026-09-20',
+                              amount: 1200,
+                              memo: 'Train fare to the client',
+                              status: 'recorded',
+                              expenseCategory: {
+                                id: 10000001,
+                                name: 'transport',
+                                displayOrder: 1,
+                              },
+                              createdAt: '2026-09-20T11:30:00.000Z',
+                              updatedAt: '2026-09-20T11:30:00.000Z',
+                            },
+                            {
+                              id: 10200012,
+                              spentOn: '2026-09-04',
+                              amount: 3400,
+                              memo: 'Lunch with the supplier',
+                              status: 'recorded',
+                              expenseCategory: {
+                                id: 10000002,
+                                name: 'meals',
+                                displayOrder: 2,
+                              },
+                              createdAt: '2026-09-04T09:15:00.000Z',
+                              updatedAt: '2026-09-04T09:15:00.000Z',
+                            },
+                          ],
+                          totalAmount: 4600,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            expenses: [
+              {
+                id: 10200011,
+                spentOn: '2026-09-20',
+                amount: 1200,
+                memo: 'Train fare to the client',
+                status: 'recorded',
+                expenseCategory: {
+                  id: 10000001,
+                  name: 'transport',
+                  displayOrder: 1,
+                },
+                createdAt: '2026-09-20T11:30:00.000Z',
+                updatedAt: '2026-09-20T11:30:00.000Z',
+              },
+              {
+                id: 10200012,
+                spentOn: '2026-09-04',
+                amount: 3400,
+                memo: 'Lunch with the supplier',
+                status: 'recorded',
+                expenseCategory: {
+                  id: 10000002,
+                  name: 'meals',
+                  displayOrder: 2,
+                },
+                createdAt: '2026-09-04T09:15:00.000Z',
+                updatedAt: '2026-09-04T09:15:00.000Z',
+              },
+            ],
+            totalAmount: 4600,
+          },
+        },
+        {
+          label: 'a month holding nothing, which lands a real zero',
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 12,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [],
+                          totalAmount: 0,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            expenses: [],
+            totalAmount: 0,
+          },
+        },
+        {
+          label: 'a month whose entries replace the ones a previous read left',
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 9,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [
+                {
+                  id: 10200011,
+                  spentOn: '2026-09-20',
+                  amount: 1200,
+                  memo: 'Train fare to the client',
+                  status: 'recorded',
+                  expenseCategory: {
+                    id: 10000001,
+                    name: 'transport',
+                    displayOrder: 1,
+                  },
+                  createdAt: '2026-09-20T11:30:00.000Z',
+                  updatedAt: '2026-09-20T11:30:00.000Z',
+                },
+              ],
+              totalAmount: 1200,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [
+                            {
+                              id: 10200011,
+                              spentOn: '2026-09-20',
+                              amount: 1500,
+                              memo: 'Train fare to the client, corrected',
+                              status: 'recorded',
+                              expenseCategory: {
+                                id: 10000001,
+                                name: 'transport',
+                                displayOrder: 1,
+                              },
+                              createdAt: '2026-09-20T11:30:00.000Z',
+                              updatedAt: '2026-09-21T08:00:00.000Z',
+                            },
+                          ],
+                          totalAmount: 1500,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            expenses: [
+              {
+                id: 10200011,
+                spentOn: '2026-09-20',
+                amount: 1500,
+                memo: 'Train fare to the client, corrected',
+                status: 'recorded',
+                expenseCategory: {
+                  id: 10000001,
+                  name: 'transport',
+                  displayOrder: 1,
+                },
+                createdAt: '2026-09-20T11:30:00.000Z',
+                updatedAt: '2026-09-21T08:00:00.000Z',
+              },
+            ],
+            totalAmount: 1500,
+          },
+        },
+      ]
+
+      test.each(cases)('label: $label', async ({
+        factoryParams,
+        expected,
+      }) => {
+        const context = MonthlyExpensesPageContext.create(factoryParams)
+
+        await context.readMonthlyExpenses()
+
+        expect(factoryParams.responseHashReactive)
+          .toEqual(expected)
+      })
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  /*
+   * Section 12's sixth acceptance criterion, end to end on this side: a read refused for want of a
+   * session reaches a member of staff as a sentence, the screen holds no figures for a month that
+   * was never read, and `204.Q004.001` itself never appears.
+   */
+  describe('#readMonthlyExpenses()', () => {
+    describe('should show a refused read as its sentence, and hold no figures', () => {
+      const cases = [
+        {
+          label: 'refused for want of a session',
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 9,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [
+                {
+                  id: 10200011,
+                  spentOn: '2026-09-20',
+                  amount: 1200,
+                  memo: 'Train fare to the client',
+                  status: 'recorded',
+                  expenseCategory: {
+                    id: 10000001,
+                    name: 'transport',
+                    displayOrder: 1,
+                  },
+                  createdAt: '2026-09-20T11:30:00.000Z',
+                  updatedAt: '2026-09-20T11:30:00.000Z',
+                },
+              ],
+              totalAmount: 1200,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      errors: [
+                        {
+                          message: '204.Q004.001',
+                        },
+                      ],
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            errorMessageHash: {
+              readingMonthlyExpenses: 'Your session is no longer valid. Sign in again.',
+            },
+            responseHash: {
+              expenses: [],
+              totalAmount: null,
+            },
+          },
+        },
+        {
+          label: 'refused for an unreadable month',
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page monthly-expenses',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 10,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      errors: [
+                        {
+                          message: '203.Q004.002',
+                        },
+                      ],
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            errorMessageHash: {
+              readingMonthlyExpenses: 'The month could not be loaded. Reload the page and try again.',
+            },
+            responseHash: {
+              expenses: [],
+              totalAmount: null,
+            },
+          },
+        },
+      ]
+
+      test.each(cases)('label: $label', async ({
+        factoryParams,
+        expected,
+      }) => {
+        const context = MonthlyExpensesPageContext.create(factoryParams)
+
+        await context.readMonthlyExpenses()
+
+        expect(factoryParams.errorMessageHashReactive)
+          .toEqual(expected.errorMessageHash)
+        expect(factoryParams.responseHashReactive)
+          .toEqual(expected.responseHash)
+      })
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  /*
+   * The stale-response guard, exercised through the read itself. The month is written while the
+   * request is in flight -- which is what a second press of "Previous" does, the button never being
+   * disabled -- and the answer that comes back is for the month left behind. It is discarded: the
+   * screen keeps waiting for the month now chosen rather than filling with another one's figures.
+   */
+  describe('#readMonthlyExpenses()', () => {
+    describe('should discard an answer for a month the screen is no longer showing', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 9,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [
+                            {
+                              id: 10200011,
+                              spentOn: '2026-09-20',
+                              amount: 1200,
+                              memo: 'Train fare to the client',
+                              status: 'recorded',
+                              expenseCategory: {
+                                id: 10000001,
+                                name: 'transport',
+                                displayOrder: 1,
+                              },
+                              createdAt: '2026-09-20T11:30:00.000Z',
+                              updatedAt: '2026-09-20T11:30:00.000Z',
+                            },
+                          ],
+                          totalAmount: 1200,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          params: {
+            month: 7,
+          },
+          expected: {
+            expenses: [],
+            totalAmount: null,
+          },
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page monthly-expenses',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 9,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [],
+                          totalAmount: 0,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          params: {
+            month: 11,
+          },
+          expected: {
+            expenses: [],
+            totalAmount: null,
+          },
+        },
+      ]
+
+      test.each(cases)('month written while in flight: $params.month', async ({
+        factoryParams,
+        params,
+        expected,
+      }) => {
+        const context = MonthlyExpensesPageContext.create(factoryParams)
+        const { monthValueHashReactive } = factoryParams
+
+        jest.spyOn(factoryParams.graphqlClientHash.monthlyExpenses, 'invokeRequestOnEvent')
+          .mockImplementation(async () => {
+            monthValueHashReactive.month = params.month
+          })
+
+        await context.readMonthlyExpenses()
+
+        expect(factoryParams.responseHashReactive)
+          .toEqual(expected)
+      })
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  describe('#onChangeChosenMonth()', () => {
+    describe('should take the previous month failure off the screen, and read', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 10,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: 'Your session is no longer valid. Sign in again.',
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [],
+                          totalAmount: 0,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            errorMessageHash: {
+              readingMonthlyExpenses: null,
+            },
+            request: {
+              variables: {
+                input: {
+                  year: 2026,
+                  month: 10,
+                },
+              },
+              hooks: expect.objectContaining({
+                beforeRequest: expect.any(Function),
+                afterRequest: expect.any(Function),
+              }),
+            },
+          },
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page monthly-expenses',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2025,
+              month: 4,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: 'The month could not be loaded. Reload the page and try again.',
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [],
+                          totalAmount: 0,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            errorMessageHash: {
+              readingMonthlyExpenses: null,
+            },
+            request: {
+              variables: {
+                input: {
+                  year: 2025,
+                  month: 4,
+                },
+              },
+              hooks: expect.objectContaining({
+                beforeRequest: expect.any(Function),
+                afterRequest: expect.any(Function),
+              }),
+            },
+          },
+        },
+      ]
+
+      test.each(cases)('month: $factoryParams.monthValueHashReactive.month', async ({
+        factoryParams,
+        expected,
+      }) => {
+        const context = MonthlyExpensesPageContext.create(factoryParams)
+        const invokeSpy = jest.spyOn(factoryParams.graphqlClientHash.monthlyExpenses, 'invokeRequestOnEvent')
+
+        await context.onChangeChosenMonth()
+
+        expect(factoryParams.errorMessageHashReactive)
+          .toEqual(expected.errorMessageHash)
+        expect(invokeSpy)
+          .toHaveBeenCalledWith(expected.request)
+      })
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  /*
+   * The opening read. The watcher this method registers is `immediate`, so the month the screen
+   * opens on is read without a second call beside it -- and section 12.2's "opens on the current
+   * month" is the pair `.buildCurrentMonth()` seeded, not anything read from the response.
+   */
+  describe('#setupComponent()', () => {
+    describe('should read the month the screen opens on', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 9,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [],
+                          totalAmount: 0,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            variables: {
+              input: {
+                year: 2026,
+                month: 9,
+              },
+            },
+            hooks: expect.objectContaining({
+              beforeRequest: expect.any(Function),
+              afterRequest: expect.any(Function),
+            }),
+          },
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page monthly-expenses',
+              },
+            },
+            monthValueHashReactive: {
+              year: 1999,
+              month: 12,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [],
+                          totalAmount: 0,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            variables: {
+              input: {
+                year: 1999,
+                month: 12,
+              },
+            },
+            hooks: expect.objectContaining({
+              beforeRequest: expect.any(Function),
+              afterRequest: expect.any(Function),
+            }),
+          },
+        },
+      ]
+
+      test.each(cases)('month: $factoryParams.monthValueHashReactive.month', ({
+        factoryParams,
+        expected,
+      }) => {
+        const context = MonthlyExpensesPageContext.create(factoryParams)
+        const invokeSpy = jest.spyOn(factoryParams.graphqlClientHash.monthlyExpenses, 'invokeRequestOnEvent')
+
+        context.setupComponent()
+
+        expect(invokeSpy)
+          .toHaveBeenCalledWith(expected)
+      })
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  /*
+   * The other half of the one watcher: a month change re-reads, with no page load and no route
+   * change (`ai/contexts/uiux-context.md` section 8 rule 27). This is the one describe in this file
+   * whose month is a real `reactive()` rather than the plain object every other case injects --
+   * reactivity is precisely what is under test, and a plain object could not carry it.
+   *
+   * The request the opening `immediate` run makes is deliberately left outside the spy, which is
+   * installed after `#setupComponent()`: what is asserted is that the CHANGE alone reaches the API.
+   */
+  describe('#setupComponent()', () => {
+    describe('should read again when the month changes', () => {
+      const cases = [
+        {
+          label: 'a step to the next month',
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: reactive({
+              year: 2026,
+              month: 9,
+            }),
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [],
+                          totalAmount: 0,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          params: {
+            year: 2026,
+            month: 10,
+          },
+          expected: {
+            variables: {
+              input: {
+                year: 2026,
+                month: 10,
+              },
+            },
+            hooks: expect.objectContaining({
+              beforeRequest: expect.any(Function),
+              afterRequest: expect.any(Function),
+            }),
+          },
+        },
+        {
+          label: 'a step back across January, which moves the year as well',
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page monthly-expenses',
+              },
+            },
+            monthValueHashReactive: reactive({
+              year: 2026,
+              month: 1,
+            }),
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: null,
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [],
+                          totalAmount: 0,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          params: {
+            year: 2025,
+            month: 12,
+          },
+          expected: {
+            variables: {
+              input: {
+                year: 2025,
+                month: 12,
+              },
+            },
+            hooks: expect.objectContaining({
+              beforeRequest: expect.any(Function),
+              afterRequest: expect.any(Function),
+            }),
+          },
+        },
+      ]
+
+      test.each(cases)('label: $label', async ({
+        factoryParams,
+        params,
+        expected,
+      }) => {
+        const context = MonthlyExpensesPageContext.create(factoryParams)
+
+        context.setupComponent()
+
+        const invokeSpy = jest.spyOn(factoryParams.graphqlClientHash.monthlyExpenses, 'invokeRequestOnEvent')
+
+        context.applyMonth({
+          monthValueHash: params,
+        })
+        await nextTick()
+
+        expect(invokeSpy)
+          .toHaveBeenCalledWith(expected)
+      })
+    })
+  })
+})
+
+describe('MonthlyExpensesPageContext', () => {
+  describe('#onClickRetry()', () => {
+    describe('should read the month the screen is showing again', () => {
+      const cases = [
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2026,
+              month: 9,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: 'Your session is no longer valid. Sign in again.',
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [],
+                          totalAmount: 0,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            variables: {
+              input: {
+                year: 2026,
+                month: 9,
+              },
+            },
+            hooks: expect.objectContaining({
+              beforeRequest: expect.any(Function),
+              afterRequest: expect.any(Function),
+            }),
+          },
+        },
+        {
+          factoryParams: {
+            props: {},
+            componentContext: {
+              attrs: {
+                class: 'unit-page monthly-expenses',
+              },
+            },
+            monthValueHashReactive: {
+              year: 2025,
+              month: 6,
+            },
+            statusReactive: {
+              isLoadingMonthlyExpenses: false,
+            },
+            errorMessageHashReactive: {
+              readingMonthlyExpenses: 'The month could not be loaded. Reload the page and try again.',
+            },
+            responseHashReactive: {
+              expenses: [],
+              totalAmount: null,
+            },
+            graphqlClientHash: {
+              monthlyExpenses: {
+                capsuleRef: {
+                  value: MonthlyExpensesQueryGraphqlCapsule.create({
+                    result: {
+                      [RESPONSE_CONTENT_FIELD]: {
+                        monthlyExpenses: {
+                          expenses: [],
+                          totalAmount: 0,
+                        },
+                      },
+                    },
+                  }),
+                },
+                invokeRequestOnEvent: async () => {},
+              },
+            },
+          },
+          expected: {
+            variables: {
+              input: {
+                year: 2025,
+                month: 6,
+              },
+            },
+            hooks: expect.objectContaining({
+              beforeRequest: expect.any(Function),
+              afterRequest: expect.any(Function),
+            }),
+          },
+        },
+      ]
+
+      test.each(cases)('month: $factoryParams.monthValueHashReactive.month', async ({
+        factoryParams,
+        expected,
+      }) => {
+        const context = MonthlyExpensesPageContext.create(factoryParams)
+        const invokeSpy = jest.spyOn(factoryParams.graphqlClientHash.monthlyExpenses, 'invokeRequestOnEvent')
+
+        await context.onClickRetry()
+
+        expect(invokeSpy)
+          .toHaveBeenCalledWith(expected)
+      })
     })
   })
 })

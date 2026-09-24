@@ -13,6 +13,10 @@ import {
 } from '#components'
 
 import {
+  useGraphqlClient,
+} from '@openreachtech/furo-nuxt'
+
+import {
   FuroButton,
   FuroControlBlock,
   FuroEmptyState,
@@ -20,6 +24,8 @@ import {
   FuroSelect,
   FuroTable,
 } from '@openreachtech/furo-vue'
+
+import MonthlyExpensesQueryGraphqlLauncher from '~/app/graphql/client/queries/monthlyExpenses/MonthlyExpensesQueryGraphqlLauncher.js'
 
 import MonthlyExpensesPageContext from './MonthlyExpensesPageContext.js'
 
@@ -86,7 +92,12 @@ import MonthlyExpensesPageContext from './MonthlyExpensesPageContext.js'
  * `Asia/Tokyo` rather than from the browser's own calendar fields, because `monthlyExpenses` answers
  * whatever month it is handed and nothing downstream corrects a wrong one.
  *
- * The `monthlyExpenses` client is the next checkpoint's, and it moves no markup when it lands.
+ * The `monthlyExpenses` client is created here for the same reason the reactive objects are: a
+ * context never calls a composable and never constructs its own collaborators. It is grouped into
+ * a `graphqlClientHash` keyed by the operation name, exactly as `/expenses` groups its six --
+ * one key rather than six, because section 12.2's call table declares one operation and no
+ * mutation. It landed at checkpoint 16 and **moved no markup**: all four states above were already
+ * rendered from the value of one reactive field, and the client only fills those fields in.
  */
 export default defineComponent({
   name: 'MonthlyExpensesPage',
@@ -131,6 +142,14 @@ export default defineComponent({
       totalAmount: null,
     })
 
+    const monthlyExpensesGraphqlClient = useGraphqlClient({
+      Launcher: MonthlyExpensesQueryGraphqlLauncher,
+    })
+
+    const graphqlClientHash = {
+      monthlyExpenses: monthlyExpensesGraphqlClient,
+    }
+
     const monthlyExpensesPageContext = MonthlyExpensesPageContext.create({
       props,
       componentContext,
@@ -138,6 +157,7 @@ export default defineComponent({
       statusReactive,
       errorMessageHashReactive,
       responseHashReactive,
+      graphqlClientHash,
     })
 
     monthlyExpensesPageContext.setupComponent()

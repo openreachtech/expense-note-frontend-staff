@@ -171,12 +171,17 @@ const CURRENT_MONTH_DATE_TIME_FORMAT = new Intl.DateTimeFormat('en-US', {
  * -------------------------------------------------------------------------------------------
  *
  * Everything the template reads is here: the month the screen is showing, the four controls that
- * write it, the parcels, the rows, the total and the four branches. **The request itself is not.**
- * The next checkpoint injects the `monthlyExpenses` client, watches `monthValueHashReactive` so a
- * month change re-reads, clears the rows and the total before the request goes out (section 4.4),
- * discards a response whose `{ year, month }` is no longer the chosen one (section 4.2), and adds
- * the read to `#onClickRetry()` behind the clear that method already performs. **No markup moves
- * when it does** -- every state above is already reachable from the value of one reactive field.
+ * write it, the parcels, the rows, the total and the four branches. **The request is here too,
+ * since checkpoint 16**, and no markup moved when it landed -- every state above was already
+ * reachable from the value of one reactive field, so filling those fields from a real response was
+ * the whole of the work.
+ *
+ * The request half is four things, each with its reason on its own member: the injected
+ * `monthlyExpenses` client, read through `#get:monthlyExpensesCapsule`; the one watcher in
+ * `#setupComponent()` that covers the opening read and every month change alike; the clearing of
+ * the rows and the total before a request goes out (section 4.4); and the discarding of a response
+ * whose `{ year, month }` is no longer the chosen one (section 4.2) -- a guard rather than a
+ * disabled control, because the month control stays pressable while a read is in flight.
  *
  * @extends {BaseAppContext}
  */
@@ -193,6 +198,7 @@ export default class MonthlyExpensesPageContext extends BaseAppContext {
     statusReactive,
     errorMessageHashReactive,
     responseHashReactive,
+    graphqlClientHash,
   }) {
     super({
       props,
@@ -203,6 +209,7 @@ export default class MonthlyExpensesPageContext extends BaseAppContext {
     this.statusReactive = statusReactive
     this.errorMessageHashReactive = errorMessageHashReactive
     this.responseHashReactive = responseHashReactive
+    this.graphqlClientHash = graphqlClientHash
   }
 
   /**
@@ -221,6 +228,7 @@ export default class MonthlyExpensesPageContext extends BaseAppContext {
     statusReactive,
     errorMessageHashReactive,
     responseHashReactive,
+    graphqlClientHash,
   }) {
     return /** @type {InstanceType<T>} */ (
       new this({
@@ -230,6 +238,7 @@ export default class MonthlyExpensesPageContext extends BaseAppContext {
         statusReactive,
         errorMessageHashReactive,
         responseHashReactive,
+        graphqlClientHash,
       })
     )
   }
@@ -756,6 +765,98 @@ export default class MonthlyExpensesPageContext extends BaseAppContext {
   }
 
   /**
+   * get: Capsule of the last `monthlyExpenses` response.
+   *
+   * The client replaces this value with a new capsule on every invocation, and starts holding one
+   * that answers pending before a request has been made, so there is never a moment where it is
+   * absent.
+   *
+   * @returns {MonthlyExpensesCapsule} The capsule.
+   */
+  get monthlyExpensesCapsule () {
+    return this.graphqlClientHash.monthlyExpenses
+      .capsuleRef
+      .value
+  }
+
+  /**
+   * get: Hooks the `monthlyExpenses` request runs at its own boundaries.
+   *
+   * `beforeRequest` returns false, which is what lets the request proceed -- returning true aborts
+   * it -- and `afterRequest` runs once the capsule is built, whether the response was an answer, a
+   * refusal or a network failure. That is what makes the spinner's lifetime the request's own
+   * rather than something this class raises and lowers by hand around the call.
+   *
+   * @returns {LauncherHooks} The hooks.
+   */
+  get monthlyExpensesLauncherHooks () {
+    const beforeRequest = async () => {
+      this.startLoadingMonthlyExpenses()
+
+      return false
+    }
+
+    const afterRequest = async () => {
+      this.finishLoadingMonthlyExpenses()
+    }
+
+    return {
+      beforeRequest,
+      afterRequest,
+    }
+  }
+
+  /**
+   * Set the component up.
+   *
+   * **One watcher covers both readings this screen needs**, and that is why there is no separate
+   * read on mounted beside it: `immediate` runs the handler once as the screen opens, and the
+   * source runs it again on every month change -- the two step buttons and the two selects all
+   * write the same pair, so no control needs a read of its own.
+   *
+   * The source is a function answering the two numbers rather than the reactive object itself.
+   * Handing `watch()` a reactive object would make the watcher implicitly deep, and would also be
+   * an invalid source for the plain object a unit test injects in place of one.
+   *
+   * @override
+   * @returns {MonthlyExpensesPageContext} This instance, for the page to hold.
+   * @this {MonthlyExpensesPageContext}
+   */
+  setupComponent () {
+    this.watch(
+      () => [
+        this.selectedYear,
+        this.selectedMonth,
+      ],
+      async () => {
+        await this.onChangeChosenMonth()
+      },
+      {
+        immediate: true,
+      }
+    )
+
+    return this
+  }
+
+  /**
+   * Respond to the month the screen is showing changing -- and to the screen opening, which the
+   * one watcher above covers with the same handler.
+   *
+   * The previous month's failure is taken off the screen here rather than inside the read, for the
+   * reason `#onClickRetry()` states about its own clear: a read must never be looked at against an
+   * earlier one's message. Without it a month that failed would keep its sentence over the next
+   * month's figures, because nothing else ever puts it back to null.
+   *
+   * @returns {Promise<void>}
+   */
+  async onChangeChosenMonth () {
+    this.clearMonthlyExpensesFailure()
+
+    await this.readMonthlyExpenses()
+  }
+
+  /**
    * Build the heading naming the month the figures below belong to.
    *
    * Built here and never in the template (section 8 rule 12). It is the thing that changes when the
@@ -1203,12 +1304,17 @@ export default class MonthlyExpensesPageContext extends BaseAppContext {
    *
    * Clearing the previous failure first is this method's own half of the work, and it is written
    * here rather than folded into the read: a second attempt must never be read against the first
-   * one's message. The read itself follows at the next checkpoint, behind this clear.
+   * one's message. The read follows behind that clear.
    *
-   * @returns {void}
+   * It re-reads the month the screen is showing, which is the same month that failed -- the month
+   * is screen state and nothing about a failure changes it.
+   *
+   * @returns {Promise<void>}
    */
-  onClickRetry () {
+  async onClickRetry () {
     this.clearMonthlyExpensesFailure()
+
+    await this.readMonthlyExpenses()
   }
 
   /**
@@ -1219,6 +1325,179 @@ export default class MonthlyExpensesPageContext extends BaseAppContext {
   clearMonthlyExpensesFailure () {
     this.errorMessageHashReactive.readingMonthlyExpenses = null
   }
+
+  /**
+   * Read the month the screen is showing.
+   *
+   * **The month is captured before the request goes out and checked again after it lands.** The
+   * month control stays interactive throughout -- neither step button is ever disabled, which is
+   * section 8 rule 28 and is written out on `#previousMonthButtonParcel` -- so three quick presses
+   * of "Previous" put three requests in flight, and the one that answers last is not necessarily
+   * the one for the month now chosen. A response for any other month is discarded rather than
+   * shown, which is what makes the third press land on the month three back.
+   *
+   * **The rows and the total are cleared before the request goes out**, and not after it lands.
+   * They belong to the month that was showing a moment ago, and leaving them under a spinner while
+   * the heading beside them already names a different month is the same falsehood as a stale
+   * total. This is a deliberate divergence from `/expenses`, where a re-read keeps its rows so the
+   * layout never collapses; there the rows are still the rows being re-read, and here they are not.
+   *
+   * @returns {Promise<void>}
+   */
+  async readMonthlyExpenses () {
+    const monthValueHash = this.buildChosenMonth()
+
+    this.clearMonthlyExpenses()
+
+    const variables = this.buildMonthlyExpensesVariables({
+      monthValueHash,
+    })
+    const hooks = this.monthlyExpensesLauncherHooks
+
+    await this.graphqlClientHash.monthlyExpenses
+      .invokeRequestOnEvent({
+        variables,
+        hooks,
+      })
+
+    if (this.isStaleResponse({
+      monthValueHash,
+    })) {
+      return
+    }
+
+    const capsule = this.monthlyExpensesCapsule
+
+    if (capsule.hasError()) {
+      this.surfaceMonthlyExpensesFailure({
+        capsule,
+      })
+
+      return
+    }
+
+    this.holdMonthlyExpenses({
+      capsule,
+    })
+  }
+
+  /**
+   * Build the month the screen is showing, as a pair of its own.
+   *
+   * A copy rather than the reactive object itself, because it is read again after the request has
+   * landed and the reactive one may have been written in the meantime -- which is the whole of
+   * what `#isStaleResponse()` compares.
+   *
+   * @returns {MonthValueHash} The month.
+   */
+  buildChosenMonth () {
+    return {
+      year: this.selectedYear,
+      month: this.selectedMonth,
+    }
+  }
+
+  /**
+   * Take the month that was showing off the screen.
+   *
+   * The total goes back to null rather than to zero, so the placeholder is shown and not a figure
+   * for a month nothing has been read for -- see `TOTAL_AMOUNT_PLACEHOLDER`.
+   *
+   * @returns {void}
+   */
+  clearMonthlyExpenses () {
+    this.responseHashReactive.expenses = []
+    this.responseHashReactive.totalAmount = null
+  }
+
+  /**
+   * Build the variables the `monthlyExpenses` document declares.
+   *
+   * @param {{
+   *   monthValueHash: MonthValueHash
+   * }} params - Parameters of this method.
+   * @returns {MonthlyExpensesVariables} The variables.
+   */
+  buildMonthlyExpensesVariables ({
+    monthValueHash,
+  }) {
+    return {
+      input: {
+        year: monthValueHash.year,
+        month: monthValueHash.month,
+      },
+    }
+  }
+
+  /**
+   * Whether a response is for a month the screen is no longer showing.
+   *
+   * @param {{
+   *   monthValueHash: MonthValueHash
+   * }} params - Parameters of this method.
+   * @returns {boolean} true when the answer belongs to another month.
+   */
+  isStaleResponse ({
+    monthValueHash,
+  }) {
+    return monthValueHash.year !== this.selectedYear
+      || monthValueHash.month !== this.selectedMonth
+  }
+
+  /**
+   * Hold the entries and the total a read answered.
+   *
+   * The total is written from the capsule's own getter, which answers a real zero for a month that
+   * holds nothing and null only while no answer has landed. That is what tells the empty month and
+   * the unread month apart everywhere downstream.
+   *
+   * @param {{
+   *   capsule: MonthlyExpensesCapsule
+   * }} params - Parameters of this method.
+   * @returns {void}
+   */
+  holdMonthlyExpenses ({
+    capsule,
+  }) {
+    this.responseHashReactive.expenses = capsule.expenses
+    this.responseHashReactive.totalAmount = capsule.totalAmount
+  }
+
+  /**
+   * Put a failed read's message on the screen.
+   *
+   * Resolved by the capsule and never mapped here. `BaseAppGraphqlCapsule` is this application's
+   * single point where a dotted code becomes a sentence, and a second mapping site is how two
+   * codes that must read alike quietly stop doing so.
+   *
+   * @param {{
+   *   capsule: MonthlyExpensesCapsule
+   * }} params - Parameters of this method.
+   * @returns {void}
+   */
+  surfaceMonthlyExpensesFailure ({
+    capsule,
+  }) {
+    this.errorMessageHashReactive.readingMonthlyExpenses = capsule.extractResolvedErrorMessage()
+  }
+
+  /**
+   * Raise the flag saying the chosen month is being read.
+   *
+   * @returns {void}
+   */
+  startLoadingMonthlyExpenses () {
+    this.statusReactive.isLoadingMonthlyExpenses = true
+  }
+
+  /**
+   * Lower the flag saying the chosen month is being read.
+   *
+   * @returns {void}
+   */
+  finishLoadingMonthlyExpenses () {
+    this.statusReactive.isLoadingMonthlyExpenses = false
+  }
 }
 
 /**
@@ -1227,7 +1506,38 @@ export default class MonthlyExpensesPageContext extends BaseAppContext {
  *   statusReactive: import('vue').Reactive<UserInterfaceState>
  *   errorMessageHashReactive: import('vue').Reactive<ErrorMessageHash>
  *   responseHashReactive: import('vue').Reactive<ResponseHash>
+ *   graphqlClientHash: GraphqlClientHash
  * }} MonthlyExpensesPageContextParams
+ */
+
+/**
+ * @typedef {{
+ *   monthlyExpenses: GraphqlClient
+ * }} GraphqlClientHash
+ */
+
+/**
+ * @typedef {{
+ *   capsuleRef: import('vue').Ref<*>
+ *   invokeRequestOnEvent: (args?: *) => Promise<void>
+ * }} GraphqlClient
+ */
+
+/**
+ * @typedef {import('~/app/graphql/client/queries/monthlyExpenses/MonthlyExpensesQueryGraphqlCapsule.js').default} MonthlyExpensesCapsule
+ */
+
+/**
+ * @typedef {{
+ *   beforeRequest: () => Promise<boolean>
+ *   afterRequest: () => Promise<void>
+ * }} LauncherHooks
+ */
+
+/**
+ * @typedef {{
+ *   input: schema.graphql.MonthlyExpensesInput
+ * }} MonthlyExpensesVariables
  */
 
 /**
