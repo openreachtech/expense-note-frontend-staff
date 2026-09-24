@@ -13,6 +13,10 @@ import {
 } from '#imports'
 
 import {
+  NuxtLink,
+} from '#components'
+
+import {
   useGraphqlClient,
 } from '@openreachtech/furo-nuxt'
 
@@ -122,6 +126,7 @@ export default defineComponent({
     FuroSelect,
     FuroTable,
     FuroTextField,
+    NuxtLink,
   },
 
   setup (
@@ -230,6 +235,13 @@ export default defineComponent({
       <h1 class="heading">
         {{ context.pageTitle }}
       </h1>
+
+      <NuxtLink
+        class="link"
+        :to="context.monthlyExpensesLinkPath"
+      >
+        {{ context.monthlyExpensesLinkLabel }}
+      </NuxtLink>
 
       <FuroButton
         class="signout"
@@ -499,7 +511,6 @@ export default defineComponent({
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
   column-gap: var(--size-space-medium);
   row-gap: var(--size-space-small);
 }
@@ -512,6 +523,49 @@ export default defineComponent({
   font-family: var(--font-family);
   font-size: var(--font-size-2x-large);
   font-weight: var(--font-weight-bold);
+}
+
+/* The one link out of this screen, and the spacing that pushes it and the control
+   beside it to the end of the row. The margin is declared from the layout owner
+   rather than on the item, which is where spacing a `gap` cannot express belongs.
+   It is drawn in the title colour rather than in the library's link colour, which
+   reaches 3.68:1 on this background and does not clear the 4.5:1 a piece of text
+   has to; the underline is what says it is a link, so nothing signals by colour
+   alone. */
+.unit-page > .header > .link {
+  margin-inline-start: auto;
+
+  min-block-size: 1.5rem;
+
+  display: flex;
+  align-items: center;
+
+  color: var(--color-foreground-title);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  text-decoration-line: underline;
+  text-decoration-thickness: var(--size-thinnest);
+  text-underline-offset: 0.2rem;
+}
+
+.unit-page > .header > .link:hover {
+  color: var(--color-foreground);
+  text-decoration-thickness: 0.2rem;
+}
+
+.unit-page > .header > .link:active {
+  color: var(--color-foreground-secondary);
+  text-decoration-thickness: 0.2rem;
+}
+
+/* The library removes the native outline on its own controls and draws a ring
+   instead, so the link draws the same ring rather than a second focus language
+   on one screen. */
+.unit-page > .header > .link:focus-visible {
+  outline-color: var(--color-ring);
+  outline-offset: 0.2rem;
+  outline-style: solid;
+  outline-width: 0.2rem;
 }
 
 /* The sign-out control keeps the standard control height so it lines up with the
