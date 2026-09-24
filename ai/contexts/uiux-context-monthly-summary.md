@@ -58,7 +58,7 @@ this checkpoint that stops a library component being rebuilt by hand, and becaus
 | 7 | `hof-cp-dropdown-menu` | `FuroDropdownMenu` | DECLINE | A menu triggers **actions**; the month is a **value** the screen stores, and a value-bearing control is a field (`hof-cp-select`'s own "when NOT to use" says so). No row on this screen has an action either. |
 | 8 | `hof-cp-editable-field` | `FuroEditableField` | DECLINE | Nothing on this screen is editable. §12.2 declares `monthlyExpenses` and nothing else, so an inline commit would have no operation to call. (On `/expenses` it was declined for a sharper reason — a one-value commit against a full-replace mutation; here the reason is simply that there is nothing to commit.) |
 | 9 | `hof-cp-editor` | `FuroEditor` | DECLINE | The memo is `varchar(191)` plain text, read-only here, rendered in one cell. A rich-text editor holds HTML, which would not fit the column and would open a render-HTML path on a screen that renders only values it was handed. |
-| 10 | `hof-cp-empty-state` | `FuroEmptyState`, `FuroErrorState` | **ADOPT** | Both. `FuroEmptyState` is exactly what §8 rule 24 and §12's third acceptance criterion ask for; `FuroErrorState` carries the failed read and its root is the only `role="alert"` in the region. §4.5 and §4.6. |
+| 10 | `hof-cp-empty-state` | `FuroEmptyState`, `FuroErrorState` | **ADOPT** | Both. `FuroEmptyState` is exactly what §8 rule 30 and §12's third acceptance criterion ask for; `FuroErrorState` carries the failed read and its root is the only `role="alert"` in the region. §4.5 and §4.6. |
 | 11 | `hof-cp-popover` | `FuroPopover`, `FuroTooltip` | DECLINE | Nothing is a hover hint and nothing is a click-anchored panel. A long memo behind a tooltip was considered and rejected for the same reason as on `/expenses`: a tooltip is not a keyboard- or touch-equivalent way to read content that is the entry's own text, and 191 characters wrap in a cell. |
 | 12 | `hof-cp-select` | `FuroSelect`, `FuroAutocompleteField` | **ADOPT** `FuroSelect`, twice — year and month. `FuroAutocompleteField` DECLINED | Twelve months and a short year window are neither long, nor searched, nor asynchronously fetched, which are the three things the autocomplete exists for. §4.2. |
 | 13 | `hof-cp-splitter` | `FuroSplitter`, `FuroScrollArea`, `FuroSeparator` | DECLINE | Nothing is resizable; the panel borders already draw every boundary this screen has, and a `FuroSeparator` beside a border would draw the same line twice; `FuroTable` owns its own scroll viewport **[source]**. |
@@ -178,7 +178,7 @@ parsing"* — and it is what `MonthlyExpensesInput` takes **[contract]**.
 | `FuroDateTimePicker`, `FuroTimeField` | Further off still: §6 fixes `spentOn` as a date with no time of day, and the input has no time part **[contract]**. |
 | `FuroToggleGroup` | Twelve segments is not a segmented control. At the 320px minimum viewport `uiux-context.md` §4 fixes, twelve segments do not fit, and it carries **no answer for the year at all** — leaving a second control to be invented anyway. A toggle group is for a small closed set of modes. |
 | `FuroTabs` | The same width problem and the same silence about the year, plus a worse one: tabs name **panels of one screen**, and twelve months are not twelve panels. A tab strip also reads as a complete set, and the months of an unbounded range of years are not one. |
-| A single "recent months" `FuroSelect` (the last 24, say) | A bounded list is a **refusal by omission**, and §8 rule 22 forbids refusing a future month. Every month outside the window would be unreachable while looking like a deliberate choice. |
+| A single "recent months" `FuroSelect` (the last 24, say) | A bounded list is a **refusal by omission**, and §8 rule 28 forbids refusing a future month. Every month outside the window would be unreachable while looking like a deliberate choice. |
 | `FuroNumberField` for the year | It accepts `20265` and every other integer, so the control would routinely produce input the backend refuses (`203.Q004.001` — `year` must be 1…9999 **[backend]**). A select cannot produce a year that is not a year. |
 | Previous/next **alone** | "Picks that month" would have no pick. |
 | The two selects **alone** | "Switches to the previous month" would cost three gestures, and four across a January boundary. |
@@ -208,7 +208,7 @@ month it opens on is the current one, full stop.
 - **The previous/next buttons are never disabled**, including at those two extremes. The context's
   `onClickPreviousMonth()` / `onClickNextMonth()` clamp, and a click at December 9999 is a no-op.
   A `disabled` at the boundary was considered and declined: it is a state no member of staff will
-  ever reach, it costs a branch, and an auditor reading §8 rule 22 would be right to stop at a
+  ever reach, it costs a branch, and an auditor reading §8 rule 28 would be right to stop at a
   greyed-out next-month button and ask why.
 
 **Labels.** Each select sits inside a `FuroControlBlock` carrying `label` ("Year" / "Month") and
@@ -247,7 +247,7 @@ decision than this needs. The shape:
 
 `<output>` rather than a second `<span>` **[chosen, with a reason]**: its implicit ARIA role is
 `status`, so the figure is announced when it changes. On a screen whose whole interaction is a
-re-read with **no page load** (rule 21), nothing else announces that the numbers on screen are now
+re-read with **no page load** (rule 27), nothing else announces that the numbers on screen are now
 a different month's. It costs one element and no script.
 
 **The total renders in all three of its states, and they are three, not two:**
@@ -255,7 +255,7 @@ a different month's. It costs one element and no script.
 | State | Shows |
 |---|---|
 | read landed, entries present | the formatted figure |
-| read landed, **no** entries | **`¥0` — rendered, not hidden.** §8 rule 24 and §12's third acceptance criterion |
+| read landed, **no** entries | **`¥0` — rendered, not hidden.** §8 rule 30 and §12's third acceptance criterion |
 | read **failed**, or in flight | a placeholder (`—`), **never `¥0`** |
 
 The third row is the one worth writing down. A zero after a failed read would be a lie of exactly
@@ -278,7 +278,7 @@ never look like different things:
 | `expenseCategory` | Category | — | **false** |
 | `memo` | Memo | — | **false** |
 
-- **Every column is unsortable, and that is §8 rule 23 rather than a shortcut.** §6 fixes one order
+- **Every column is unsortable, and that is §8 rule 29 rather than a shortcut.** §6 fixes one order
   for both screens and the backend already returns it from a constant both resolvers share. A
   sortable header would emit `sort:change` **[source]** into a query that has no sort input
   **[contract]**, so it would either do nothing or re-decide something §6 settled. `@sort:change`
@@ -308,7 +308,7 @@ and the truth is cheap.
 context: the read landed, there are no entries, nothing is loading and nothing failed.
 
 **This is a deliberate divergence from `/expenses`, which puts its empty state in the table's own
-`#empty` slot.** §8 rule 24 and §12's acceptance criterion both say the same thing in the same
+`#empty` slot.** §8 rule 30 and §12's acceptance criterion both say the same thing in the same
 words — *"says the month is empty, **rather than an empty table**"* — and the `#empty` slot keeps
 the four column headers above a `<td colspan>`, which is an empty table with a sentence in it. The
 sibling screen had no such criterion when it chose; this one does, and the criterion wins.
@@ -575,7 +575,11 @@ the reciprocal link **on `/expenses`** that checkpoint 11 decided on — planned
 stale-response guard of §4.2, the clearing of rows and total on a month change (§4.4), and §6's
 `Asia/Tokyo` opening month.
 
-**Not built at any of them:** pagination (§2 row 15), a sort (§8 rule 23), a row action (§4.4), a
+**Not built at any of them:** pagination (§2 row 15), a sort (§8 rule 29), a row action (§4.4), a
 `status` column (§4.4), a route or query parameter carrying the month (§4.2), a disabled future
 month (§4.2), an export (spec §4 — 1.2.0), and an icon dependency (§5.5 reports it; it is not this
 checkpoint's to install).
+
+> **Rule numbers corrected.** This document was written citing §8 rules 21-24. Those four collided
+> with `#expense-entry`'s existing 21-26 and were renumbered to **27-30** at `2f42b69`; the citations
+> above now name the new numbers. No rule's text changed, and no design decision here changed.
